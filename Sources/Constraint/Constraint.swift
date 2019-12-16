@@ -9,14 +9,14 @@ import UIKit
 public struct Constraint: Hashable, CustomStringConvertible {
     internal enum Operand: Hashable, CustomStringConvertible {
         case expression(ConstraintExpression)
-        case dimension(ConstraintDimension)
+        case dimension(CGFloat)
         
         internal var description: String {
             switch self {
             case .expression(let expression):
                 return expression.item.description + expression.constraintAttribute.alp_description
             case .dimension(let dimension):
-                return "\(dimension.rawValue)"
+                return "\(dimension)"
             }
         }
         
@@ -38,7 +38,7 @@ public struct Constraint: Hashable, CustomStringConvertible {
             case .expression:
                 return nil
             case .dimension(let dimension):
-                return dimension.rawValue
+                return dimension
             }
         }
 
@@ -55,20 +55,20 @@ public struct Constraint: Hashable, CustomStringConvertible {
     internal let lhs: ConstraintExpression
     internal let relation: NSLayoutConstraint.Relation
     internal let rhs: Operand
-    internal let constraintProperties: ConstraintProperties
+    internal let constant: CGFloat? = nil
+    internal let multiplier: CGFloat? = nil
+    internal let priority: UILayoutPriority? = nil
     
     internal init<LHSBase: Constrainable, RHSBase: Constrainable>(
         _ lhs: LHSBase,
         _ lhsAttribute: NSLayoutConstraint.Attribute,
         _ relation: NSLayoutConstraint.Relation,
         _ rhs: RHSBase,
-        _ rhsAttribute: NSLayoutConstraint.Attribute,
-        _ constraintProperties: ConstraintProperties? = nil
+        _ rhsAttribute: NSLayoutConstraint.Attribute
     ) {
         self.lhs = ConstraintExpression(lhs, lhsAttribute)
         self.relation = relation
         self.rhs = .expression(ConstraintExpression(rhs, rhsAttribute))
-        self.constraintProperties = constraintProperties ?? ConstraintProperties()
     }
     
     internal init<LHSBase, RHSBase, LHSAttribute, RHSAttribute>(
@@ -83,7 +83,6 @@ public struct Constraint: Hashable, CustomStringConvertible {
         self.lhs = ConstraintExpression(lhs)
         self.relation = relation
         self.rhs = .expression(ConstraintExpression(rhs))
-        self.constraintProperties = rhs.constraintProperties
     }
     
     internal init<LHSBase, RHSBase, LHSAttribute, RHSAttribute>(
@@ -97,15 +96,13 @@ public struct Constraint: Hashable, CustomStringConvertible {
         self.lhs = ConstraintExpression(lhs)
         self.relation = relation
         self.rhs = .expression(ConstraintExpression(rhs))
-        self.constraintProperties = rhs.constraintProperties
     }
 
     public var description: String {
         let components = [
             lhs.item.description + lhs.constraintAttribute.alp_description,
             relation.alp_description,
-            rhs.description,
-            constraintProperties.description
+            rhs.description
         ]
         return components
             .filter { $0.isEmpty == false }
@@ -116,7 +113,6 @@ public struct Constraint: Hashable, CustomStringConvertible {
         return lhs == otherConstraint.lhs
             && rhs == otherConstraint.rhs
             && relation == otherConstraint.relation
-            && constraintProperties.multiplier == otherConstraint.constraintProperties.multiplier
     }
 
 }

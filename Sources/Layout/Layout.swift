@@ -48,14 +48,13 @@ public final class Layout: CustomStringConvertible {
         _ lhsAttribute: NSLayoutConstraint.Attribute?,
         _ relation: NSLayoutConstraint.Relation?,
         _ rhs: RHSBase?,
-        _ rhsAttribute: NSLayoutConstraint.Attribute?,
-        _ constraintProperties: ConstraintProperties? = nil
+        _ rhsAttribute: NSLayoutConstraint.Attribute?
     )
     {
         guard let lhs = lhs, let lhsAttribute = lhsAttribute, let relation = relation, let rhs = rhs, let rhsAttribute = rhsAttribute else {
             return
         }
-        push(.init(lhs, lhsAttribute, relation, rhs, rhsAttribute, constraintProperties))
+        push(.init(lhs, lhsAttribute, relation, rhs, rhsAttribute))
     }
     
     internal static func push<LHSBase, RHSBase: Constrainable, T>(
@@ -77,31 +76,11 @@ public final class Layout: CustomStringConvertible {
     {
         push(lhs, relation, lhs?.on(rhs))
     }
-
-    internal static func push<LHSBase, RHSBase, T>(
-        _ lhs: SingleAnchor<LHSBase, T>?,
-        _ relation: NSLayoutConstraint.Relation?,
-        _ rhs: ModifiableConstraintItem<RHSBase>?
-    ) where
-        T.Kind: PositionAttributeKind
-    {
-        push(lhs, relation, lhs?.on(rhs))
-    }
     
     public static func push<LHSBase, RHSBase: Constrainable, T>(
         _ lhs: SingleAnchor<LHSBase, T>?,
         _ relation: NSLayoutConstraint.Relation?,
         _ rhs: KeyPath<LHSBase, RHSBase?>
-    ) where
-        T.Kind: PositionAttributeKind
-    {
-        Layout.push(lhs, .equal, lhs?.on(rhs))
-    }
-    
-    public static func push<LHSBase, RHSBase: Constrainable, T>(
-        _ lhs: SingleAnchor<LHSBase, T>?,
-        _ relation: NSLayoutConstraint.Relation?,
-        _ rhs: ModifiableKeyPath<LHSBase, RHSBase?>?
     ) where
         T.Kind: PositionAttributeKind
     {
@@ -168,10 +147,10 @@ public final class Layout: CustomStringConvertible {
             relatedBy: constraint.relation,
             toItem: constraint.rhs.object,
             attribute: constraint.rhs.constraintAttribute,
-            multiplier: constraint.constraintProperties.multiplier ?? 1,
-            constant: constraint.rhs.dimension ?? constraint.constraintProperties.constant ?? 0
+            multiplier: constraint.multiplier ?? 1,
+            constant: constraint.rhs.dimension ?? constraint.constant ?? 0
         )
-        layoutConstraint.priority = constraint.constraintProperties.priority ?? .required
+        layoutConstraint.priority = constraint.priority ?? .required
         return layoutConstraint
     }
     

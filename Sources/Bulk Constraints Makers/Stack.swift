@@ -167,25 +167,73 @@ extension Layout {
         
         if let bounds = bounds {
             if let first = items.first?.view {
-                Layout.push(first.anchors.top, alignment is VStackAlignment ? .equal : nil, bounds.anchors.top.offset(by: layoutMargins.top))
-                Layout.push(first.anchors.leading, alignment is HStackAlignment ? .equal : nil, bounds.anchors.leading.offset(by: layoutMargins.left))
+                Layout.push(
+                    first.anchors.top,
+                    alignment is VStackAlignment ? .equal : nil,
+                    bounds.anchors.top
+                        //&& offset(by: layoutMargins.top)
+                )
+                Layout.push(
+                    first.anchors.leading,
+                    alignment is HStackAlignment ? .equal : nil,
+                    bounds.anchors.leading
+                        //&& offset(by: layoutMargins.left)
+                )
             }
             if let last = items.last?.view {
-                Layout.push(last.anchors.bottom, alignment is VStackAlignment ? .equal : nil, bounds.anchors.bottom.offset(by: layoutMargins.bottom))
-                Layout.push(last.anchors.trailing, alignment is HStackAlignment ? .equal : nil, bounds.anchors.trailing.offset(by: layoutMargins.right))
+                Layout.push(
+                    last.anchors.bottom,
+                    alignment is VStackAlignment ? .equal : nil,
+                    bounds.anchors.bottom
+                        //&& offset(by: layoutMargins.bottom)
+                )
+                Layout.push(
+                    last.anchors.trailing,
+                    alignment is HStackAlignment ? .equal : nil,
+                    bounds.anchors.trailing
+                        //&& offset(by: layoutMargins.right)
+                )
             }
         }
         
         for item in items {
             guard let view = item.view else { continue }
             if let bounds = bounds {
-                Layout.push(view.anchors.top, relations.topRelation, bounds.anchors.top.offset(by: layoutMargins.top))
-                Layout.push(view.anchors.centerY, relations.centerYRelation, bounds.anchors.centerY)
-                Layout.push(view.anchors.bottom, relations.bottomRelation, bounds.anchors.bottom.offset(by: layoutMargins.bottom))
+                Layout.push(
+                    view.anchors.top,
+                    relations.topRelation,
+                    bounds.anchors.top
+                        //&& .offset(by: layoutMargins.top)
+                )
+                Layout.push(
+                    view.anchors.centerY,
+                    relations.centerYRelation,
+                    bounds.anchors.centerY
+                )
+                Layout.push(
+                    view.anchors.bottom,
+                    relations.bottomRelation,
+                    bounds.anchors.bottom
+                        //&& .offset(by: layoutMargins.bottom)
+                )
 
-                Layout.push(view.anchors.leading, relations.leadingRelation, bounds.anchors.leading.offset(by: layoutMargins.left))
-                Layout.push(view.anchors.centerX, relations.centerXRelation, bounds.anchors.centerX)
-                Layout.push(view.anchors.trailing, relations.trailingRelation, bounds.anchors.trailing.offset(by: layoutMargins.right))
+                Layout.push(
+                    view.anchors.leading,
+                    relations.leadingRelation,
+                    bounds.anchors.leading
+                        //&& .offset(by: layoutMargins.left)
+                )
+                Layout.push(
+                    view.anchors.centerX,
+                    relations.centerXRelation,
+                    bounds.anchors.centerX
+                )
+                Layout.push(
+                    view.anchors.trailing,
+                    relations.trailingRelation,
+                    bounds.anchors.trailing
+                        //&& .offset(by: layoutMargins.right)
+                )
             }
         }
         
@@ -205,37 +253,65 @@ extension Layout {
                 if x is FlexibleSpace {
                     if alignment is VStackAlignment {
                     current.anchors.top >=  previous.anchors.bottom
-                        .offset(by: spacing)
+                        //&& offset(by: spacing)
                     
                     current.anchors.top == previous.anchors.bottom
-                        .offset(by: spacing)
-                        .priority(.fittingSizeLevel)
+                        //&& offset(by: spacing)
+                        //&& priority(.fittingSizeLevel)
                     } else if alignment is HStackAlignment {
                         current.anchors.leading >=  previous.anchors.trailing
-                            .offset(by: spacing)
+                            //&& offset(by: spacing)
                         
                         current.anchors.leading == previous.anchors.trailing
-                            .offset(by: spacing)
-                            .priority(.fittingSizeLevel)
+                            //&& offset(by: spacing)
+                            //&& priority(.fittingSizeLevel)
                     }
                 } else {
                     if alignment is VStackAlignment {
                         current.anchors.top == previous.anchors.bottom
-                            .offset(by: spacing)
+                            //&& offset(by: spacing)
                     }else if alignment is HStackAlignment {
                         current.anchors.leading == previous.anchors.trailing
-                            .offset(by: spacing)
+                            //&& offset(by: spacing)
                     }
                 }
                 
                 if bounds == nil {
-                    Layout.push(current.anchors.top, relations.topRelation?.strict, previous.anchors.top.offset(by: layoutMargins.top))
-                    Layout.push(current.anchors.centerY, relations.centerYRelation?.strict, previous.anchors.centerY)
-                    Layout.push(current.anchors.bottom, relations.bottomRelation?.strict, previous.anchors.bottom.offset(by: layoutMargins.bottom))
+                    Layout.push(
+                        current.anchors.top,
+                        relations.topRelation?.strict,
+                        previous.anchors.top
+                        //&& offset(by: layoutMargins.top)
+                    )
+                    Layout.push(
+                        current.anchors.centerY,
+                        relations.centerYRelation?.strict,
+                        previous.anchors.centerY
+                    )
+                    Layout.push(
+                        current.anchors.bottom,
+                        relations.bottomRelation?.strict,
+                        previous.anchors.bottom
+                        //&& offset(by: layoutMargins.bottom)
+                    )
 
-                    Layout.push(current.anchors.leading, relations.leadingRelation?.strict, previous.anchors.leading.offset(by: layoutMargins.left))
-                    Layout.push(current.anchors.centerX, relations.centerXRelation?.strict, previous.anchors.centerX)
-                    Layout.push(current.anchors.trailing, relations.trailingRelation?.strict, previous.anchors.trailing.offset(by: layoutMargins.right))
+                    Layout.push(
+                        current.anchors.leading,
+                        relations.leadingRelation?.strict,
+                        previous.anchors.leading
+                        //&& offset(by: layoutMargins.left)
+                    )
+                    Layout.push(
+                        current.anchors.centerX,
+                        relations.centerXRelation?.strict,
+                        previous.anchors.centerX
+                    )
+                    Layout.push(
+                        current.anchors.trailing,
+                        relations.trailingRelation?.strict,
+                        previous.anchors.trailing
+                        //&& offset(by: layoutMargins.right)
+                    )
                 }
             }
         }

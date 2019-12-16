@@ -6,181 +6,97 @@
 import Foundation
 import UIKit
 
-public struct ConstraintProperties: Hashable, CustomStringConvertible {
-    public fileprivate(set) var multiplier: CGFloat?
-    public fileprivate(set) var constant: CGFloat?
-    public fileprivate(set) var priority: UILayoutPriority?
-    
-    public var description: String {
-        var result: [String] = []
-        if let multiplier = multiplier {
-            result.append("x\(multiplier)")
-        }
-        if let constant = constant {
-            result.append("+\(constant)")
-        }
-        if let priority = priority {
-            result.append("@\(priority.rawValue)")
-        }
-        return result.joined(separator: " ")
-    }
-}
-
-public protocol ConstraintModifier {
-    var constraintProperties: ConstraintProperties { get set }
-}
-
-extension ConstraintModifier {
-    public func offset(by value: CGFloat) -> Self {
-        guard value != 0 else { return self }
-        var new = self
-        new.constraintProperties.constant = value
-        return new
-    }
-
-    public func multiplied(by value: CGFloat) -> Self {
-        guard value != 1 else { return self }
-        var new = self
-        new.constraintProperties.multiplier = value
-        return new
-    }
-
-    public func priority(_ value: UILayoutPriority) -> Self {
-        var new = self
-        new.constraintProperties.priority = value
-        return new
-    }
-}
-
-public struct ModifiableConstraintItem<Base: Constrainable>: ConstraintModifier {
-    public let item: Base
-    public var constraintProperties = ConstraintProperties()
-    
-    public init(_ item: Base) {
-        self.item = item
-    }
-}
-
-extension Constrainable {
-    
-    public func offset(by value: CGFloat) -> ModifiableConstraintItem<Self> {
-        ModifiableConstraintItem(self).offset(by: value)
-    }
-
-    public func multiplied(by value: CGFloat) -> ModifiableConstraintItem<Self> {
-        ModifiableConstraintItem(self).multiplied(by: value)
-    }
-
-    public func priority(_ value: UILayoutPriority) -> ModifiableConstraintItem<Self> {
-        ModifiableConstraintItem(self).priority(value)
-    }
-    
-}
-
-public struct ModifiableKeyPath<Base: Constrainable, T>: ConstraintModifier {
-    public let keyPath: KeyPath<Base, T>
-    public var constraintProperties = ConstraintProperties()
-    
-    public init(_ keyPath: KeyPath<Base, T>) {
-        self.keyPath = keyPath
-    }
-}
-
-public func its<Root: Constrainable, Value>(_ keyPath: KeyPath<Root, Value>) -> ModifiableKeyPath<Root, Value> {
-    ModifiableKeyPath(keyPath)
-}
-
-extension KeyPath where Root: Constrainable {
-    
-    public func offset(by value: CGFloat) -> ModifiableKeyPath<Root, Value> {
-        ModifiableKeyPath(self).offset(by: value)
-    }
-
-    public func multiplied(by value: CGFloat) -> ModifiableKeyPath<Root, Value> {
-        ModifiableKeyPath(self).multiplied(by: value)
-    }
-
-    public func priority(_ value: UILayoutPriority) -> ModifiableKeyPath<Root, Value> {
-        ModifiableKeyPath(self).priority(value)
-    }
-    
-}
-
-public struct ConstraintDimension: ExpressibleByIntegerLiteral, ExpressibleByFloatLiteral, Hashable, ConstraintModifier {
-    
-    public static func random(in range: Range<CGFloat>) -> ConstraintDimension {
-        return .raw(.random(in: range))
-    }
-    
-    public static func random(in range: ClosedRange<CGFloat>) -> ConstraintDimension {
-        return .raw(.random(in: range))
-    }
-
-    public static func raw(_ rawValue: CGFloat) -> ConstraintDimension {
-        return ConstraintDimension(rawValue)
-    }
-
-    private init(_ rawValue: CGFloat) {
-        self.rawValue = rawValue
-    }
-    
-    public init(floatLiteral value: Float) {
-        self.rawValue = CGFloat(value)
-    }
-    
-    public init(integerLiteral value: Int) {
-        self.rawValue = CGFloat(value)
-    }
-    
-    public var rawValue: CGFloat
-            
-    public var constraintProperties: ConstraintProperties = ConstraintProperties()
-    
-}
+public protocol Insetable {}
+public protocol Offsetable {}
+public protocol Multiplicable {}
 
 public protocol ConstraintOperand {
-    associatedtype ConstraintAttributeKind: AttributeKind
-    associatedtype RawValue: ConstraintOperand
-    var rawValue: RawValue { get }
     var priority: UILayoutPriority? { get }
-    func constant<Attribute: TwentyLayout.Attribute>(for attribute: Attribute) -> CGFloat? where Attribute.Kind == ConstraintAttributeKind
-    
-    func priority(_ value: UILayoutPriority) -> ModifiedDimensionConstraintOperand<RawValue>
+    var multiplier: CGFloat? { get }
+    func constant(for attribute: NSLayoutConstraint.Attribute) -> CGFloat?
 }
 
-extension ConstraintOperand where Self.RawValue == Self {
-    public var rawValue: RawValue {
-        return self
-    }
+public protocol ModifiableConstraintOperand: ConstraintOperand { }
+
+extension ConstraintOperand {
     public var priority: UILayoutPriority? {
         return nil
     }
-    public func constant<Attribute: TwentyLayout.Attribute>(for attribute: Attribute) -> CGFloat? where Attribute.Kind == ConstraintAttributeKind {
+    public var multiplier: CGFloat? {
         return nil
     }
-    public func priority(_ value: UILayoutPriority) -> ModifiedDimensionConstraintOperand<Self.RawValue> {
-        return ModifiedDimensionConstraintOperand(rawValue: self.rawValue).priority(value)
+    public func constant(for attribute: NSLayoutConstraint.Attribute) -> CGFloat? {
+        return nil
     }
 }
 
+extension Int: ModifiableConstraintOperand {}
+extension Float: ModifiableConstraintOperand {}
+extension Double: ModifiableConstraintOperand {}
+extension CGFloat: ModifiableConstraintOperand {}
+
+extension Top:  ModifiableConstraintOperand, Offsetable, Insetable, Multiplicable {}
+extension Left: ModifiableConstraintOperand, Offsetable, Insetable, Multiplicable {}
+extension Leading:  ModifiableConstraintOperand, Offsetable, Insetable, Multiplicable {}
+extension Trailing: ModifiableConstraintOperand, Offsetable, Insetable, Multiplicable {}
+extension Right:    ModifiableConstraintOperand, Offsetable, Insetable, Multiplicable {}
+extension Bottom:   ModifiableConstraintOperand, Offsetable, Insetable, Multiplicable {}
+extension CenterX:  ModifiableConstraintOperand, Offsetable, Multiplicable {}
+extension CenterY:  ModifiableConstraintOperand, Offsetable, Multiplicable {}
+extension Width:    ModifiableConstraintOperand, Offsetable, Multiplicable {}
+extension Height:   ModifiableConstraintOperand, Offsetable, Multiplicable {}
+extension FirstBaseline:    ModifiableConstraintOperand, Offsetable, Multiplicable {}
+extension LastBaseline:     ModifiableConstraintOperand, Offsetable, Multiplicable {}
+
+extension Margin: ConstraintOperand where T: ConstraintOperand {}
+extension Margin: ModifiableConstraintOperand where T: ModifiableConstraintOperand {}
+extension Margin: Offsetable where T: Offsetable {}
+extension Margin: Insetable where T: Insetable {}
+extension Margin: Multiplicable where T: Multiplicable {}
+
+extension WithinMargins: ConstraintOperand where T: ConstraintOperand {}
+extension WithinMargins: ModifiableConstraintOperand where T: ModifiableConstraintOperand {}
+extension WithinMargins: Offsetable where T: Offsetable {}
+extension WithinMargins: Insetable where T: Insetable {}
+extension WithinMargins: Multiplicable where T: Multiplicable {}
+
+extension SingleAnchor: ConstraintOperand where Attribute: ConstraintOperand {}
+extension SingleAnchor: ModifiableConstraintOperand where Attribute: ModifiableConstraintOperand {}
+extension SingleAnchor: Offsetable where Attribute: Offsetable {}
+extension SingleAnchor: Insetable where Attribute: Insetable {}
+extension SingleAnchor: Multiplicable where Attribute: Multiplicable {}
+
+extension KeyPath: ConstraintOperand where Value: ConstraintOperand {}
+extension KeyPath: ModifiableConstraintOperand where Value: ModifiableConstraintOperand {}
+extension KeyPath: Offsetable where Value: Offsetable {}
+extension KeyPath: Insetable where Value: Insetable {}
+extension KeyPath: Multiplicable where Value: Multiplicable {}
+
+extension CGSize: ModifiableConstraintOperand {
+    public func constant(for attribute: NSLayoutConstraint.Attribute) -> CGFloat? {
+        switch attribute {
+        case .width: return width
+        case .height: return height
+        default: return nil
+        }
+    }
+}
 
 extension ConstraintOperand where Self : BinaryInteger {
-    public func constant<Attribute: TwentyLayout.Attribute>(for attribute: Attribute) -> CGFloat? where Attribute.Kind == ConstraintAttributeKind {
+    public func constant(for attribute: NSLayoutConstraint.Attribute) -> CGFloat? {
         return CGFloat(self)
     }
 }
 
 extension ConstraintOperand where Self : BinaryFloatingPoint {
-    public func constant<Attribute: TwentyLayout.Attribute>(for attribute: Attribute) -> CGFloat? where Attribute.Kind == ConstraintAttributeKind {
+    public func constant(for attribute: NSLayoutConstraint.Attribute) -> CGFloat? {
         return CGFloat(self)
     }
 }
 
-extension UIEdgeInsets: ConstraintOperand {
-    public typealias RawValue = UIEdgeInsets
-    public typealias ConstraintAttributeKind = Edge
-    public func constant<Attribute: TwentyLayout.Attribute>(for attribute: Attribute) -> CGFloat? where Attribute.Kind == ConstraintAttributeKind {
-        switch attribute.rawValue {
+extension UIEdgeInsets {
+    fileprivate func inset(for attribute: NSLayoutConstraint.Attribute) -> CGFloat? {
+        switch attribute {
         case .left, .leading, .leftMargin, .leadingMargin:
             return self.left
         case .right, .trailing, .rightMargin, .trailingMargin:
@@ -193,25 +109,160 @@ extension UIEdgeInsets: ConstraintOperand {
             return nil
         }
     }
+    
+    fileprivate func offset(for attribute: NSLayoutConstraint.Attribute) -> CGFloat? {
+        switch attribute {
+        case .left, .leading, .leftMargin, .leadingMargin:
+            return self.left
+        case .right, .trailing, .rightMargin, .trailingMargin:
+            return self.right
+        case .top, .topMargin:
+            return self.top
+        case .bottom, .bottomMargin:
+            return self.bottom
+        default:
+            return nil
+        }
+    }
 }
 
-public struct ModifiedDimensionConstraintOperand<RawValue: ConstraintOperand>: ConstraintOperand {
-    public typealias ConstraintAttributeKind = RawValue.ConstraintAttributeKind
-    public private(set) var priority: UILayoutPriority? = nil
-    public let rawValue: RawValue
+public struct ModifiedConstraintOperand<T: ModifiableConstraintOperand>: ConstraintOperand {
     
-    fileprivate init(rawValue: RawValue) {
-        self.rawValue = rawValue
+    public fileprivate(set) var priority: UILayoutPriority?
+    public fileprivate(set) var multiplier: CGFloat?
+    
+    fileprivate var constant: (NSLayoutConstraint.Attribute) -> CGFloat?
+    
+    public let original: T
+    
+    fileprivate init(original: T) {
+        self.original = original
+        self.priority = original.priority
+        self.multiplier = original.multiplier
+        self.constant = original.constant
     }
 
-    public func constant<Attribute: TwentyLayout.Attribute>(for attribute: Attribute) -> CGFloat? where Attribute.Kind == ConstraintAttributeKind {
-        rawValue.constant(for: attribute)
+    public func constant(for attribute: NSLayoutConstraint.Attribute) -> CGFloat? {
+        constant(attribute)
     }
     
-    public func priority(_ value: UILayoutPriority) -> ModifiedDimensionConstraintOperand<RawValue> {
-        var copy = self
-        copy.priority = value
+}
+
+precedencegroup ConstraintModifierPrecedenceGroup {
+    higherThan: MultiplicationPrecedence
+    lowerThan: BitwiseShiftPrecedence
+    associativity: left
+    assignment: false
+}
+infix operator ~ : ConstraintModifierPrecedenceGroup
+
+public func ~ <T>(lhs: T, mutation: ConstraintOperandMutation<T>) -> ModifiedConstraintOperand<T> {
+    return mutation.mutating(lhs)
+}
+
+public func ~ <T>(lhs: ModifiedConstraintOperand<T>, mutation: ConstraintOperandMutation<T>) -> ModifiedConstraintOperand<T> {
+    return mutation.mutating(lhs)
+}
+
+public struct ConstraintOperandMutation<T: ModifiableConstraintOperand> {
+    private let mutation: (ModifiedConstraintOperand<T>, inout ModifiedConstraintOperand<T>) -> Void
+    
+    fileprivate func mutating(_ value: T) -> ModifiedConstraintOperand<T> {
+        return mutating(ModifiedConstraintOperand(original: value))
+    }
+    
+    fileprivate func mutating(_ value: ModifiedConstraintOperand<T>) -> ModifiedConstraintOperand<T> {
+        var copy = value
+        mutation(value, &copy)
         return copy
     }
+}
 
+extension ConstraintOperandMutation {
+    
+    public static func priority(_ priority: UILayoutPriority) -> ConstraintOperandMutation<T> {
+        return ConstraintOperandMutation<T> { _, new in
+            new.priority = priority
+        }
+    }
+ 
+    @available(*, unavailable, message: "You can't add an offset on this kind of constraint")
+    public static func offset<I: BinaryInteger>(by integer: I) -> ConstraintOperandMutation<T> {
+        return ConstraintOperandMutation<T> { _, _ in }
+    }
+
+    @available(*, unavailable, message: "You can't add an offset on this kind of constraint")
+    public static func offset<F: BinaryFloatingPoint>(by float: F) -> ConstraintOperandMutation<T> {
+        return ConstraintOperandMutation<T> { _, _ in }
+    }
+
+    @available(*, unavailable, message: "You can't add an offset on this kind of constraint")
+    public static func offset(by insets: UIEdgeInsets) -> ConstraintOperandMutation<T> {
+        return ConstraintOperandMutation<T> { _, _ in }
+    }
+
+    @available(*, unavailable, message: "You can't add an inset on this kind of constraint")
+    public static func inset<T>(by insets: UIEdgeInsets) -> ConstraintOperandMutation<T> {
+        return ConstraintOperandMutation<T> { _, _ in }
+    }
+
+    @available(*, unavailable, message: "You can't add a multiplier on this kind of constraint")
+    public static func multiplied(by multiplier: CGFloat) -> ConstraintOperandMutation<T> {
+        return ConstraintOperandMutation<T> { _, _ in }
+    }
+    
+}
+
+extension ConstraintOperandMutation where T: Offsetable {
+    public static func offset<I: BinaryInteger>(by integer: I) -> ConstraintOperandMutation<T> {
+        return ConstraintOperandMutation<T> { old, new in
+            new.constant = { attribute in
+                return CGFloat(integer) + (old.constant(attribute) ?? 0)
+            }
+        }
+    }
+    
+    public static func offset<F: BinaryFloatingPoint>(by float: F) -> ConstraintOperandMutation<T> {
+        return ConstraintOperandMutation<T> { old, new in
+            new.constant = { attribute in
+                return CGFloat(float) + (old.constant(attribute) ?? 0)
+            }
+        }
+    }
+    
+    public static func offset(by insets: UIEdgeInsets) -> ConstraintOperandMutation<T> {
+        return ConstraintOperandMutation<T> { old, new in
+            new.constant = { attribute in
+                switch (old.constant(attribute), insets.offset(for: attribute)) {
+                case (let x?, let y?): return x + y
+                case (let x?, nil): return x
+                case (nil, let y?): return y
+                case (nil, nil): return nil
+                }
+            }
+        }
+    }
+}
+
+extension ConstraintOperandMutation where T: Insetable {
+    public static func inset<T>(by insets: UIEdgeInsets) -> ConstraintOperandMutation<T> {
+        return ConstraintOperandMutation<T> { old, new in
+            new.constant = { attribute in
+                switch (old.constant(attribute), insets.inset(for: attribute)) {
+                case (let x?, let y?): return x + y
+                case (let x?, nil): return x
+                case (nil, let y?): return y
+                case (nil, nil): return nil
+                }
+            }
+        }
+    }
+}
+
+extension ConstraintOperandMutation where T: Multiplicable {
+    public static func multiplied(by multiplier: CGFloat) -> ConstraintOperandMutation<T> {
+        return ConstraintOperandMutation<T> { _, new in
+            new.multiplier = multiplier
+        }
+    }
 }
