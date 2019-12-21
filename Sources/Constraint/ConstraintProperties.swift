@@ -11,6 +11,8 @@ public protocol Offsetable {}
 public protocol Multiplicable {}
 
 public protocol ConstraintOperand {
+    associatedtype Value
+    var constraintValue: Value {get }
     var priority: UILayoutPriority? { get }
     var multiplier: CGFloat? { get }
     func constant(for attribute: NSLayoutConstraint.Attribute) -> CGFloat?
@@ -19,6 +21,9 @@ public protocol ConstraintOperand {
 public protocol ModifiableConstraintOperand: ConstraintOperand { }
 
 extension ConstraintOperand {
+    public var constraintValue: Self {
+        return self
+    }
     public var priority: UILayoutPriority? {
         return nil
     }
@@ -34,6 +39,9 @@ extension Int: ModifiableConstraintOperand {}
 extension Float: ModifiableConstraintOperand {}
 extension Double: ModifiableConstraintOperand {}
 extension CGFloat: ModifiableConstraintOperand {}
+//
+//extension UIView: ModifiableConstraintOperand, Offsetable, Insetable, Multiplicable {}
+//extension UILayoutGuide: ModifiableConstraintOperand, Offsetable, Insetable, Multiplicable {}
 
 extension Top:  ModifiableConstraintOperand, Offsetable, Insetable, Multiplicable {}
 extension Left: ModifiableConstraintOperand, Offsetable, Insetable, Multiplicable {}
@@ -48,29 +56,55 @@ extension Height:   ModifiableConstraintOperand, Offsetable, Multiplicable {}
 extension FirstBaseline:    ModifiableConstraintOperand, Offsetable, Multiplicable {}
 extension LastBaseline:     ModifiableConstraintOperand, Offsetable, Multiplicable {}
 
-extension Margin: ConstraintOperand where T: ConstraintOperand {}
+extension Margin: ConstraintOperand where T: ConstraintOperand {
+    public var constraintValue: Self {
+        return self
+    }
+}
 extension Margin: ModifiableConstraintOperand where T: ModifiableConstraintOperand {}
 extension Margin: Offsetable where T: Offsetable {}
 extension Margin: Insetable where T: Insetable {}
 extension Margin: Multiplicable where T: Multiplicable {}
 
-extension WithinMargins: ConstraintOperand where T: ConstraintOperand {}
+extension WithinMargins: ConstraintOperand where T: ConstraintOperand {
+    public var constraintValue: Self {
+        return self
+    }
+}
 extension WithinMargins: ModifiableConstraintOperand where T: ModifiableConstraintOperand {}
 extension WithinMargins: Offsetable where T: Offsetable {}
 extension WithinMargins: Insetable where T: Insetable {}
 extension WithinMargins: Multiplicable where T: Multiplicable {}
 
-extension SingleAnchor: ConstraintOperand where Attribute: ConstraintOperand {}
+extension SingleAnchor: ConstraintOperand where Attribute: ConstraintOperand {
+    public var constraintValue: Self {
+        return self
+    }
+}
 extension SingleAnchor: ModifiableConstraintOperand where Attribute: ModifiableConstraintOperand {}
 extension SingleAnchor: Offsetable where Attribute: Offsetable {}
 extension SingleAnchor: Insetable where Attribute: Insetable {}
 extension SingleAnchor: Multiplicable where Attribute: Multiplicable {}
 
-extension KeyPath: ConstraintOperand where Value: ConstraintOperand {}
+extension KeyPath: ConstraintOperand where Value: ConstraintOperand {
+    public var constraintValue: KeyPath {
+        return self
+    }
+}
 extension KeyPath: ModifiableConstraintOperand where Value: ModifiableConstraintOperand {}
 extension KeyPath: Offsetable where Value: Offsetable {}
 extension KeyPath: Insetable where Value: Insetable {}
 extension KeyPath: Multiplicable where Value: Multiplicable {}
+
+extension Optional: ConstraintOperand where Wrapped: ConstraintOperand {
+    public var constraintValue: Wrapped? {
+        return self
+    }
+}
+extension Optional: ModifiableConstraintOperand where Wrapped: ModifiableConstraintOperand {}
+extension Optional: Offsetable where Wrapped: Offsetable {}
+extension Optional: Insetable where Wrapped: Insetable {}
+extension Optional: Multiplicable where Wrapped: Multiplicable {}
 
 extension CGSize: ModifiableConstraintOperand {
     public func constant(for attribute: NSLayoutConstraint.Attribute) -> CGFloat? {
@@ -128,6 +162,10 @@ extension UIEdgeInsets {
 
 public struct ModifiedConstraintOperand<T: ModifiableConstraintOperand>: ConstraintOperand {
     
+    public var constraintValue: T {
+        return original
+    }
+    
     public fileprivate(set) var priority: UILayoutPriority?
     public fileprivate(set) var multiplier: CGFloat?
     
@@ -165,7 +203,7 @@ public func ~ <T>(lhs: ModifiedConstraintOperand<T>, mutation: ConstraintOperand
 }
 
 public struct ConstraintOperandMutation<T: ModifiableConstraintOperand> {
-    private let mutation: (ModifiedConstraintOperand<T>, inout ModifiedConstraintOperand<T>) -> Void
+    fileprivate let mutation: (ModifiedConstraintOperand<T>, inout ModifiedConstraintOperand<T>) -> Void
     
     fileprivate func mutating(_ value: T) -> ModifiedConstraintOperand<T> {
         return mutating(ModifiedConstraintOperand(original: value))

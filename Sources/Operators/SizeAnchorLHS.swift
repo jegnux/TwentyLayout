@@ -7,10 +7,10 @@ import Foundation
 import UIKit
 
 /// label.anchors.size == CGSize(width: 10, height: 20)
-public func == <LHSBase>(
-    lhs: SizeAnchor<LHSBase>,
-    rhs: CGSize
-) {
+//public func == <LHSBase>(
+//    lhs: SizeAnchor<LHSBase>,
+//    rhs: CGSize
+//) {
 //    lhs.item.anchors.width == rhs.width
 //    lhs.item.anchors.height == rhs.height
-}
+//}

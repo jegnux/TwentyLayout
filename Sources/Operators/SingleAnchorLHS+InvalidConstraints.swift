@@ -5,6 +5,7 @@
 
 import Foundation
 
+/*
 /// label.anchors.XXX == \.XXX
 @available(*, unavailable, message: "You can't constraint an Anchor to itself, that's nonsense")
 public func == <LHSBase, LHSAttribute>(
@@ -58,3 +59,4 @@ public func >= <LHSBase, LHSAttribute, RHSAttribute>(
 ) {
     fatalError()
 }
+*/

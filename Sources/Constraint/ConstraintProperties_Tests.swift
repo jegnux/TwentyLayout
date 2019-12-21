@@ -31,7 +31,7 @@ class ConstraintProperties_Tests: XCTestCase {
         XCTAssertEqual(x.constant(for: .top), 80)
     }
 
-    func test_keyPath() {
+    func test_anchor_keyPath() {
         let x = \UIView.anchors.top
 
         XCTAssertNil(x.priority)
@@ -39,8 +39,28 @@ class ConstraintProperties_Tests: XCTestCase {
         XCTAssertNil(x.constant(for: .top))
     }
 
-    func test_keyPath_modified() {
+    func test_anchor_keyPath_modified() {
         let x = \UIView.anchors.top
+            ~ .offset(by: 20)
+            ~ .multiplied(by: 1.5)
+            ~ .priority(.required)
+
+        XCTAssertEqual(x.priority, .required)
+        XCTAssertEqual(x.multiplier, 1.5)
+        XCTAssertEqual(x.constant(for: .top), 20)
+    }
+
+    
+    func test_superview_keyPath() {
+        let x = \UIView.superview
+
+        XCTAssertNil(x.priority)
+        XCTAssertNil(x.multiplier)
+        XCTAssertNil(x.constant(for: .top))
+    }
+
+    func test_superview_keyPath_modified() {
+        let x = \UIView.superview
             ~ .offset(by: 20)
             ~ .multiplied(by: 1.5)
             ~ .priority(.required)

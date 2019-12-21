@@ -45,7 +45,7 @@ extension Anchors where Base: BaselineConstrainable {
 
 // MARK: - Coordinate Anchor from XAxis
 
-extension SingleAnchor where Attribute.Kind: PositionAttributeKind, Attribute.Axis == XAxis {
+extension SingleAnchor where Attribute.Kind.ValueKind == PositionValueKind, Attribute.Axis == XAxis {
     public var           top: PointAnchor<Base, Attribute, Top> { PointAnchor(item) }
     public var       centerY: PointAnchor<Base, Attribute, CenterY> { PointAnchor(item) }
     public var        bottom: PointAnchor<Base, Attribute, Bottom> { PointAnchor(item) }
@@ -59,7 +59,7 @@ extension SingleAnchor where Attribute.Kind: PositionAttributeKind, Attribute.Ax
 
 // MARK: - Coordinate Anchor from YAxis
 
-extension SingleAnchor where Attribute.Kind: PositionAttributeKind, Attribute.Axis == YAxis {
+extension SingleAnchor where Attribute.Kind.ValueKind == PositionValueKind, Attribute.Axis == YAxis {
     public var     left: PointAnchor<Base, Left, Attribute> { PointAnchor(item) }
     public var    right: PointAnchor<Base, Right, Attribute> { PointAnchor(item) }
     public var  leading: PointAnchor<Base, Leading, Attribute> { PointAnchor(item) }
@@ -76,13 +76,13 @@ extension SingleAnchor where Attribute.Kind: PositionAttributeKind, Attribute.Ax
 
 // MARK: - Coordinate Anchor from X Dimension
 
-extension SingleAnchor where Base: FrameConstrainable, Attribute.Kind: DimensionAttributeKind, Attribute.Axis == XAxis {
+extension SingleAnchor where Base: FrameConstrainable, Attribute.Kind.ValueKind == DimensionValueKind, Attribute.Axis == XAxis {
     public var height: SizeAnchor<Base> { SizeAnchor(item) }
 }
 
 // MARK: - Coordinate Anchor from Y Dimension
 
-extension SingleAnchor where Base: FrameConstrainable, Attribute.Kind: DimensionAttributeKind, Attribute.Axis == YAxis {
+extension SingleAnchor where Base: FrameConstrainable, Attribute.Kind.ValueKind == DimensionValueKind, Attribute.Axis == YAxis {
     public var width: SizeAnchor<Base> { SizeAnchor(item) }
 }
 

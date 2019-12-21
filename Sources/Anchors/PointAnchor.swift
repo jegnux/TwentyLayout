@@ -8,8 +8,8 @@ import UIKit
 
 public struct PointAnchor<Base: Constrainable, XAttribute: Attribute, YAttribute: Attribute>
     where
-    XAttribute.Kind: PositionAttributeKind, XAttribute.Axis == XAxis,
-    YAttribute.Kind: PositionAttributeKind, YAttribute.Axis == YAxis
+    XAttribute.Kind.ValueKind == PositionValueKind, XAttribute.Axis == XAxis,
+    YAttribute.Kind.ValueKind == PositionValueKind, YAttribute.Axis == YAxis
 {
     public let item: Base
     public var constraintAttributes: [NSLayoutConstraint.Attribute] {

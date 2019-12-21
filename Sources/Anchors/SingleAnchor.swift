@@ -17,14 +17,17 @@ public struct SingleAnchor<Base: Constrainable, Attribute: TwentyLayout.Attribut
         Attribute().rawValue
     }
     
-    internal func on<U>(_ newItem: U?) -> SingleAnchor<U, Attribute>? {
-        guard let newItem = newItem else { return nil }
+    internal func on<U>(_ newItem: U) -> SingleAnchor<U, Attribute> {
         return SingleAnchor<U, Attribute>(newItem)
     }
         
-    internal func on<U>(_ newItem: KeyPath<Base, U?>?) -> SingleAnchor<U, Attribute>? {
-        guard let newItem = newItem else { return nil }
+    internal func on<U>(_ newItem: KeyPath<Base, U>) -> SingleAnchor<U, Attribute> {
         return on(item[keyPath: newItem])
+    }
+
+    internal func on<U>(_ newItem: KeyPath<Base, U?>) -> SingleAnchor<U, Attribute>? {
+        guard let base = item[keyPath: newItem] else { return nil }
+        return on(base)
     }
 
 }

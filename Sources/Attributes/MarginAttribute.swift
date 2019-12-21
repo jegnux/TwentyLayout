@@ -18,7 +18,7 @@ public struct Margin<T>: Attribute where T: Attribute, T.Kind == Edge {
         case .bottom, .bottomMargin: return .bottomMargin
         case .leading, .leadingMargin: return .leadingMargin
         case .trailing, .trailingMargin: return .trailingMargin
-        default: fatalError()
+        default: fatalError("Margin shouldn't be applied on any other attribute")
         }
     }
 }

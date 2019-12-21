@@ -10,7 +10,7 @@ import Foundation
 /// label.anchors.width == \.superview
 public func == <LHSBase, LHSAttribute, RHSBase: Constrainable>(
     lhs: SingleAnchor<LHSBase, LHSAttribute>,
-    rhs: KeyPath<LHSBase, RHSBase>
+    rhs: KeyPath<LHSBase, RHSBase?>
 ) {
     Layout.push(Constraint(lhs, .equal, rhs))
 }
@@ -20,7 +20,7 @@ public func == <LHSBase, LHSAttribute, RHS: ConstraintOperand, RHSBase: Constrai
     lhs: SingleAnchor<LHSBase, LHSAttribute>,
     rhs: RHS
 ) where
-    RHS.Value : KeyPath<LHSBase, RHSBase>
+    RHS.Value : KeyPath<LHSBase, RHSBase?>
 {
     Layout.push(Constraint(lhs, .equal, rhs))
 }
@@ -28,7 +28,7 @@ public func == <LHSBase, LHSAttribute, RHS: ConstraintOperand, RHSBase: Constrai
 /// label.anchors.width <= \.superview
 public func <= <LHSBase, LHSAttribute, RHSBase: Constrainable>(
     lhs: SingleAnchor<LHSBase, LHSAttribute>,
-    rhs: KeyPath<LHSBase, RHSBase>
+    rhs: KeyPath<LHSBase, RHSBase?>
 ) {
     Layout.push(Constraint(lhs, .lessThanOrEqual, rhs))
 }
@@ -38,7 +38,7 @@ public func <= <LHSBase, LHSAttribute, RHS: ConstraintOperand, RHSBase: Constrai
     lhs: SingleAnchor<LHSBase, LHSAttribute>,
     rhs: RHS
 ) where
-    RHS.Value : KeyPath<LHSBase, RHSBase>
+    RHS.Value : KeyPath<LHSBase, RHSBase?>
 {
     Layout.push(Constraint(lhs, .lessThanOrEqual, rhs))
 }
@@ -46,7 +46,7 @@ public func <= <LHSBase, LHSAttribute, RHS: ConstraintOperand, RHSBase: Constrai
 /// label.anchors.width >= \.superview
 public func >= <LHSBase, LHSAttribute, RHSBase: Constrainable>(
     lhs: SingleAnchor<LHSBase, LHSAttribute>,
-    rhs: KeyPath<LHSBase, RHSBase>
+    rhs: KeyPath<LHSBase, RHSBase?>
 ) {
     Layout.push(Constraint(lhs, .greaterThanOrEqual, rhs))
 }
@@ -56,7 +56,7 @@ public func >= <LHSBase, LHSAttribute, RHS: ConstraintOperand, RHSBase: Constrai
     lhs: SingleAnchor<LHSBase, LHSAttribute>,
     rhs: RHS
 ) where
-    RHS.Value : KeyPath<LHSBase, RHSBase>
+    RHS.Value : KeyPath<LHSBase, RHSBase?>
 {
     Layout.push(Constraint(lhs, .greaterThanOrEqual, rhs))
 }

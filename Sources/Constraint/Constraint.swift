@@ -55,10 +55,123 @@ public struct Constraint: Hashable, CustomStringConvertible {
     internal let lhs: ConstraintExpression
     internal let relation: NSLayoutConstraint.Relation
     internal let rhs: Operand
-    internal let constant: CGFloat? = nil
-    internal let multiplier: CGFloat? = nil
-    internal let priority: UILayoutPriority? = nil
+    internal let constant: CGFloat?
+    internal let multiplier: CGFloat?
+    internal let priority: UILayoutPriority?
+        
+    internal init?<LHSBase, LHSAttribute, RHS: ConstraintOperand, RHSBase, RHSAttribute>(
+        _ lhs: SingleAnchor<LHSBase, LHSAttribute>?,
+        _ relation: NSLayoutConstraint.Relation?,
+        _ rhs: RHS?
+    )
+        where
+        RHS.Value == SingleAnchor<RHSBase, RHSAttribute>
+    {
+        guard let lhs = lhs, let relation = relation, let rhs = rhs else {
+            return nil
+        }
+        self.lhs = ConstraintExpression(lhs)
+        self.relation = relation
+        self.rhs = .expression(ConstraintExpression(rhs.constraintValue))
+        self.constant = rhs.constant(for: rhs.constraintValue.constraintAttribute)
+        self.multiplier = rhs.multiplier
+        self.priority = rhs.priority
+    }
     
+    internal init?<LHSBase, LHSAttribute, RHS: ConstraintOperand>(
+        _ lhs: SingleAnchor<LHSBase, LHSAttribute>?,
+        _ relation: NSLayoutConstraint.Relation?,
+        _ rhs: RHS?
+    ) where
+        RHS.Value : Constrainable
+    {
+        guard let lhs = lhs, let relation = relation, let rhs = rhs else {
+            return nil
+        }
+        let rhsAnchor = lhs.on(rhs.constraintValue)
+        self.lhs = ConstraintExpression(lhs)
+        self.relation = relation
+        self.rhs = .expression(ConstraintExpression(rhsAnchor))
+        self.constant = rhs.constant(for: rhsAnchor.constraintAttribute)
+        self.multiplier = rhs.multiplier
+        self.priority = rhs.priority
+    }
+
+    internal init?<LHSBase, LHSAttribute, RHS: ConstraintOperand, RHSBase: Constrainable>(
+        _ lhs: SingleAnchor<LHSBase, LHSAttribute>?,
+        _ relation: NSLayoutConstraint.Relation?,
+        _ rhs: RHS?
+    ) where
+        RHS.Value : KeyPath<LHSBase, RHSBase?>
+    {
+        guard let lhs = lhs, let relation = relation, let rhs = rhs, let rhsAnchor = lhs.on(rhs.constraintValue) else {
+            return nil
+        }
+        self.lhs = ConstraintExpression(lhs)
+        self.relation = relation
+        self.rhs = .expression(ConstraintExpression(rhsAnchor))
+        self.constant = rhs.constant(for: rhsAnchor.constraintAttribute)
+        self.multiplier = rhs.multiplier
+        self.priority = rhs.priority
+    }
+
+    internal init?<LHSBase, LHSAttribute, RHS: ConstraintOperand, RHSBase: Constrainable>(
+        _ lhs: SingleAnchor<LHSBase, LHSAttribute>?,
+        _ relation: NSLayoutConstraint.Relation?,
+        _ rhs: RHS?
+    ) where
+        RHS.Value : KeyPath<LHSBase, RHSBase>
+    {
+        guard let lhs = lhs, let relation = relation, let rhs = rhs else {
+            return nil
+        }
+        let rhsAnchor = lhs.on(rhs.constraintValue)
+        self.lhs = ConstraintExpression(lhs)
+        self.relation = relation
+        self.rhs = .expression(ConstraintExpression(rhsAnchor))
+        self.constant = rhs.constant(for: rhsAnchor.constraintAttribute)
+        self.multiplier = rhs.multiplier
+        self.priority = rhs.priority
+    }
+
+    internal init?<LHSBase, LHSAttribute, RHS: ConstraintOperand, RHSBase, RHSAttribute: ConstraintOperand>(
+        _ lhs: SingleAnchor<LHSBase, LHSAttribute>?,
+        _ relation: NSLayoutConstraint.Relation?,
+        _ rhs: RHS?
+    ) where
+        RHS.Value == KeyPath<LHSBase, SingleAnchor<RHSBase, RHSAttribute>>
+    {
+        guard let lhs = lhs, let relation = relation, let rhs = rhs else {
+            return nil
+        }
+        let rhsAnchor = lhs.item[keyPath: rhs.constraintValue]
+        self.lhs = ConstraintExpression(lhs)
+        self.relation = relation
+        self.rhs = .expression(ConstraintExpression(rhsAnchor))
+        self.constant = rhs.constant(for: rhsAnchor.constraintAttribute)
+        self.multiplier = rhs.multiplier
+        self.priority = rhs.priority
+    }
+    
+    internal init?<LHSBase, LHSAttribute, RHS: ConstraintOperand, RHSBase, RHSAttribute: ConstraintOperand>(
+        _ lhs: SingleAnchor<LHSBase, LHSAttribute>?,
+        _ relation: NSLayoutConstraint.Relation?,
+        _ rhs: RHS?
+    ) where
+        RHS.Value == KeyPath<LHSBase, SingleAnchor<RHSBase, RHSAttribute>?>
+    {
+        guard let lhs = lhs, let relation = relation, let rhs = rhs, let rhsAnchor = lhs.item[keyPath: rhs.constraintValue] else {
+            return nil
+        }
+        self.lhs = ConstraintExpression(lhs)
+        self.relation = relation
+        self.rhs = .expression(ConstraintExpression(rhsAnchor))
+        self.constant = rhs.constant(for: rhsAnchor.constraintAttribute)
+        self.multiplier = rhs.multiplier
+        self.priority = rhs.priority
+    }
+
+    /*
     internal init<LHSBase: Constrainable, RHSBase: Constrainable>(
         _ lhs: LHSBase,
         _ lhsAttribute: NSLayoutConstraint.Attribute,
@@ -70,21 +183,7 @@ public struct Constraint: Hashable, CustomStringConvertible {
         self.relation = relation
         self.rhs = .expression(ConstraintExpression(rhs, rhsAttribute))
     }
-    
-    internal init<LHSBase, RHSBase, LHSAttribute, RHSAttribute>(
-        _ lhs: SingleAnchor<LHSBase, LHSAttribute>,
-        _ relation: NSLayoutConstraint.Relation,
-        _ rhs: SingleAnchor<RHSBase, RHSAttribute>
-    ) where
-        LHSAttribute.Axis == RHSAttribute.Axis,
-        LHSAttribute.Kind: PositionAttributeKind,
-        RHSAttribute.Kind: PositionAttributeKind
-    {
-        self.lhs = ConstraintExpression(lhs)
-        self.relation = relation
-        self.rhs = .expression(ConstraintExpression(rhs))
-    }
-    
+
     internal init<LHSBase, RHSBase, LHSAttribute, RHSAttribute>(
         _ lhs: SingleAnchor<LHSBase, LHSAttribute>,
         _ relation: NSLayoutConstraint.Relation,
@@ -97,6 +196,7 @@ public struct Constraint: Hashable, CustomStringConvertible {
         self.relation = relation
         self.rhs = .expression(ConstraintExpression(rhs))
     }
+ */
 
     public var description: String {
         let components = [

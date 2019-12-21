@@ -7,67 +7,71 @@ import Foundation
 
 // MARK: - label.anchors.leading <> button.anchors.trailing // Same Axis + PositionAnchorKind
 
-public func == <LHSBase, RHSBase, LHSAttribute, RHSAttribute>(
+public func == <LHSBase, LHSAttribute, RHS: ConstraintOperand, RHSBase, RHSAttribute>(
     lhs: SingleAnchor<LHSBase, LHSAttribute>,
-    rhs: SingleAnchor<RHSBase, RHSAttribute>
+    rhs: RHS
 ) where
+    RHS.Value == SingleAnchor<RHSBase, RHSAttribute>,
     LHSAttribute.Axis == RHSAttribute.Axis,
-    LHSAttribute.Kind: PositionAttributeKind,
-    RHSAttribute.Kind: PositionAttributeKind
+    LHSAttribute.Kind.ValueKind == PositionValueKind,
+    RHSAttribute.Kind.ValueKind == PositionValueKind
 {
-    Layout.push(lhs, .equal, rhs)
+    Layout.push(Constraint(lhs, .equal, rhs))
 }
 
-public func <= <LHSBase, RHSBase, LHSAttribute, RHSAttribute>(
+public func <= <LHSBase, LHSAttribute, RHS: ConstraintOperand, RHSBase, RHSAttribute>(
     lhs: SingleAnchor<LHSBase, LHSAttribute>,
-    rhs: SingleAnchor<RHSBase, RHSAttribute>
+    rhs: RHS
 ) where
+    RHS.Value == SingleAnchor<RHSBase, RHSAttribute>,
     LHSAttribute.Axis == RHSAttribute.Axis,
-    LHSAttribute.Kind: PositionAttributeKind,
-    RHSAttribute.Kind: PositionAttributeKind
+    LHSAttribute.Kind.ValueKind == PositionValueKind,
+    RHSAttribute.Kind.ValueKind == PositionValueKind
 {
-    Layout.push(lhs, .lessThanOrEqual, rhs)
+    Layout.push(Constraint(lhs, .lessThanOrEqual, rhs))
 }
 
-public func >= <LHSBase, RHSBase, LHSAttribute, RHSAttribute>(
+public func >= <LHSBase, LHSAttribute, RHS: ConstraintOperand, RHSBase, RHSAttribute>(
     lhs: SingleAnchor<LHSBase, LHSAttribute>,
-    rhs: SingleAnchor<RHSBase, RHSAttribute>
+    rhs: RHS
 ) where
+    RHS.Value == SingleAnchor<RHSBase, RHSAttribute>,
     LHSAttribute.Axis == RHSAttribute.Axis,
-    LHSAttribute.Kind: PositionAttributeKind,
-    RHSAttribute.Kind: PositionAttributeKind
+    LHSAttribute.Kind.ValueKind == PositionValueKind,
+    RHSAttribute.Kind.ValueKind == PositionValueKind
 {
-    Layout.push(lhs, .greaterThanOrEqual, rhs)
+    Layout.push(Constraint(lhs, .greaterThanOrEqual, rhs))
 }
 
-// MARK: - label.anchors.width <> button.anchors.width // DimensionAnchorKind
-
-public func == <LHSBase, RHSBase, LHSAttribute, RHSAttribute>(
+public func == <LHSBase, LHSAttribute, RHS: ConstraintOperand, RHSBase, RHSAttribute>(
     lhs: SingleAnchor<LHSBase, LHSAttribute>,
-    rhs: SingleAnchor<RHSBase, RHSAttribute>
+    rhs: RHS
 ) where
-    LHSAttribute.Kind: DimensionAttributeKind,
-    RHSAttribute.Kind: DimensionAttributeKind
+    RHS.Value == SingleAnchor<RHSBase, RHSAttribute>,
+    LHSAttribute.Kind.ValueKind == DimensionValueKind,
+    RHSAttribute.Kind.ValueKind == DimensionValueKind
 {
-    Layout.push(lhs, .equal, rhs)
+    Layout.push(Constraint(lhs, .equal, rhs))
 }
 
-public func <= <LHSBase, RHSBase, LHSAttribute, RHSAttribute>(
+public func <= <LHSBase, LHSAttribute, RHS: ConstraintOperand, RHSBase, RHSAttribute>(
     lhs: SingleAnchor<LHSBase, LHSAttribute>,
-    rhs: SingleAnchor<RHSBase, RHSAttribute>
+    rhs: RHS
 ) where
-    LHSAttribute.Kind: DimensionAttributeKind,
-    RHSAttribute.Kind: DimensionAttributeKind
+    RHS.Value == SingleAnchor<RHSBase, RHSAttribute>,
+    LHSAttribute.Kind.ValueKind == DimensionValueKind,
+    RHSAttribute.Kind.ValueKind == DimensionValueKind
 {
-    Layout.push(lhs, .lessThanOrEqual, rhs)
+    Layout.push(Constraint(lhs, .lessThanOrEqual, rhs))
 }
 
-public func >= <LHSBase, RHSBase, LHSAttribute, RHSAttribute>(
+public func >= <LHSBase, LHSAttribute, RHS: ConstraintOperand, RHSBase, RHSAttribute>(
     lhs: SingleAnchor<LHSBase, LHSAttribute>,
-    rhs: SingleAnchor<RHSBase, RHSAttribute>
+    rhs: RHS
 ) where
-    LHSAttribute.Kind: DimensionAttributeKind,
-    RHSAttribute.Kind: DimensionAttributeKind
+    RHS.Value == SingleAnchor<RHSBase, RHSAttribute>,
+    LHSAttribute.Kind.ValueKind == DimensionValueKind,
+    RHSAttribute.Kind.ValueKind == DimensionValueKind
 {
-    Layout.push(lhs, .greaterThanOrEqual, rhs)
+    Layout.push(Constraint(lhs, .greaterThanOrEqual, rhs))
 }

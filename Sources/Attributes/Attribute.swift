@@ -10,14 +10,27 @@ public protocol AttributeAxis { }
 public enum XAxis: AttributeAxis { }
 public enum YAxis: AttributeAxis { }
 
-public protocol AttributeKind { }
-public protocol PositionAttributeKind: AttributeKind { }
-public protocol DimensionAttributeKind: AttributeKind { }
+public protocol AttributeKind {
+    associatedtype ValueKind
+}
+public enum PositionValueKind { }
+public enum DimensionValueKind { }
 
-public enum Coordinate: PositionAttributeKind { }
-public enum Edge: PositionAttributeKind { }
-public enum Baseline: PositionAttributeKind { }
-public enum Dimension: DimensionAttributeKind { }
+public enum Coordinate: AttributeKind {
+    public typealias ValueKind = PositionValueKind
+}
+
+public enum Edge: AttributeKind {
+    public typealias ValueKind = PositionValueKind
+}
+
+public enum Baseline: AttributeKind {
+    public typealias ValueKind = PositionValueKind
+}
+
+public enum Dimension: AttributeKind {
+    public typealias ValueKind = DimensionValueKind
+}
 
 public protocol Attribute {
     associatedtype Kind: AttributeKind

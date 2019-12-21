@@ -7,11 +7,11 @@ import Foundation
 import UIKit
 
 /// label.anchors.edges == wrapper
-public func == <LHSBase, RHSBase: Constrainable>(
-    lhs: CompoundAnchor<LHSBase>,
-    rhs: RHSBase
-) {
-    for attribute in lhs.constraintAttributes {
-        Layout.push(Constraint(lhs.item, attribute, .equal, rhs, attribute))
-    }
-}
+//public func == <LHSBase, RHSBase: Constrainable>(
+//    lhs: CompoundAnchor<LHSBase>,
+//    rhs: RHSBase
+//) {
+//    for attribute in lhs.constraintAttributes {
+//        Layout.push(Constraint(lhs.item, attribute, .equal, rhs, attribute))
+//    }
+//}

@@ -14,11 +14,14 @@ public final class Layout: CustomStringConvertible {
         buffer[buffer.count] = []
     }
     
-    internal static func push<LHSBase, RHSBase, LHSAttribute, RHSAttribute>(
+    /*
+
+    internal static func push<LHSBase, LHSAttribute, RHS: ConstraintOperand, RHSBase, RHSAttribute>(
         _ lhs: SingleAnchor<LHSBase, LHSAttribute>?,
         _ relation: NSLayoutConstraint.Relation?,
-        _ rhs: SingleAnchor<RHSBase, RHSAttribute>?
+        _ rhs: RHS?
     ) where
+        RHS.Value == SingleAnchor<RHSBase, RHSAttribute>,
         LHSAttribute.Axis == RHSAttribute.Axis,
         LHSAttribute.Kind: PositionAttributeKind,
         RHSAttribute.Kind: PositionAttributeKind
@@ -86,8 +89,12 @@ public final class Layout: CustomStringConvertible {
     {
         Layout.push(lhs, .equal, lhs?.on(rhs))
     }
-
-    internal static func push(_ constraint: Constraint) {
+*/
+    
+    internal static func push(_ constraint: Constraint?) {
+        guard let constraint = constraint else {
+            return
+        }
         let index = buffer.count - 1
         guard index >= 0 else {
             assertionFailure("Constraints MUST be created as part of a Layout { ... }")
@@ -121,45 +128,12 @@ public final class Layout: CustomStringConvertible {
     
     private var map: [Constraint: NSLayoutConstraint] = [:]
     
-    private func makeLayoutConstraint(constraint: Constraint) -> NSLayoutConstraint {
-        
-        let lhsView = constraint.lhs.item.object as? UIView
-        let rhsView = constraint.rhs.object as? UIView
-        switch (lhsView, rhsView) {
-        case (nil, nil):
-            break
-        case (let lhsView?, nil):
-            lhsView.translatesAutoresizingMaskIntoConstraints = false
-        case (nil, let rhsView?):
-            rhsView.translatesAutoresizingMaskIntoConstraints = false
-        case (let lhsView?, let rhsView?):
-            if lhsView.isDescendant(of: rhsView) == false {
-                rhsView.translatesAutoresizingMaskIntoConstraints = false
-            }
-            if rhsView.isDescendant(of: lhsView) == false {
-                lhsView.translatesAutoresizingMaskIntoConstraints = false
-            }
-        }
-
-        let layoutConstraint = NSLayoutConstraint(
-            item: constraint.lhs.item.object,
-            attribute: constraint.lhs.constraintAttribute,
-            relatedBy: constraint.relation,
-            toItem: constraint.rhs.object,
-            attribute: constraint.rhs.constraintAttribute,
-            multiplier: constraint.multiplier ?? 1,
-            constant: constraint.rhs.dimension ?? constraint.constant ?? 0
-        )
-        layoutConstraint.priority = constraint.priority ?? .required
-        return layoutConstraint
-    }
-    
     public func activate() {
         for constraint in constraints {
             if let layoutConstraint = map[constraint] {
                 layoutConstraint.isActive = true
             } else {
-                let layoutConstraint = makeLayoutConstraint(constraint: constraint)
+                let layoutConstraint = constraint.makeNSLayoutConstraint()
                 layoutConstraint.isActive = true
                 map[constraint] = layoutConstraint
             }
@@ -179,4 +153,40 @@ public final class Layout: CustomStringConvertible {
         }
         return view
     }
+}
+
+extension Constraint {
+    internal func makeNSLayoutConstraint() -> NSLayoutConstraint {
+        
+        let lhsView = lhs.item.object as? UIView
+        let rhsView = rhs.object as? UIView
+        switch (lhsView, rhsView) {
+        case (nil, nil):
+            break
+        case (let lhsView?, nil):
+            lhsView.translatesAutoresizingMaskIntoConstraints = false
+        case (nil, let rhsView?):
+            rhsView.translatesAutoresizingMaskIntoConstraints = false
+        case (let lhsView?, let rhsView?):
+            if lhsView.isDescendant(of: rhsView) == false {
+                rhsView.translatesAutoresizingMaskIntoConstraints = false
+            }
+            if rhsView.isDescendant(of: lhsView) == false {
+                lhsView.translatesAutoresizingMaskIntoConstraints = false
+            }
+        }
+
+        let layoutConstraint = NSLayoutConstraint(
+            item: lhs.item.object,
+            attribute: lhs.constraintAttribute,
+            relatedBy: relation,
+            toItem: rhs.object,
+            attribute: rhs.constraintAttribute,
+            multiplier: multiplier ?? 1,
+            constant: rhs.dimension ?? constant ?? 0
+        )
+        layoutConstraint.priority = priority ?? .required
+        return layoutConstraint
+    }
+    
 }

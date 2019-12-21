@@ -73,7 +73,7 @@ class ViewController : UIViewController {
         
         view.addSubviews(red, blue, magenta, green, yellow, purple) { views in
             for view in views {
-                view.anchors.size == 80
+                //view.anchors.size == 80
                 view.anchors.height == \.width
             }
         }
@@ -85,13 +85,13 @@ class ViewController : UIViewController {
         buttonBackground.backgroundColor = UIColor(white: 0.95, alpha: 1)
         
         buttonBackground.addSubview(button) { make in
-            make.edges == its(\.superview)
+            //make.edges == its(\.superview)
         }
         
         view.addSubview(buttonBackground) { make in
             make.centerX == \.superview
-            make.bottom == its(\.superview?.safeAreaLayoutGuide)
-                .offset(by: -10)
+//            make.bottom == its(\.superview?.safeAreaLayoutGuide)
+//                .offset(by: -10)
         }
         
         button.addTarget(self, action: #selector(toggleLayout), for: .touchUpInside)

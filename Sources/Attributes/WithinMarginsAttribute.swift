@@ -14,7 +14,7 @@ public struct WithinMargins<T>: Attribute where T: Attribute, T.Kind == Coordina
         switch T.init().rawValue {
         case .centerX, .centerXWithinMargins: return .centerXWithinMargins
         case .centerY, .centerYWithinMargins: return .centerYWithinMargins
-        default: fatalError()
+        default: fatalError("WithinMargins shouldn't be applied on any other attribute")
         }
     }
 }
