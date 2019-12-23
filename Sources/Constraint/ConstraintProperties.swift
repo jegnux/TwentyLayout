@@ -86,6 +86,16 @@ extension SingleAnchor: Offsetable where Attribute: Offsetable {}
 extension SingleAnchor: Insetable where Attribute: Insetable {}
 extension SingleAnchor: Multiplicable where Attribute: Multiplicable {}
 
+extension PointAnchor: ConstraintOperand where XAttribute: ConstraintOperand, YAttribute: ConstraintOperand {
+    public var constraintValue: Self {
+        return self
+    }
+}
+extension PointAnchor: ModifiableConstraintOperand where XAttribute: ModifiableConstraintOperand, YAttribute: ModifiableConstraintOperand {}
+extension PointAnchor: Offsetable where XAttribute: Offsetable, YAttribute: Offsetable {}
+extension PointAnchor: Insetable where XAttribute: Insetable, YAttribute: Insetable {}
+extension PointAnchor: Multiplicable where XAttribute: Multiplicable, YAttribute: Multiplicable {}
+
 extension KeyPath: ConstraintOperand where Value: ConstraintOperand {
     public var constraintValue: KeyPath {
         return self
@@ -180,6 +190,13 @@ public struct ModifiedConstraintOperand<T: ModifiableConstraintOperand>: Constra
         self.constant = original.constant
     }
 
+    fileprivate init<U: ConstraintOperand>(original: T, other: U) {
+        self.original = original
+        self.priority = other.priority
+        self.multiplier = other.multiplier
+        self.constant = other.constant
+    }
+
     public func constant(for attribute: NSLayoutConstraint.Attribute) -> CGFloat? {
         constant(attribute)
     }
@@ -200,6 +217,10 @@ public func ~ <T>(lhs: T, mutation: ConstraintOperandMutation<T>) -> ModifiedCon
 
 public func ~ <T>(lhs: ModifiedConstraintOperand<T>, mutation: ConstraintOperandMutation<T>) -> ModifiedConstraintOperand<T> {
     return mutation.mutating(lhs)
+}
+
+internal func ~ <T: ModifiableConstraintOperand, U: ConstraintOperand>(lhs: T, rhs: U) -> ModifiedConstraintOperand<T> {
+    return ModifiedConstraintOperand(original: lhs, other: rhs)
 }
 
 public struct ConstraintOperandMutation<T: ModifiableConstraintOperand> {
@@ -283,6 +304,16 @@ extension ConstraintOperandMutation where T: Offsetable {
 }
 
 extension ConstraintOperandMutation where T: Insetable {
+    public static func inset<I: BinaryInteger>(by integer: I) -> ConstraintOperandMutation<T> {
+        let value = CGFloat(integer)
+        return inset(by: UIEdgeInsets(top: value, left: value, bottom: value, right: value))
+    }
+    
+    public static func inset<F: BinaryFloatingPoint>(by float: F) -> ConstraintOperandMutation<T> {
+        let value = CGFloat(float)
+        return inset(by: UIEdgeInsets(top: value, left: value, bottom: value, right: value))
+    }
+
     public static func inset<T>(by insets: UIEdgeInsets) -> ConstraintOperandMutation<T> {
         return ConstraintOperandMutation<T> { old, new in
             new.constant = { attribute in

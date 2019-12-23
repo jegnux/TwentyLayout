@@ -114,4 +114,37 @@ class ConstraintProperties_Tests: XCTestCase {
         XCTAssertEqual(x.constant(for: .height), 40)
     }
 
+    func test_pointAnchor() {
+        let x = UIView().anchors.top.left
+
+        XCTAssertNil(x.priority)
+        XCTAssertNil(x.multiplier)
+        XCTAssertNil(x.constant(for: .top))
+        XCTAssertNil(x.constant(for: .left))
+    }
+
+    func test_pointAnchor_modified() {
+        let x: ModifiedConstraintOperand<PointAnchor<UIView, Left, Top>> = UIView().anchors.top.left
+            ~ .priority(.required)
+            ~ .offset(by: 20)
+            ~ .multiplied(by: 1.5)
+
+        XCTAssertEqual(x.priority, .required)
+        XCTAssertEqual(x.multiplier, 1.5)
+        XCTAssertEqual(x.constant(for: .top), 20)
+        XCTAssertEqual(x.constant(for: .left), 20)
+    }
+
+    func test_pointAnchor_modified_inset() {
+        let x: ModifiedConstraintOperand<PointAnchor<UIView, Right, Top>> = UIView().anchors.top.right
+            ~ .priority(.required)
+            ~ .inset(by: 20)
+            ~ .multiplied(by: 1.5)
+
+        XCTAssertEqual(x.priority, .required)
+        XCTAssertEqual(x.multiplier, 1.5)
+        XCTAssertEqual(x.constant(for: .top), 20)
+        XCTAssertEqual(x.constant(for: .right), -20)
+    }
+
 }

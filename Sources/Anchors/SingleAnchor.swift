@@ -6,7 +6,7 @@
 import Foundation
 import UIKit
 
-public struct SingleAnchor<Base: Constrainable, Attribute: TwentyLayout.Attribute> {
+public struct SingleAnchor<Base: Constrainable, Attribute: TwentyLayout.Attribute & ModifiableConstraintOperand> {
 
     internal init(_ item: Base) {
         self.item = item

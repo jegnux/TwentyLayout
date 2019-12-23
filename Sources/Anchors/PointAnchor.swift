@@ -6,7 +6,7 @@
 import Foundation
 import UIKit
 
-public struct PointAnchor<Base: Constrainable, XAttribute: Attribute, YAttribute: Attribute>
+public struct PointAnchor<Base: Constrainable, XAttribute: Attribute & ModifiableConstraintOperand, YAttribute: Attribute & ModifiableConstraintOperand>
     where
     XAttribute.Kind.ValueKind == PositionValueKind, XAttribute.Axis == XAxis,
     YAttribute.Kind.ValueKind == PositionValueKind, YAttribute.Axis == YAxis
@@ -22,5 +22,13 @@ public struct PointAnchor<Base: Constrainable, XAttribute: Attribute, YAttribute
 
     internal func appending(_ constraintAttribute: NSLayoutConstraint.Attribute) -> CompoundAnchor<Base> {
         return CompoundAnchor(item, constraintAttributes + [constraintAttribute])
+    }
+    
+    internal var xAnchor: SingleAnchor<Base, XAttribute> {
+        SingleAnchor(item)
+    }
+
+    internal var yAnchor: SingleAnchor<Base, YAttribute> {
+        SingleAnchor(item)
     }
 }

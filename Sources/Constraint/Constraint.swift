@@ -171,6 +171,25 @@ public struct Constraint: Hashable, CustomStringConvertible {
         self.priority = rhs.priority
     }
 
+    internal init?<LHSBase, LHSAttribute, RHS: ConstraintOperand, RHSAttribute>(
+        _ lhs: SingleAnchor<LHSBase, LHSAttribute>?,
+        _ relation: NSLayoutConstraint.Relation?,
+        _ rhs: RHS?
+    ) where
+        RHS.Value == KeyPath<Anchors<LHSBase>, SingleAnchor<LHSBase, RHSAttribute>>
+    {
+        guard let lhs = lhs, let relation = relation, let rhs = rhs else {
+            return nil
+        }
+        let rhsAnchor = Anchors(lhs.item)[keyPath: rhs.constraintValue]
+        self.lhs = ConstraintExpression(lhs)
+        self.relation = relation
+        self.rhs = .expression(ConstraintExpression(rhsAnchor))
+        self.constant = rhs.constant(for: rhsAnchor.constraintAttribute)
+        self.multiplier = rhs.multiplier
+        self.priority = rhs.priority
+    }
+
     /*
     internal init<LHSBase: Constrainable, RHSBase: Constrainable>(
         _ lhs: LHSBase,
