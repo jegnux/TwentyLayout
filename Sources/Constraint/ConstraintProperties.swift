@@ -223,6 +223,11 @@ internal func ~ <T: ModifiableConstraintOperand, U: ConstraintOperand>(lhs: T, r
     return ModifiedConstraintOperand(original: lhs, other: rhs)
 }
 
+internal func ~ <T: ModifiableConstraintOperand, U: ConstraintOperand>(lhs: T?, rhs: U) -> ModifiedConstraintOperand<T>? {
+    guard let lhs = lhs else { return nil }
+    return ModifiedConstraintOperand(original: lhs, other: rhs)
+}
+
 public struct ConstraintOperandMutation<T: ModifiableConstraintOperand> {
     fileprivate let mutation: (ModifiedConstraintOperand<T>, inout ModifiedConstraintOperand<T>) -> Void
     

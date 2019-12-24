@@ -52,5 +52,9 @@ func makeConstraints(_ make: (ContainerView) -> Void) -> Result {
 }
 
 func XCTAssertEqual(_ lhs: AnyObject?, _ rhs: AnyObject, file: StaticString = #file, line: UInt = #line) {
-    XCTAssertTrue(lhs === rhs, file: file, line: line)
+    if let lhs = lhs as? NSObject, let rhs = rhs as? NSObject {
+        XCTAssertEqual(lhs, rhs, "", file: file, line: line)
+    } else {
+        XCTAssertTrue(lhs === rhs, #"("\#(lhs.map(String.init(describing:)) ?? "nil")") is not equal to ("\#(rhs)")"#, file: file, line: line)
+    }
 }
