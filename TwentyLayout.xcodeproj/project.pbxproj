@@ -24,7 +24,7 @@
 		756517D423A0FFA7008D8115 /* UIView+Layout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 756517D323A0FFA7008D8115 /* UIView+Layout.swift */; };
 		75A7BA0123A1864600BD8664 /* PointAnchor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75A7BA0023A1864600BD8664 /* PointAnchor.swift */; };
 		75A7BA0323A1864F00BD8664 /* SizeAnchor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75A7BA0223A1864F00BD8664 /* SizeAnchor.swift */; };
-		75A7BA0523A1865A00BD8664 /* CompoundAnchor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75A7BA0423A1865A00BD8664 /* CompoundAnchor.swift */; };
+		75A7BA0523A1865A00BD8664 /* AnchorSet.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75A7BA0423A1865A00BD8664 /* AnchorSet.swift */; };
 		75A7BA0723A18A4800BD8664 /* Attribute.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75A7BA0623A18A4800BD8664 /* Attribute.swift */; };
 		75A7BA0923A18A8700BD8664 /* MarginAttribute.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75A7BA0823A18A8700BD8664 /* MarginAttribute.swift */; };
 		75A7BA0B23A18A9100BD8664 /* WithinMarginsAttribute.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75A7BA0A23A18A9100BD8664 /* WithinMarginsAttribute.swift */; };
@@ -32,7 +32,7 @@
 		75A7BA1023A18EA900BD8664 /* SingleAnchorLHS+Dimension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75A7BA0F23A18EA900BD8664 /* SingleAnchorLHS+Dimension.swift */; };
 		75A7BA1223A18EB600BD8664 /* PointAnchorLHS+PointAnchorRHS.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75A7BA1123A18EB600BD8664 /* PointAnchorLHS+PointAnchorRHS.swift */; };
 		75A7BA1423A18EC100BD8664 /* SizeAnchorLHS.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75A7BA1323A18EC100BD8664 /* SizeAnchorLHS.swift */; };
-		75A7BA1623A18ECF00BD8664 /* CompoundAnchorLHS.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75A7BA1523A18ECF00BD8664 /* CompoundAnchorLHS.swift */; };
+		75A7BA1623A18ECF00BD8664 /* AnchorSetLHS.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75A7BA1523A18ECF00BD8664 /* AnchorSetLHS.swift */; };
 		75A7BA1C23A1906B00BD8664 /* SingleAnchorLHS+SingleAnchorRHS.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75A7BA1B23A1906B00BD8664 /* SingleAnchorLHS+SingleAnchorRHS.swift */; };
 		75A7BA1E23A1909300BD8664 /* SingleAnchorLHS+RHSBase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75A7BA1D23A1909300BD8664 /* SingleAnchorLHS+RHSBase.swift */; };
 		75A7BA2823A1918300BD8664 /* SingleAnchorLHS+SingleAnchorLHSKeyPath.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75A7BA2723A1918300BD8664 /* SingleAnchorLHS+SingleAnchorLHSKeyPath.swift */; };
@@ -79,7 +79,7 @@
 		756517D323A0FFA7008D8115 /* UIView+Layout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+Layout.swift"; sourceTree = "<group>"; };
 		75A7BA0023A1864600BD8664 /* PointAnchor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PointAnchor.swift; sourceTree = "<group>"; };
 		75A7BA0223A1864F00BD8664 /* SizeAnchor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SizeAnchor.swift; sourceTree = "<group>"; };
-		75A7BA0423A1865A00BD8664 /* CompoundAnchor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CompoundAnchor.swift; sourceTree = "<group>"; };
+		75A7BA0423A1865A00BD8664 /* AnchorSet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnchorSet.swift; sourceTree = "<group>"; };
 		75A7BA0623A18A4800BD8664 /* Attribute.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Attribute.swift; sourceTree = "<group>"; };
 		75A7BA0823A18A8700BD8664 /* MarginAttribute.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MarginAttribute.swift; sourceTree = "<group>"; };
 		75A7BA0A23A18A9100BD8664 /* WithinMarginsAttribute.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WithinMarginsAttribute.swift; sourceTree = "<group>"; };
@@ -87,7 +87,7 @@
 		75A7BA0F23A18EA900BD8664 /* SingleAnchorLHS+Dimension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "SingleAnchorLHS+Dimension.swift"; sourceTree = "<group>"; };
 		75A7BA1123A18EB600BD8664 /* PointAnchorLHS+PointAnchorRHS.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "PointAnchorLHS+PointAnchorRHS.swift"; sourceTree = "<group>"; };
 		75A7BA1323A18EC100BD8664 /* SizeAnchorLHS.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SizeAnchorLHS.swift; sourceTree = "<group>"; };
-		75A7BA1523A18ECF00BD8664 /* CompoundAnchorLHS.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CompoundAnchorLHS.swift; sourceTree = "<group>"; };
+		75A7BA1523A18ECF00BD8664 /* AnchorSetLHS.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnchorSetLHS.swift; sourceTree = "<group>"; };
 		75A7BA1B23A1906B00BD8664 /* SingleAnchorLHS+SingleAnchorRHS.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "SingleAnchorLHS+SingleAnchorRHS.swift"; sourceTree = "<group>"; };
 		75A7BA1D23A1909300BD8664 /* SingleAnchorLHS+RHSBase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "SingleAnchorLHS+RHSBase.swift"; sourceTree = "<group>"; };
 		75A7BA2123A190EB00BD8664 /* SingleAnchorLHS+RHSBaseKeyPath.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "SingleAnchorLHS+RHSBaseKeyPath.swift"; sourceTree = "<group>"; };
@@ -159,31 +159,7 @@
 			path = Configs;
 			sourceTree = "<group>";
 		};
-		75A7B9FE23A1853B00BD8664 /* Attributes */ = {
-			isa = PBXGroup;
-			children = (
-				75A7BA0623A18A4800BD8664 /* Attribute.swift */,
-				75A7BA0C23A18AF000BD8664 /* ConcreteAttributes.swift */,
-				75A7BA0823A18A8700BD8664 /* MarginAttribute.swift */,
-				75A7BA0A23A18A9100BD8664 /* WithinMarginsAttribute.swift */,
-			);
-			path = Attributes;
-			sourceTree = "<group>";
-		};
-		75A7B9FF23A1856A00BD8664 /* Anchors */ = {
-			isa = PBXGroup;
-			children = (
-				84544058239A5FE900722C99 /* Anchors.swift */,
-				84544054239A5FB200722C99 /* SingleAnchor.swift */,
-				75A7BA0023A1864600BD8664 /* PointAnchor.swift */,
-				75A7BA0223A1864F00BD8664 /* SizeAnchor.swift */,
-				75A7BA0423A1865A00BD8664 /* CompoundAnchor.swift */,
-				8481FC39239C52DD00D9B1CC /* Anchors+DSL.swift */,
-			);
-			path = Anchors;
-			sourceTree = "<group>";
-		};
-		75A7BA0E23A18E9500BD8664 /* Operators */ = {
+		7538EA8523B1FCCC00E8922F /* Single Anchor LHS */ = {
 			isa = PBXGroup;
 			children = (
 				75A7BA0F23A18EA900BD8664 /* SingleAnchorLHS+Dimension.swift */,
@@ -202,10 +178,66 @@
 				75A7BA2723A1918300BD8664 /* SingleAnchorLHS+SingleAnchorLHSKeyPath.swift */,
 				7538EA8123AFB99900E8922F /* SingleAnchorLHS+SingleAnchorLHSKeyPath_Tests.swift */,
 				75A7BA2923A191A500BD8664 /* SingleAnchorLHS+InvalidConstraints.swift */,
+			);
+			path = "Single Anchor LHS";
+			sourceTree = "<group>";
+		};
+		7538EA8623B1FCDF00E8922F /* Point Anchor LHS */ = {
+			isa = PBXGroup;
+			children = (
 				75A7BA1123A18EB600BD8664 /* PointAnchorLHS+PointAnchorRHS.swift */,
 				7538EA8323AFBFF900E8922F /* PointAnchorLHS+PointAnchorRHS_Tests.swift */,
+			);
+			path = "Point Anchor LHS";
+			sourceTree = "<group>";
+		};
+		7538EA8723B1FCE800E8922F /* Size Anchor LHS */ = {
+			isa = PBXGroup;
+			children = (
 				75A7BA1323A18EC100BD8664 /* SizeAnchorLHS.swift */,
-				75A7BA1523A18ECF00BD8664 /* CompoundAnchorLHS.swift */,
+			);
+			path = "Size Anchor LHS";
+			sourceTree = "<group>";
+		};
+		7538EA8823B1FCF400E8922F /* Anchor Set LHS */ = {
+			isa = PBXGroup;
+			children = (
+				75A7BA1523A18ECF00BD8664 /* AnchorSetLHS.swift */,
+			);
+			path = "Anchor Set LHS";
+			sourceTree = "<group>";
+		};
+		75A7B9FE23A1853B00BD8664 /* Attributes */ = {
+			isa = PBXGroup;
+			children = (
+				75A7BA0623A18A4800BD8664 /* Attribute.swift */,
+				75A7BA0C23A18AF000BD8664 /* ConcreteAttributes.swift */,
+				75A7BA0823A18A8700BD8664 /* MarginAttribute.swift */,
+				75A7BA0A23A18A9100BD8664 /* WithinMarginsAttribute.swift */,
+			);
+			path = Attributes;
+			sourceTree = "<group>";
+		};
+		75A7B9FF23A1856A00BD8664 /* Anchors */ = {
+			isa = PBXGroup;
+			children = (
+				84544058239A5FE900722C99 /* Anchors.swift */,
+				84544054239A5FB200722C99 /* SingleAnchor.swift */,
+				75A7BA0023A1864600BD8664 /* PointAnchor.swift */,
+				75A7BA0223A1864F00BD8664 /* SizeAnchor.swift */,
+				75A7BA0423A1865A00BD8664 /* AnchorSet.swift */,
+				8481FC39239C52DD00D9B1CC /* Anchors+DSL.swift */,
+			);
+			path = Anchors;
+			sourceTree = "<group>";
+		};
+		75A7BA0E23A18E9500BD8664 /* Operators */ = {
+			isa = PBXGroup;
+			children = (
+				7538EA8523B1FCCC00E8922F /* Single Anchor LHS */,
+				7538EA8623B1FCDF00E8922F /* Point Anchor LHS */,
+				7538EA8723B1FCE800E8922F /* Size Anchor LHS */,
+				7538EA8823B1FCF400E8922F /* Anchor Set LHS */,
 			);
 			path = Operators;
 			sourceTree = "<group>";
@@ -400,7 +432,7 @@
 			files = (
 				756517D423A0FFA7008D8115 /* UIView+Layout.swift in Sources */,
 				8454405B239A600500722C99 /* Constraint.swift in Sources */,
-				75A7BA1623A18ECF00BD8664 /* CompoundAnchorLHS.swift in Sources */,
+				75A7BA1623A18ECF00BD8664 /* AnchorSetLHS.swift in Sources */,
 				7538EA7B23AEAE7E00E8922F /* SingleAnchorLHS+OptionalSingleAnchorRHSKeyPath.swift in Sources */,
 				84544061239A629200722C99 /* Utilities.swift in Sources */,
 				75A7BA1423A18EC100BD8664 /* SizeAnchorLHS.swift in Sources */,
@@ -428,7 +460,7 @@
 				84544057239A5FCD00722C99 /* ConstraintExpression.swift in Sources */,
 				84544053239A591600722C99 /* ConstraintProperties.swift in Sources */,
 				75A7BA0723A18A4800BD8664 /* Attribute.swift in Sources */,
-				75A7BA0523A1865A00BD8664 /* CompoundAnchor.swift in Sources */,
+				75A7BA0523A1865A00BD8664 /* AnchorSet.swift in Sources */,
 				75A7BA1C23A1906B00BD8664 /* SingleAnchorLHS+SingleAnchorRHS.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

@@ -8,8 +8,8 @@ import Foundation
 // MARK: Single Anchor
 
 extension Anchors where Base: FrameConstrainable {
-    public var    edges: CompoundAnchor<Base> { top.leading.trailing.bottom }
-    public var  margins: CompoundAnchor<Base> { topMargin.leadingMargin.trailingMargin.bottomMargin }
+    public var    edges: AnchorSet<Base> { top.leading.trailing.bottom }
+    public var  margins: AnchorSet<Base> { topMargin.leadingMargin.trailingMargin.bottomMargin }
     public var  center: PointAnchor<Base, CenterX, CenterY> { centerX.centerY }
 
     public var    size: SizeAnchor<Base> { SizeAnchor(base) }
@@ -45,16 +45,19 @@ extension Anchors where Base: BaselineConstrainable {
 
 // MARK: - Coordinate Anchor from XAxis
 
-extension SingleAnchor where Attribute.Kind.ValueKind == PositionValueKind, Attribute.Axis == XAxis {
+extension SingleAnchor where Base: FrameConstrainable, Attribute.Kind.ValueKind == PositionValueKind, Attribute.Axis == XAxis {
     public var           top: PointAnchor<Base, Attribute, Top> { PointAnchor(item) }
     public var       centerY: PointAnchor<Base, Attribute, CenterY> { PointAnchor(item) }
     public var        bottom: PointAnchor<Base, Attribute, Bottom> { PointAnchor(item) }
-    public var firstBaseline: PointAnchor<Base, Attribute, FirstBaseline> { PointAnchor(item) }
-    public var  lastBaseline: PointAnchor<Base, Attribute, LastBaseline> { PointAnchor(item) }
 
     public var     topMargin: PointAnchor<Base, Attribute, Top> { PointAnchor(item) }
     public var centerYMargin: PointAnchor<Base, Attribute, CenterY> { PointAnchor(item) }
     public var  bottomMargin: PointAnchor<Base, Attribute, Bottom> { PointAnchor(item) }
+}
+
+extension SingleAnchor where Base: BaselineConstrainable, Attribute.Kind.ValueKind == PositionValueKind, Attribute.Axis == XAxis {
+    public var firstBaseline: PointAnchor<Base, Attribute, FirstBaseline> { PointAnchor(item) }
+    public var  lastBaseline: PointAnchor<Base, Attribute, LastBaseline> { PointAnchor(item) }
 }
 
 // MARK: - Coordinate Anchor from YAxis
@@ -276,61 +279,61 @@ extension SingleAnchor where Attribute == Height {
 }
 
 extension PointAnchor where Base: FrameConstrainable {
-    public var      top: CompoundAnchor<Base> { appending(.top) }
-    public var     left: CompoundAnchor<Base> { appending(.left) }
-    public var    right: CompoundAnchor<Base> { appending(.right) }
-    public var   bottom: CompoundAnchor<Base> { appending(.bottom) }
-    public var  leading: CompoundAnchor<Base> { appending(.leading) }
-    public var trailing: CompoundAnchor<Base> { appending(.trailing) }
+    public var      top: AnchorSet<Base> { appending(.top) }
+    public var     left: AnchorSet<Base> { appending(.left) }
+    public var    right: AnchorSet<Base> { appending(.right) }
+    public var   bottom: AnchorSet<Base> { appending(.bottom) }
+    public var  leading: AnchorSet<Base> { appending(.leading) }
+    public var trailing: AnchorSet<Base> { appending(.trailing) }
 
-    public var      topMargin: CompoundAnchor<Base> { appending(.topMargin) }
-    public var     leftMargin: CompoundAnchor<Base> { appending(.leftMargin) }
-    public var    rightMargin: CompoundAnchor<Base> { appending(.rightMargin) }
-    public var   bottomMargin: CompoundAnchor<Base> { appending(.bottomMargin) }
-    public var  leadingMargin: CompoundAnchor<Base> { appending(.leadingMargin) }
-    public var trailingMargin: CompoundAnchor<Base> { appending(.trailingMargin) }
+    public var      topMargin: AnchorSet<Base> { appending(.topMargin) }
+    public var     leftMargin: AnchorSet<Base> { appending(.leftMargin) }
+    public var    rightMargin: AnchorSet<Base> { appending(.rightMargin) }
+    public var   bottomMargin: AnchorSet<Base> { appending(.bottomMargin) }
+    public var  leadingMargin: AnchorSet<Base> { appending(.leadingMargin) }
+    public var trailingMargin: AnchorSet<Base> { appending(.trailingMargin) }
 
-    public var centerX: CompoundAnchor<Base> { appending(.centerX) }
-    public var centerY: CompoundAnchor<Base> { appending(.centerY) }
+    public var centerX: AnchorSet<Base> { appending(.centerX) }
+    public var centerY: AnchorSet<Base> { appending(.centerY) }
 
-    public var centerXWithinMargins: CompoundAnchor<Base> { appending(.centerXWithinMargins) }
-    public var centerYWithinMargins: CompoundAnchor<Base> { appending(.centerYWithinMargins) }
+    public var centerXWithinMargins: AnchorSet<Base> { appending(.centerXWithinMargins) }
+    public var centerYWithinMargins: AnchorSet<Base> { appending(.centerYWithinMargins) }
 
-    public var  width: CompoundAnchor<Base> { appending(.width) }
-    public var height: CompoundAnchor<Base> { appending(.height) }
+    public var  width: AnchorSet<Base> { appending(.width) }
+    public var height: AnchorSet<Base> { appending(.height) }
 }
 
 extension PointAnchor where Base: BaselineConstrainable {
-    public var  lastBaseline: CompoundAnchor<Base> { appending(.lastBaseline)  }
-    public var firstBaseline: CompoundAnchor<Base> { appending(.firstBaseline) }
+    public var  lastBaseline: AnchorSet<Base> { appending(.lastBaseline)  }
+    public var firstBaseline: AnchorSet<Base> { appending(.firstBaseline) }
 }
 
-extension CompoundAnchor where Base: FrameConstrainable {
-    public var      top: CompoundAnchor<Base> { appending(.top) }
-    public var     left: CompoundAnchor<Base> { appending(.left) }
-    public var    right: CompoundAnchor<Base> { appending(.right) }
-    public var   bottom: CompoundAnchor<Base> { appending(.bottom) }
-    public var  leading: CompoundAnchor<Base> { appending(.leading) }
-    public var trailing: CompoundAnchor<Base> { appending(.trailing) }
+extension AnchorSet where Base: FrameConstrainable {
+    public var      top: AnchorSet<Base> { appending(.top) }
+    public var     left: AnchorSet<Base> { appending(.left) }
+    public var    right: AnchorSet<Base> { appending(.right) }
+    public var   bottom: AnchorSet<Base> { appending(.bottom) }
+    public var  leading: AnchorSet<Base> { appending(.leading) }
+    public var trailing: AnchorSet<Base> { appending(.trailing) }
 
-    public var      topMargin: CompoundAnchor<Base> { appending(.topMargin) }
-    public var     leftMargin: CompoundAnchor<Base> { appending(.leftMargin) }
-    public var    rightMargin: CompoundAnchor<Base> { appending(.rightMargin) }
-    public var   bottomMargin: CompoundAnchor<Base> { appending(.bottomMargin) }
-    public var  leadingMargin: CompoundAnchor<Base> { appending(.leadingMargin) }
-    public var trailingMargin: CompoundAnchor<Base> { appending(.trailingMargin) }
+    public var      topMargin: AnchorSet<Base> { appending(.topMargin) }
+    public var     leftMargin: AnchorSet<Base> { appending(.leftMargin) }
+    public var    rightMargin: AnchorSet<Base> { appending(.rightMargin) }
+    public var   bottomMargin: AnchorSet<Base> { appending(.bottomMargin) }
+    public var  leadingMargin: AnchorSet<Base> { appending(.leadingMargin) }
+    public var trailingMargin: AnchorSet<Base> { appending(.trailingMargin) }
 
-    public var centerX: CompoundAnchor<Base> { appending(.centerX) }
-    public var centerY: CompoundAnchor<Base> { appending(.centerY) }
+    public var centerX: AnchorSet<Base> { appending(.centerX) }
+    public var centerY: AnchorSet<Base> { appending(.centerY) }
 
-    public var centerXWithinMargins: CompoundAnchor<Base> { appending(.centerXWithinMargins) }
-    public var centerYWithinMargins: CompoundAnchor<Base> { appending(.centerYWithinMargins) }
+    public var centerXWithinMargins: AnchorSet<Base> { appending(.centerXWithinMargins) }
+    public var centerYWithinMargins: AnchorSet<Base> { appending(.centerYWithinMargins) }
 
-    public var  width: CompoundAnchor<Base> { appending(.width) }
-    public var height: CompoundAnchor<Base> { appending(.height) }
+    public var  width: AnchorSet<Base> { appending(.width) }
+    public var height: AnchorSet<Base> { appending(.height) }
 }
 
-extension CompoundAnchor where Base: BaselineConstrainable {
-    public var  lastBaseline: CompoundAnchor<Base> { appending(.lastBaseline)  }
-    public var firstBaseline: CompoundAnchor<Base> { appending(.firstBaseline) }
+extension AnchorSet where Base: BaselineConstrainable {
+    public var  lastBaseline: AnchorSet<Base> { appending(.lastBaseline)  }
+    public var firstBaseline: AnchorSet<Base> { appending(.firstBaseline) }
 }
