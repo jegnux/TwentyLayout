@@ -20,6 +20,12 @@
 		7538EA8023AEBF3800E8922F /* SingleAnchorLHS+SingleAnchorRHSKeyPath.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7538EA7C23AEB41900E8922F /* SingleAnchorLHS+SingleAnchorRHSKeyPath.swift */; };
 		7538EA8223AFB9A300E8922F /* SingleAnchorLHS+SingleAnchorLHSKeyPath_Tests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7538EA8123AFB99900E8922F /* SingleAnchorLHS+SingleAnchorLHSKeyPath_Tests.swift */; };
 		7538EA8423AFC01B00E8922F /* PointAnchorLHS+PointAnchorRHS_Tests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7538EA8323AFBFF900E8922F /* PointAnchorLHS+PointAnchorRHS_Tests.swift */; };
+		7538EA8B23B1FF8700E8922F /* PointAnchorLHS+RHSBase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7538EA8923B1FF7000E8922F /* PointAnchorLHS+RHSBase.swift */; };
+		7538EA8C23B1FF8A00E8922F /* PointAnchorLHS+RHSBase_Tests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7538EA8A23B1FF7000E8922F /* PointAnchorLHS+RHSBase_Tests.swift */; };
+		7538EA8F23B2052C00E8922F /* PointAnchorLHS+RHSBaseKeyPath_Tests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7538EA8D23B2050100E8922F /* PointAnchorLHS+RHSBaseKeyPath_Tests.swift */; };
+		7538EA9023B2052F00E8922F /* PointAnchorLHS+RHSBaseKeyPath.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7538EA8E23B2050100E8922F /* PointAnchorLHS+RHSBaseKeyPath.swift */; };
+		7538EA9323B20A1800E8922F /* PointAnchorLHS+OptionalRHSBaseKeyPath.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7538EA9223B20A0000E8922F /* PointAnchorLHS+OptionalRHSBaseKeyPath.swift */; };
+		7538EA9423B20A1A00E8922F /* PointAnchorLHS+OptionalRHSBaseKeyPath_Tests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7538EA9123B20A0000E8922F /* PointAnchorLHS+OptionalRHSBaseKeyPath_Tests.swift */; };
 		754A213223A4056D0042E6DF /* ConstraintProperties_Tests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 754A213123A4056D0042E6DF /* ConstraintProperties_Tests.swift */; };
 		756517D423A0FFA7008D8115 /* UIView+Layout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 756517D323A0FFA7008D8115 /* UIView+Layout.swift */; };
 		75A7BA0123A1864600BD8664 /* PointAnchor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75A7BA0023A1864600BD8664 /* PointAnchor.swift */; };
@@ -75,6 +81,12 @@
 		7538EA7D23AEB41900E8922F /* SingleAnchorLHS+SingleAnchorRHSKeyPath_Tests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "SingleAnchorLHS+SingleAnchorRHSKeyPath_Tests.swift"; sourceTree = "<group>"; };
 		7538EA8123AFB99900E8922F /* SingleAnchorLHS+SingleAnchorLHSKeyPath_Tests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "SingleAnchorLHS+SingleAnchorLHSKeyPath_Tests.swift"; sourceTree = "<group>"; };
 		7538EA8323AFBFF900E8922F /* PointAnchorLHS+PointAnchorRHS_Tests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "PointAnchorLHS+PointAnchorRHS_Tests.swift"; sourceTree = "<group>"; };
+		7538EA8923B1FF7000E8922F /* PointAnchorLHS+RHSBase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "PointAnchorLHS+RHSBase.swift"; sourceTree = "<group>"; };
+		7538EA8A23B1FF7000E8922F /* PointAnchorLHS+RHSBase_Tests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "PointAnchorLHS+RHSBase_Tests.swift"; sourceTree = "<group>"; };
+		7538EA8D23B2050100E8922F /* PointAnchorLHS+RHSBaseKeyPath_Tests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "PointAnchorLHS+RHSBaseKeyPath_Tests.swift"; sourceTree = "<group>"; };
+		7538EA8E23B2050100E8922F /* PointAnchorLHS+RHSBaseKeyPath.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "PointAnchorLHS+RHSBaseKeyPath.swift"; sourceTree = "<group>"; };
+		7538EA9123B20A0000E8922F /* PointAnchorLHS+OptionalRHSBaseKeyPath_Tests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "PointAnchorLHS+OptionalRHSBaseKeyPath_Tests.swift"; sourceTree = "<group>"; };
+		7538EA9223B20A0000E8922F /* PointAnchorLHS+OptionalRHSBaseKeyPath.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "PointAnchorLHS+OptionalRHSBaseKeyPath.swift"; sourceTree = "<group>"; };
 		754A213123A4056D0042E6DF /* ConstraintProperties_Tests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConstraintProperties_Tests.swift; sourceTree = "<group>"; };
 		756517D323A0FFA7008D8115 /* UIView+Layout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+Layout.swift"; sourceTree = "<group>"; };
 		75A7BA0023A1864600BD8664 /* PointAnchor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PointAnchor.swift; sourceTree = "<group>"; };
@@ -187,6 +199,12 @@
 			children = (
 				75A7BA1123A18EB600BD8664 /* PointAnchorLHS+PointAnchorRHS.swift */,
 				7538EA8323AFBFF900E8922F /* PointAnchorLHS+PointAnchorRHS_Tests.swift */,
+				7538EA8923B1FF7000E8922F /* PointAnchorLHS+RHSBase.swift */,
+				7538EA8A23B1FF7000E8922F /* PointAnchorLHS+RHSBase_Tests.swift */,
+				7538EA8E23B2050100E8922F /* PointAnchorLHS+RHSBaseKeyPath.swift */,
+				7538EA8D23B2050100E8922F /* PointAnchorLHS+RHSBaseKeyPath_Tests.swift */,
+				7538EA9223B20A0000E8922F /* PointAnchorLHS+OptionalRHSBaseKeyPath.swift */,
+				7538EA9123B20A0000E8922F /* PointAnchorLHS+OptionalRHSBaseKeyPath_Tests.swift */,
 			);
 			path = "Point Anchor LHS";
 			sourceTree = "<group>";
@@ -440,6 +458,7 @@
 				75A7BA1E23A1909300BD8664 /* SingleAnchorLHS+RHSBase.swift in Sources */,
 				75A7BA0923A18A8700BD8664 /* MarginAttribute.swift in Sources */,
 				8481FC3A239C52DD00D9B1CC /* Anchors+DSL.swift in Sources */,
+				7538EA9323B20A1800E8922F /* PointAnchorLHS+OptionalRHSBaseKeyPath.swift in Sources */,
 				84544055239A5FB200722C99 /* SingleAnchor.swift in Sources */,
 				8481FC38239B9DEC00D9B1CC /* LayoutController.swift in Sources */,
 				84544051239A58E200722C99 /* ConstraintItem.swift in Sources */,
@@ -455,12 +474,14 @@
 				7538EA8023AEBF3800E8922F /* SingleAnchorLHS+SingleAnchorRHSKeyPath.swift in Sources */,
 				75A7BA2823A1918300BD8664 /* SingleAnchorLHS+SingleAnchorLHSKeyPath.swift in Sources */,
 				7538EA7823AD904900E8922F /* SingleAnchorLHS+RHSBaseKeyPath.swift in Sources */,
+				7538EA9023B2052F00E8922F /* PointAnchorLHS+RHSBaseKeyPath.swift in Sources */,
 				8454405D239A602F00722C99 /* Layout.swift in Sources */,
 				8454404F239A589B00722C99 /* MissingDescriptions.swift in Sources */,
 				84544057239A5FCD00722C99 /* ConstraintExpression.swift in Sources */,
 				84544053239A591600722C99 /* ConstraintProperties.swift in Sources */,
 				75A7BA0723A18A4800BD8664 /* Attribute.swift in Sources */,
 				75A7BA0523A1865A00BD8664 /* AnchorSet.swift in Sources */,
+				7538EA8B23B1FF8700E8922F /* PointAnchorLHS+RHSBase.swift in Sources */,
 				75A7BA1C23A1906B00BD8664 /* SingleAnchorLHS+SingleAnchorRHS.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -472,6 +493,9 @@
 				7538EA7A23AEACD900E8922F /* SingleAnchorLHS+OptionalSingleAnchorRHSKeyPath_Tests.swift in Sources */,
 				7538EA8223AFB9A300E8922F /* SingleAnchorLHS+SingleAnchorLHSKeyPath_Tests.swift in Sources */,
 				7538EA7223AD856F00E8922F /* SingleAnchorLHS+RHSBaseKeyPath_Tests.swift in Sources */,
+				7538EA9423B20A1A00E8922F /* PointAnchorLHS+OptionalRHSBaseKeyPath_Tests.swift in Sources */,
+				7538EA8F23B2052C00E8922F /* PointAnchorLHS+RHSBaseKeyPath_Tests.swift in Sources */,
+				7538EA8C23B1FF8A00E8922F /* PointAnchorLHS+RHSBase_Tests.swift in Sources */,
 				754A213223A4056D0042E6DF /* ConstraintProperties_Tests.swift in Sources */,
 				7538EA7523AD8FFF00E8922F /* SingleAnchorLHS+OptionalRHSBaseKeyPath_Tests.swift in Sources */,
 				7538EA6D23AD7B8F00E8922F /* TestsHelpers.swift in Sources */,

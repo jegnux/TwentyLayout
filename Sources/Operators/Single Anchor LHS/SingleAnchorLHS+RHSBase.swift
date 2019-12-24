@@ -7,7 +7,10 @@ import Foundation
 
 
 /// label.anchors.leading == button
-public func == <LHSBase, LHSAttribute, RHS: ConstraintOperand>(
+public func == <
+    LHSBase, LHSAttribute,
+    RHS: ConstraintOperand
+    >(
     lhs: SingleAnchor<LHSBase, LHSAttribute>,
     rhs: RHS
 ) where
@@ -17,7 +20,10 @@ public func == <LHSBase, LHSAttribute, RHS: ConstraintOperand>(
 }
 
 /// label.anchors.leading <= button
-public func <= <LHSBase, LHSAttribute, RHS: ConstraintOperand>(
+public func <= <
+    LHSBase, LHSAttribute,
+    RHS: ConstraintOperand
+    >(
     lhs: SingleAnchor<LHSBase, LHSAttribute>,
     rhs: RHS
 ) where
@@ -27,7 +33,10 @@ public func <= <LHSBase, LHSAttribute, RHS: ConstraintOperand>(
 }
 
 /// label.anchors.leading >= button
-public func >= <LHSBase, LHSAttribute, RHS: ConstraintOperand>(
+public func >= <
+    LHSBase, LHSAttribute,
+    RHS: ConstraintOperand
+    >(
     lhs: SingleAnchor<LHSBase, LHSAttribute>,
     rhs: RHS
 ) where

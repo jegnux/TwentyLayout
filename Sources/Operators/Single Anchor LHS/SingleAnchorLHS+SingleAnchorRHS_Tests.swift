@@ -9,7 +9,7 @@ class SingleAnchorLHS_SingleAnchorRHS_Tests: XCTestCase {
     
     func test_positionable_equal() throws {
         let layout = makeConstraints { views in
-            views.image.anchors.top == views.container.anchors.centerY
+            views.image.anchors.top == views.image.superview?.anchors.centerY
         }
         
         XCTAssertEqual(layout.constraints.count, 1)
@@ -50,7 +50,7 @@ class SingleAnchorLHS_SingleAnchorRHS_Tests: XCTestCase {
     
     func test_positionable_lessThanOrEqual() throws {
         let layout = makeConstraints { views in
-            views.image.anchors.bottom <= views.container.anchors.centerY
+            views.image.anchors.bottom <= views.image.superview?.anchors.centerY
         }
         
         XCTAssertEqual(layout.constraints.count, 1)
@@ -91,7 +91,7 @@ class SingleAnchorLHS_SingleAnchorRHS_Tests: XCTestCase {
     
     func test_positionable_greaterThanOrEqual() throws {
         let layout = makeConstraints { views in
-            views.image.anchors.top >= views.container.anchors.centerY
+            views.image.anchors.top >= views.image.superview?.anchors.centerY
         }
         
         XCTAssertEqual(layout.constraints.count, 1)
@@ -134,7 +134,7 @@ class SingleAnchorLHS_SingleAnchorRHS_Tests: XCTestCase {
     
     func test_Dimension_equal() throws {
         let layout = makeConstraints { views in
-            views.image.anchors.width == views.container.anchors.height
+            views.image.anchors.width == views.image.superview?.anchors.height
         }
         
         XCTAssertEqual(layout.constraints.count, 1)
@@ -175,7 +175,7 @@ class SingleAnchorLHS_SingleAnchorRHS_Tests: XCTestCase {
     
     func test_Dimension_lessThanOrEqual() throws {
         let layout = makeConstraints { views in
-            views.image.anchors.width <= views.container.anchors.height
+            views.image.anchors.width <= views.image.superview?.anchors.height
         }
         
         XCTAssertEqual(layout.constraints.count, 1)
@@ -216,7 +216,7 @@ class SingleAnchorLHS_SingleAnchorRHS_Tests: XCTestCase {
     
     func test_Dimension_greaterThanOrEqual() throws {
         let layout = makeConstraints { views in
-            views.image.anchors.width >= views.container.anchors.width
+            views.image.anchors.width >= views.image.superview?.anchors.width
         }
         
         XCTAssertEqual(layout.constraints.count, 1)

@@ -50,9 +50,10 @@ extension SingleAnchor where Base: FrameConstrainable, Attribute.Kind.ValueKind 
     public var       centerY: PointAnchor<Base, Attribute, CenterY> { PointAnchor(item) }
     public var        bottom: PointAnchor<Base, Attribute, Bottom> { PointAnchor(item) }
 
-    public var     topMargin: PointAnchor<Base, Attribute, Top> { PointAnchor(item) }
-    public var centerYMargin: PointAnchor<Base, Attribute, CenterY> { PointAnchor(item) }
-    public var  bottomMargin: PointAnchor<Base, Attribute, Bottom> { PointAnchor(item) }
+    public var     topMargin: PointAnchor<Base, Attribute, TopMargin> { PointAnchor(item) }
+    public var  bottomMargin: PointAnchor<Base, Attribute, BottomMargin> { PointAnchor(item) }
+
+    public var centerYWithinMargins: PointAnchor<Base, Attribute, CenterYWithinMargins> { PointAnchor(item) }
 }
 
 extension SingleAnchor where Base: BaselineConstrainable, Attribute.Kind.ValueKind == PositionValueKind, Attribute.Axis == XAxis {
@@ -69,11 +70,12 @@ extension SingleAnchor where Attribute.Kind.ValueKind == PositionValueKind, Attr
     public var trailing: PointAnchor<Base, Trailing, Attribute> { PointAnchor(item) }
     public var  centerX: PointAnchor<Base, CenterX, Attribute> { PointAnchor(item) }
 
-    public var     leftMargin: PointAnchor<Base, Left, Attribute> { PointAnchor(item) }
-    public var    rightMargin: PointAnchor<Base, Right, Attribute> { PointAnchor(item) }
-    public var  leadingMargin: PointAnchor<Base, Leading, Attribute> { PointAnchor(item) }
-    public var trailingMargin: PointAnchor<Base, Trailing, Attribute> { PointAnchor(item) }
-    public var centerXWithinMargins: PointAnchor<Base, CenterX, Attribute> { PointAnchor(item) }
+    public var     leftMargin: PointAnchor<Base, LeftMargin, Attribute> { PointAnchor(item) }
+    public var    rightMargin: PointAnchor<Base, RightMargin, Attribute> { PointAnchor(item) }
+    public var  leadingMargin: PointAnchor<Base, LeadingMargin, Attribute> { PointAnchor(item) }
+    public var trailingMargin: PointAnchor<Base, TrailingMargin, Attribute> { PointAnchor(item) }
+    
+    public var centerXWithinMargins: PointAnchor<Base, CenterXWithinMargins, Attribute> { PointAnchor(item) }
 }
 
 

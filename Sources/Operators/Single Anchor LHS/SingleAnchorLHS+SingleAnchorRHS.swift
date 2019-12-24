@@ -7,9 +7,12 @@ import Foundation
 
 // MARK: - label.anchors.leading <> button.anchors.trailing // Same Axis + PositionAnchorKind
 
-public func == <LHSBase, LHSAttribute, RHS: ConstraintOperand, RHSBase, RHSAttribute>(
+public func == <
+    LHSBase, LHSAttribute,
+    RHS: ConstraintOperand, RHSBase, RHSAttribute
+    >(
     lhs: SingleAnchor<LHSBase, LHSAttribute>,
-    rhs: RHS
+    rhs: RHS?
 ) where
     RHS.Value == SingleAnchor<RHSBase, RHSAttribute>,
     LHSAttribute.Axis == RHSAttribute.Axis,
@@ -19,9 +22,12 @@ public func == <LHSBase, LHSAttribute, RHS: ConstraintOperand, RHSBase, RHSAttri
     Layout.push(Constraint(lhs, .equal, rhs))
 }
 
-public func <= <LHSBase, LHSAttribute, RHS: ConstraintOperand, RHSBase, RHSAttribute>(
+public func <= <
+    LHSBase, LHSAttribute,
+    RHS: ConstraintOperand, RHSBase, RHSAttribute
+    >(
     lhs: SingleAnchor<LHSBase, LHSAttribute>,
-    rhs: RHS
+    rhs: RHS?
 ) where
     RHS.Value == SingleAnchor<RHSBase, RHSAttribute>,
     LHSAttribute.Axis == RHSAttribute.Axis,
@@ -31,9 +37,12 @@ public func <= <LHSBase, LHSAttribute, RHS: ConstraintOperand, RHSBase, RHSAttri
     Layout.push(Constraint(lhs, .lessThanOrEqual, rhs))
 }
 
-public func >= <LHSBase, LHSAttribute, RHS: ConstraintOperand, RHSBase, RHSAttribute>(
+public func >= <
+    LHSBase, LHSAttribute,
+    RHS: ConstraintOperand, RHSBase, RHSAttribute
+    >(
     lhs: SingleAnchor<LHSBase, LHSAttribute>,
-    rhs: RHS
+    rhs: RHS?
 ) where
     RHS.Value == SingleAnchor<RHSBase, RHSAttribute>,
     LHSAttribute.Axis == RHSAttribute.Axis,
@@ -43,9 +52,12 @@ public func >= <LHSBase, LHSAttribute, RHS: ConstraintOperand, RHSBase, RHSAttri
     Layout.push(Constraint(lhs, .greaterThanOrEqual, rhs))
 }
 
-public func == <LHSBase, LHSAttribute, RHS: ConstraintOperand, RHSBase, RHSAttribute>(
+public func == <
+    LHSBase, LHSAttribute,
+    RHS: ConstraintOperand, RHSBase, RHSAttribute
+    >(
     lhs: SingleAnchor<LHSBase, LHSAttribute>,
-    rhs: RHS
+    rhs: RHS?
 ) where
     RHS.Value == SingleAnchor<RHSBase, RHSAttribute>,
     LHSAttribute.Kind.ValueKind == DimensionValueKind,
@@ -54,9 +66,12 @@ public func == <LHSBase, LHSAttribute, RHS: ConstraintOperand, RHSBase, RHSAttri
     Layout.push(Constraint(lhs, .equal, rhs))
 }
 
-public func <= <LHSBase, LHSAttribute, RHS: ConstraintOperand, RHSBase, RHSAttribute>(
+public func <= <
+    LHSBase, LHSAttribute,
+    RHS: ConstraintOperand, RHSBase, RHSAttribute
+    >(
     lhs: SingleAnchor<LHSBase, LHSAttribute>,
-    rhs: RHS
+    rhs: RHS?
 ) where
     RHS.Value == SingleAnchor<RHSBase, RHSAttribute>,
     LHSAttribute.Kind.ValueKind == DimensionValueKind,
@@ -65,9 +80,12 @@ public func <= <LHSBase, LHSAttribute, RHS: ConstraintOperand, RHSBase, RHSAttri
     Layout.push(Constraint(lhs, .lessThanOrEqual, rhs))
 }
 
-public func >= <LHSBase, LHSAttribute, RHS: ConstraintOperand, RHSBase, RHSAttribute>(
+public func >= <
+    LHSBase, LHSAttribute,
+    RHS: ConstraintOperand, RHSBase, RHSAttribute
+    >(
     lhs: SingleAnchor<LHSBase, LHSAttribute>,
-    rhs: RHS
+    rhs: RHS?
 ) where
     RHS.Value == SingleAnchor<RHSBase, RHSAttribute>,
     LHSAttribute.Kind.ValueKind == DimensionValueKind,

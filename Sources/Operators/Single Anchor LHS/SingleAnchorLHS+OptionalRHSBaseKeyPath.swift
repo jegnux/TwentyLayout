@@ -8,7 +8,10 @@ import Foundation
 // MARK: - SingleAnchor <> KeyPath
 
 /// label.anchors.width == \.superview
-public func == <LHSBase, LHSAttribute, RHSBase: Constrainable>(
+public func == <
+    LHSBase, LHSAttribute,
+    RHSBase: Constrainable
+    >(
     lhs: SingleAnchor<LHSBase, LHSAttribute>,
     rhs: KeyPath<LHSBase, RHSBase?>
 ) {
@@ -16,7 +19,10 @@ public func == <LHSBase, LHSAttribute, RHSBase: Constrainable>(
 }
 
 /// label.anchors.width == \.superview ~ xxx
-public func == <LHSBase, LHSAttribute, RHS: ConstraintOperand, RHSBase: Constrainable>(
+public func == <
+    LHSBase, LHSAttribute,
+    RHS: ConstraintOperand, RHSBase: Constrainable
+    >(
     lhs: SingleAnchor<LHSBase, LHSAttribute>,
     rhs: RHS
 ) where
@@ -26,7 +32,10 @@ public func == <LHSBase, LHSAttribute, RHS: ConstraintOperand, RHSBase: Constrai
 }
 
 /// label.anchors.width <= \.superview
-public func <= <LHSBase, LHSAttribute, RHSBase: Constrainable>(
+public func <= <
+    LHSBase, LHSAttribute,
+    RHSBase: Constrainable
+    >(
     lhs: SingleAnchor<LHSBase, LHSAttribute>,
     rhs: KeyPath<LHSBase, RHSBase?>
 ) {
@@ -34,7 +43,10 @@ public func <= <LHSBase, LHSAttribute, RHSBase: Constrainable>(
 }
 
 /// label.anchors.width <= \.superview ~ xxx
-public func <= <LHSBase, LHSAttribute, RHS: ConstraintOperand, RHSBase: Constrainable>(
+public func <= <
+    LHSBase, LHSAttribute,
+    RHS: ConstraintOperand, RHSBase: Constrainable
+    >(
     lhs: SingleAnchor<LHSBase, LHSAttribute>,
     rhs: RHS
 ) where
@@ -44,7 +56,10 @@ public func <= <LHSBase, LHSAttribute, RHS: ConstraintOperand, RHSBase: Constrai
 }
 
 /// label.anchors.width >= \.superview
-public func >= <LHSBase, LHSAttribute, RHSBase: Constrainable>(
+public func >= <
+    LHSBase, LHSAttribute,
+    RHSBase: Constrainable
+    >(
     lhs: SingleAnchor<LHSBase, LHSAttribute>,
     rhs: KeyPath<LHSBase, RHSBase?>
 ) {
@@ -52,7 +67,10 @@ public func >= <LHSBase, LHSAttribute, RHSBase: Constrainable>(
 }
 
 /// label.anchors.width >= \.superview ~ xxx
-public func >= <LHSBase, LHSAttribute, RHS: ConstraintOperand, RHSBase: Constrainable>(
+public func >= <
+    LHSBase, LHSAttribute,
+    RHS: ConstraintOperand, RHSBase: Constrainable
+    >(
     lhs: SingleAnchor<LHSBase, LHSAttribute>,
     rhs: RHS
 ) where

@@ -8,7 +8,10 @@ import Foundation
 // MARK: - SingleAnchor <> KeyPath
 
 /// label.anchors.leading == \.superview?.anchors.leading
-public func == <LHSBase, LHSAttribute, RHSBase, RHSAttribute: ConstraintOperand>(
+public func == <
+    LHSBase, LHSAttribute,
+    RHSBase, RHSAttribute: ConstraintOperand
+    >(
     lhs: SingleAnchor<LHSBase, LHSAttribute>,
     rhs: KeyPath<LHSBase, SingleAnchor<RHSBase, RHSAttribute>?>
 ) where
@@ -20,7 +23,10 @@ public func == <LHSBase, LHSAttribute, RHSBase, RHSAttribute: ConstraintOperand>
 }
 
 /// label.anchors.leading == \.superview?.anchors.leading ~ xxx
-public func == <LHSBase, LHSAttribute, RHS: ConstraintOperand, RHSBase, RHSAttribute: ConstraintOperand>(
+public func == <
+    LHSBase, LHSAttribute,
+    RHS: ConstraintOperand, RHSBase, RHSAttribute: ConstraintOperand
+    >(
     lhs: SingleAnchor<LHSBase, LHSAttribute>,
     rhs: RHS
 ) where
@@ -32,7 +38,10 @@ public func == <LHSBase, LHSAttribute, RHS: ConstraintOperand, RHSBase, RHSAttri
     Layout.push(Constraint(lhs, .equal, rhs))
 }
 /// label.anchors.leading <= \.superview?.anchors.leading
-public func <= <LHSBase, LHSAttribute, RHSBase, RHSAttribute: ConstraintOperand>(
+public func <= <
+    LHSBase, LHSAttribute,
+    RHSBase, RHSAttribute: ConstraintOperand
+    >(
     lhs: SingleAnchor<LHSBase, LHSAttribute>,
     rhs: KeyPath<LHSBase, SingleAnchor<RHSBase, RHSAttribute>?>
 ) where
@@ -44,7 +53,10 @@ public func <= <LHSBase, LHSAttribute, RHSBase, RHSAttribute: ConstraintOperand>
 }
 
 /// label.anchors.leading <= \.superview?.anchors.leading ~ xxx
-public func <= <LHSBase, LHSAttribute, RHS: ConstraintOperand, RHSBase, RHSAttribute: ConstraintOperand>(
+public func <= <
+    LHSBase, LHSAttribute,
+    RHS: ConstraintOperand, RHSBase, RHSAttribute: ConstraintOperand
+    >(
     lhs: SingleAnchor<LHSBase, LHSAttribute>,
     rhs: RHS
 ) where
@@ -57,7 +69,10 @@ public func <= <LHSBase, LHSAttribute, RHS: ConstraintOperand, RHSBase, RHSAttri
 }
 
 /// label.anchors.leading >= \.superview?.anchors.leading
-public func >= <LHSBase, LHSAttribute, RHSBase, RHSAttribute: ConstraintOperand>(
+public func >= <
+    LHSBase, LHSAttribute,
+    RHSBase, RHSAttribute: ConstraintOperand
+    >(
     lhs: SingleAnchor<LHSBase, LHSAttribute>,
     rhs: KeyPath<LHSBase, SingleAnchor<RHSBase, RHSAttribute>?>
 ) where
@@ -69,7 +84,10 @@ public func >= <LHSBase, LHSAttribute, RHSBase, RHSAttribute: ConstraintOperand>
 }
 
 /// label.anchors.leading >= \.superview?.anchors.leading ~ xxx
-public func >= <LHSBase, LHSAttribute, RHS: ConstraintOperand, RHSBase, RHSAttribute: ConstraintOperand>(
+public func >= <
+    LHSBase, LHSAttribute,
+    RHS: ConstraintOperand, RHSBase, RHSAttribute: ConstraintOperand
+    >(
     lhs: SingleAnchor<LHSBase, LHSAttribute>,
     rhs: RHS
 ) where
@@ -82,7 +100,10 @@ public func >= <LHSBase, LHSAttribute, RHS: ConstraintOperand, RHSBase, RHSAttri
 }
 
 /// label.anchors.width == \.superview?.anchors.height
-public func == <LHSBase, LHSAttribute, RHSBase, RHSAttribute: ConstraintOperand>(
+public func == <
+    LHSBase, LHSAttribute,
+    RHSBase, RHSAttribute: ConstraintOperand
+    >(
     lhs: SingleAnchor<LHSBase, LHSAttribute>,
     rhs: KeyPath<LHSBase, SingleAnchor<RHSBase, RHSAttribute>?>
 ) where
@@ -93,7 +114,10 @@ public func == <LHSBase, LHSAttribute, RHSBase, RHSAttribute: ConstraintOperand>
 }
 
 /// label.anchors.width == \.superview?.anchors.height ~ xxx
-public func == <LHSBase, LHSAttribute, RHS: ConstraintOperand, RHSBase, RHSAttribute: ConstraintOperand>(
+public func == <
+    LHSBase, LHSAttribute,
+    RHS: ConstraintOperand, RHSBase, RHSAttribute: ConstraintOperand
+    >(
     lhs: SingleAnchor<LHSBase, LHSAttribute>,
     rhs: RHS
 ) where
@@ -104,7 +128,10 @@ public func == <LHSBase, LHSAttribute, RHS: ConstraintOperand, RHSBase, RHSAttri
     Layout.push(Constraint(lhs, .equal, rhs))
 }
 /// label.anchors.width <= \.superview?.anchors.height
-public func <= <LHSBase, LHSAttribute, RHSBase, RHSAttribute: ConstraintOperand>(
+public func <= <
+    LHSBase, LHSAttribute,
+    RHSBase, RHSAttribute: ConstraintOperand
+    >(
     lhs: SingleAnchor<LHSBase, LHSAttribute>,
     rhs: KeyPath<LHSBase, SingleAnchor<RHSBase, RHSAttribute>?>
 ) where
@@ -115,7 +142,10 @@ public func <= <LHSBase, LHSAttribute, RHSBase, RHSAttribute: ConstraintOperand>
 }
 
 /// label.anchors.width <= \.superview?.anchors.height ~ xxx
-public func <= <LHSBase, LHSAttribute, RHS: ConstraintOperand, RHSBase, RHSAttribute: ConstraintOperand>(
+public func <= <
+    LHSBase, LHSAttribute,
+    RHS: ConstraintOperand, RHSBase, RHSAttribute: ConstraintOperand
+    >(
     lhs: SingleAnchor<LHSBase, LHSAttribute>,
     rhs: RHS
 ) where
@@ -127,7 +157,10 @@ public func <= <LHSBase, LHSAttribute, RHS: ConstraintOperand, RHSBase, RHSAttri
 }
 
 /// label.anchors.width >= \.superview?.anchors.height
-public func >= <LHSBase, LHSAttribute, RHSBase, RHSAttribute: ConstraintOperand>(
+public func >= <
+    LHSBase, LHSAttribute,
+    RHSBase, RHSAttribute: ConstraintOperand
+    >(
     lhs: SingleAnchor<LHSBase, LHSAttribute>,
     rhs: KeyPath<LHSBase, SingleAnchor<RHSBase, RHSAttribute>?>
 ) where
@@ -138,7 +171,10 @@ public func >= <LHSBase, LHSAttribute, RHSBase, RHSAttribute: ConstraintOperand>
 }
 
 /// label.anchors.width >= \.superview?.anchors.height ~ xxx
-public func >= <LHSBase, LHSAttribute, RHS: ConstraintOperand, RHSBase, RHSAttribute: ConstraintOperand>(
+public func >= <
+    LHSBase, LHSAttribute,
+    RHS: ConstraintOperand, RHSBase, RHSAttribute: ConstraintOperand
+    >(
     lhs: SingleAnchor<LHSBase, LHSAttribute>,
     rhs: RHS
 ) where
