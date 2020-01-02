@@ -130,6 +130,16 @@ class SingleAnchorLHS_OptionalRHSBaseKeyPath_Tests: XCTestCase {
          XCTAssertEqual(constraint.constant, 80)
      }
     
+    func test_nil_superview() throws {
+        let layout = makeConstraints { views in
+            views.container.anchors.topMargin == \.superview
+            views.container.anchors.bottomMargin <= \.superview
+            views.container.anchors.width >= \.superview
+        }
+        
+        XCTAssertEqual(layout.constraints.count, 0)
+    }
+
      // MARK: - Dimension
      
      func test_Dimension_equal() throws {

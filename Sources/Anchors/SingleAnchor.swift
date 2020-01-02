@@ -14,7 +14,7 @@ public struct SingleAnchor<Base: Constrainable, Attribute: TwentyLayout.Attribut
 
     public private(set) var item: Base
     public var constraintAttribute: NSLayoutConstraint.Attribute {
-        Attribute().rawValue
+        Attribute.rawValue
     }
     
     internal func on<U>(_ newItem: U) -> SingleAnchor<U, Attribute> {
@@ -26,7 +26,9 @@ public struct SingleAnchor<Base: Constrainable, Attribute: TwentyLayout.Attribut
     }
 
     internal func on<U>(_ newItem: KeyPath<Base, U?>) -> SingleAnchor<U, Attribute>? {
-        guard let base = item[keyPath: newItem] else { return nil }
+        guard let base = item[keyPath: newItem] else {
+            return nil
+        }
         return on(base)
     }
 

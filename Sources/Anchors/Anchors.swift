@@ -6,7 +6,7 @@
 import Foundation
 import UIKit
 
-public struct Anchors<Base: Constrainable> {
+public struct Anchors<Base> {
     public let base: Base
     public init(_ base: Base) {
         self.base = base

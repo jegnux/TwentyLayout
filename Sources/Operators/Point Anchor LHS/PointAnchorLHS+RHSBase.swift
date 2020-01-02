@@ -16,8 +16,8 @@ public func == <
 ) where
     RHS.Value : Constrainable
 {
-    Layout.push(Constraint(lhs.yAnchor, .equal, rhs))
-    Layout.push(Constraint(lhs.xAnchor, .equal, rhs))
+    Layout.push(Constraint(lhs.y, .equal, rhs))
+    Layout.push(Constraint(lhs.x, .equal, rhs))
 }
 
 
@@ -31,8 +31,8 @@ public func <= <
 ) where
     RHS.Value : Constrainable
 {
-    Layout.push(Constraint(lhs.yAnchor, .lessThanOrEqual, rhs))
-    Layout.push(Constraint(lhs.xAnchor, .lessThanOrEqual, rhs))
+    Layout.push(Constraint(lhs.y, .lessThanOrEqual, rhs))
+    Layout.push(Constraint(lhs.x, .lessThanOrEqual, rhs))
 }
 
 
@@ -46,6 +46,6 @@ public func >= <
 ) where
     RHS.Value : Constrainable
 {
-    Layout.push(Constraint(lhs.yAnchor, .greaterThanOrEqual, rhs))
-    Layout.push(Constraint(lhs.xAnchor, .greaterThanOrEqual, rhs))
+    Layout.push(Constraint(lhs.y, .greaterThanOrEqual, rhs))
+    Layout.push(Constraint(lhs.x, .greaterThanOrEqual, rhs))
 }

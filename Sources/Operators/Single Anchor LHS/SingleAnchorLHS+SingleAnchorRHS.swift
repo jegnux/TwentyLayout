@@ -5,8 +5,7 @@
 
 import Foundation
 
-// MARK: - label.anchors.leading <> button.anchors.trailing // Same Axis + PositionAnchorKind
-
+/// label.anchors.leading <> button.anchors.trailing
 public func == <
     LHSBase, LHSAttribute,
     RHS: ConstraintOperand, RHSBase, RHSAttribute

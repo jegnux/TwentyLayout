@@ -15,4 +15,12 @@ public struct SizeAnchor<Base: FrameConstrainable> {
     internal init(_ item: Base) {
         self.item = item
     }
+    
+    internal var width: SingleAnchor<Base, Width> {
+        SingleAnchor(item)
+    }
+
+    internal var height: SingleAnchor<Base, Height> {
+        SingleAnchor(item)
+    }
 }

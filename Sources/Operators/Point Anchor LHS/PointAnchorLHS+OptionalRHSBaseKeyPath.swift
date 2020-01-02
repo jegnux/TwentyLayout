@@ -14,8 +14,8 @@ public func == <
     lhs: PointAnchor<LHSBase, LHSXAttribute, LHSYAttribute>,
     rhs: KeyPath<LHSBase, RHSBase?>
 ) {
-    Layout.push(Constraint(lhs.yAnchor, .equal, rhs))
-    Layout.push(Constraint(lhs.xAnchor, .equal, rhs))
+    Layout.push(Constraint(lhs.y, .equal, rhs))
+    Layout.push(Constraint(lhs.x, .equal, rhs))
 }
 
 /// label.anchors.bottom.left == \.superview
@@ -28,8 +28,8 @@ public func == <
 ) where
     RHS.Value == KeyPath<LHSBase, RHSBase?>
 {
-    Layout.push(Constraint(lhs.yAnchor, .equal, rhs))
-    Layout.push(Constraint(lhs.xAnchor, .equal, rhs))
+    Layout.push(Constraint(lhs.y, .equal, rhs))
+    Layout.push(Constraint(lhs.x, .equal, rhs))
 }
 
 
@@ -41,8 +41,8 @@ public func <= <
     lhs: PointAnchor<LHSBase, LHSXAttribute, LHSYAttribute>,
     rhs: KeyPath<LHSBase, RHSBase?>
 ) {
-    Layout.push(Constraint(lhs.yAnchor, .lessThanOrEqual, rhs))
-    Layout.push(Constraint(lhs.xAnchor, .lessThanOrEqual, rhs))
+    Layout.push(Constraint(lhs.y, .lessThanOrEqual, rhs))
+    Layout.push(Constraint(lhs.x, .lessThanOrEqual, rhs))
 }
 
 /// label.anchors.bottom.left <= \.superview
@@ -55,8 +55,8 @@ public func <= <
 ) where
     RHS.Value == KeyPath<LHSBase, RHSBase?>
 {
-    Layout.push(Constraint(lhs.yAnchor, .lessThanOrEqual, rhs))
-    Layout.push(Constraint(lhs.xAnchor, .lessThanOrEqual, rhs))
+    Layout.push(Constraint(lhs.y, .lessThanOrEqual, rhs))
+    Layout.push(Constraint(lhs.x, .lessThanOrEqual, rhs))
 }
 
 
@@ -68,8 +68,8 @@ public func >= <
     lhs: PointAnchor<LHSBase, LHSXAttribute, LHSYAttribute>,
     rhs: KeyPath<LHSBase, RHSBase?>
 ) {
-    Layout.push(Constraint(lhs.yAnchor, .greaterThanOrEqual, rhs))
-    Layout.push(Constraint(lhs.xAnchor, .greaterThanOrEqual, rhs))
+    Layout.push(Constraint(lhs.y, .greaterThanOrEqual, rhs))
+    Layout.push(Constraint(lhs.x, .greaterThanOrEqual, rhs))
 }
 
 /// label.anchors.bottom.left >= \.superview
@@ -82,6 +82,6 @@ public func >= <
 ) where
     RHS.Value == KeyPath<LHSBase, RHSBase?>
 {
-    Layout.push(Constraint(lhs.yAnchor, .greaterThanOrEqual, rhs))
-    Layout.push(Constraint(lhs.xAnchor, .greaterThanOrEqual, rhs))
+    Layout.push(Constraint(lhs.y, .greaterThanOrEqual, rhs))
+    Layout.push(Constraint(lhs.x, .greaterThanOrEqual, rhs))
 }

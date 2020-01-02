@@ -45,3 +45,17 @@ extension NSLayoutConstraint.Attribute {
         }
     }
 }
+
+//*
+extension NSLayoutConstraint.Relation: CustomStringConvertible {
+    public var description: String {
+        alp_description
+    }
+}
+
+extension NSLayoutConstraint.Attribute: CustomStringConvertible {
+    public var description: String {
+        alp_description
+    }
+}
+// */

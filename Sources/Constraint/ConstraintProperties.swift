@@ -96,6 +96,11 @@ extension PointAnchor: Offsetable where XAttribute: Offsetable, YAttribute: Offs
 extension PointAnchor: Insetable where XAttribute: Insetable, YAttribute: Insetable {}
 extension PointAnchor: Multiplicable where XAttribute: Multiplicable, YAttribute: Multiplicable {}
 
+extension SizeAnchor: ConstraintOperand {}
+extension SizeAnchor: ModifiableConstraintOperand {}
+extension SizeAnchor: Offsetable {}
+extension SizeAnchor: Multiplicable {}
+
 extension KeyPath: ConstraintOperand where Value: ConstraintOperand {
     public var constraintValue: KeyPath {
         return self

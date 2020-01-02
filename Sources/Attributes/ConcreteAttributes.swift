@@ -7,87 +7,63 @@ import Foundation
 import UIKit
 
 public struct Top: Attribute {
-    public typealias Kind = Edge
     public typealias Axis = YAxis
-    public init() {}
-    public var rawValue: NSLayoutConstraint.Attribute { .top }
+    public static let kind: Edge = .top
 }
 
 public struct Left: Attribute {
-    public typealias Kind = Edge
     public typealias Axis = XAxis
-    public init() {}
-    public var rawValue: NSLayoutConstraint.Attribute { .left }
+    public static let kind: Edge = .left
 }
 
 public struct Leading: Attribute {
-    public typealias Kind = Edge
     public typealias Axis = XAxis
-    public init() {}
-    public var rawValue: NSLayoutConstraint.Attribute { .leading }
+    public static let kind: Edge = .leading
 }
 
 public struct Trailing: Attribute {
-    public typealias Kind = Edge
     public typealias Axis = XAxis
-    public init() {}
-    public var rawValue: NSLayoutConstraint.Attribute { .trailing }
+    public static let kind: Edge = .trailing
 }
 
 public struct Right: Attribute {
-    public typealias Kind = Edge
     public typealias Axis = XAxis
-    public init() {}
-    public var rawValue: NSLayoutConstraint.Attribute { .right }
+    public static let kind: Edge = .right
 }
 
 public struct Bottom: Attribute {
-    public typealias Kind = Edge
     public typealias Axis = YAxis
-    public init() {}
-    public var rawValue: NSLayoutConstraint.Attribute { .bottom }
+    public static let kind: Edge = .bottom
 }
 
 public struct CenterX: Attribute {
-    public typealias Kind = Coordinate
     public typealias Axis = XAxis
-    public init() {}
-    public var rawValue: NSLayoutConstraint.Attribute { .centerX }
+    public static let kind: Coordinate = .centerX
 }
 
 public struct CenterY: Attribute {
-    public typealias Kind = Coordinate
     public typealias Axis = YAxis
-    public init() {}
-    public var rawValue: NSLayoutConstraint.Attribute { .centerY }
+    public static let kind: Coordinate = .centerY
 }
 
 public struct Width: Attribute {
-    public typealias Kind = Dimension
     public typealias Axis = XAxis
-    public init() {}
-    public var rawValue: NSLayoutConstraint.Attribute { .width }
+    public static let kind: Dimension = .width
 }
 
 public struct Height: Attribute {
-    public typealias Kind = Dimension
     public typealias Axis = YAxis
-    public init() {}
-    public var rawValue: NSLayoutConstraint.Attribute { .height }
+    public static let kind: Dimension = .height
 }
 
 public struct FirstBaseline: Attribute {
-    public typealias Kind = Baseline
     public typealias Axis = YAxis
-    public init() {}
-    public var rawValue: NSLayoutConstraint.Attribute { .firstBaseline }
+    public static let kind: Baseline = .first
 }
 
 public struct LastBaseline: Attribute {
-    public typealias Kind = Baseline
     public typealias Axis = YAxis
-    public init() {}
-    public var rawValue: NSLayoutConstraint.Attribute { .lastBaseline }
+    public static let kind: Baseline = .last
 }
 
 public typealias TopMargin = Margin<Top>

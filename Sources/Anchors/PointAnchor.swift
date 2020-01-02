@@ -13,7 +13,7 @@ public struct PointAnchor<Base: Constrainable, XAttribute: Attribute & Modifiabl
 {
     public let item: Base
     public var constraintAttributes: [NSLayoutConstraint.Attribute] {
-        [XAttribute().rawValue, YAttribute().rawValue]
+        [XAttribute.rawValue, YAttribute.rawValue]
     }
 
     internal init(_ item: Base){
@@ -24,11 +24,15 @@ public struct PointAnchor<Base: Constrainable, XAttribute: Attribute & Modifiabl
         return AnchorSet(item, constraintAttributes + [constraintAttribute])
     }
     
-    internal var xAnchor: SingleAnchor<Base, XAttribute> {
+    internal var anchors: Anchors<PointAnchor<Base, XAttribute, YAttribute>> {
+        Anchors(self)
+    }
+    
+    internal var x: SingleAnchor<Base, XAttribute> {
         SingleAnchor(item)
     }
 
-    internal var yAnchor: SingleAnchor<Base, YAttribute> {
+    internal var y: SingleAnchor<Base, YAttribute> {
         SingleAnchor(item)
     }
 }

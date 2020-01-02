@@ -16,8 +16,8 @@ public func == <
 ) where
     RHS.Value == PointAnchor<RHSBase, RHSXAttribute, RHSYAttribute>
 {
-    Layout.push(Constraint(lhs.yAnchor, .equal, rhs.constraintValue.yAnchor ~ rhs))
-    Layout.push(Constraint(lhs.xAnchor, .equal, rhs.constraintValue.xAnchor ~ rhs))
+    Layout.push(Constraint(lhs.y, .equal, rhs.constraintValue.y ~ rhs))
+    Layout.push(Constraint(lhs.x, .equal, rhs.constraintValue.x ~ rhs))
 }
 
 
@@ -31,8 +31,8 @@ public func <= <
 ) where
     RHS.Value == PointAnchor<RHSBase, RHSXAttribute, RHSYAttribute>
 {
-    Layout.push(Constraint(lhs.yAnchor, .lessThanOrEqual, rhs.constraintValue.yAnchor ~ rhs))
-    Layout.push(Constraint(lhs.xAnchor, .lessThanOrEqual, rhs.constraintValue.xAnchor ~ rhs))
+    Layout.push(Constraint(lhs.y, .lessThanOrEqual, rhs.constraintValue.y ~ rhs))
+    Layout.push(Constraint(lhs.x, .lessThanOrEqual, rhs.constraintValue.x ~ rhs))
 }
 
 
@@ -46,6 +46,6 @@ public func >= <
 ) where
     RHS.Value == PointAnchor<RHSBase, RHSXAttribute, RHSYAttribute>
 {
-    Layout.push(Constraint(lhs.yAnchor, .greaterThanOrEqual, rhs.constraintValue.yAnchor ~ rhs))
-    Layout.push(Constraint(lhs.xAnchor, .greaterThanOrEqual, rhs.constraintValue.xAnchor ~ rhs))
+    Layout.push(Constraint(lhs.y, .greaterThanOrEqual, rhs.constraintValue.y ~ rhs))
+    Layout.push(Constraint(lhs.x, .greaterThanOrEqual, rhs.constraintValue.x ~ rhs))
 }

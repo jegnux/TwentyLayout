@@ -14,8 +14,8 @@ public func == <
     lhs: PointAnchor<LHSBase, LHSXAttribute, LHSYAttribute>,
     rhs: KeyPath<LHSBase, PointAnchor<RHSBase, RHSXAttribute, RHSYAttribute>?>
 ) {
-    Layout.push(Constraint(lhs.yAnchor, .equal, lhs.item[keyPath: rhs.constraintValue]?.yAnchor ~ rhs))
-    Layout.push(Constraint(lhs.xAnchor, .equal, lhs.item[keyPath: rhs.constraintValue]?.xAnchor ~ rhs))
+    Layout.push(Constraint(lhs.y, .equal, lhs.item[keyPath: rhs.constraintValue]?.y ~ rhs))
+    Layout.push(Constraint(lhs.x, .equal, lhs.item[keyPath: rhs.constraintValue]?.x ~ rhs))
 }
 
 /// label.anchors.bottom.left == \.image.anchors.top.right
@@ -28,8 +28,8 @@ public func == <
 ) where
     RHS.Value == KeyPath<LHSBase, PointAnchor<RHSBase, RHSXAttribute, RHSYAttribute>?>
 {
-    Layout.push(Constraint(lhs.yAnchor, .equal, lhs.item[keyPath: rhs.constraintValue]?.yAnchor ~ rhs))
-    Layout.push(Constraint(lhs.xAnchor, .equal, lhs.item[keyPath: rhs.constraintValue]?.xAnchor ~ rhs))
+    Layout.push(Constraint(lhs.y, .equal, lhs.item[keyPath: rhs.constraintValue]?.y ~ rhs))
+    Layout.push(Constraint(lhs.x, .equal, lhs.item[keyPath: rhs.constraintValue]?.x ~ rhs))
 }
 
 
@@ -41,8 +41,8 @@ public func <= <
     lhs: PointAnchor<LHSBase, LHSXAttribute, LHSYAttribute>,
     rhs: KeyPath<LHSBase, PointAnchor<RHSBase, RHSXAttribute, RHSYAttribute>?>
 ) {
-    Layout.push(Constraint(lhs.yAnchor, .lessThanOrEqual, lhs.item[keyPath: rhs.constraintValue]?.yAnchor ~ rhs))
-    Layout.push(Constraint(lhs.xAnchor, .lessThanOrEqual, lhs.item[keyPath: rhs.constraintValue]?.xAnchor ~ rhs))
+    Layout.push(Constraint(lhs.y, .lessThanOrEqual, lhs.item[keyPath: rhs.constraintValue]?.y ~ rhs))
+    Layout.push(Constraint(lhs.x, .lessThanOrEqual, lhs.item[keyPath: rhs.constraintValue]?.x ~ rhs))
 }
 
 
@@ -56,8 +56,8 @@ public func <= <
 ) where
     RHS.Value == KeyPath<LHSBase, PointAnchor<RHSBase, RHSXAttribute, RHSYAttribute>?>
 {
-    Layout.push(Constraint(lhs.yAnchor, .lessThanOrEqual, lhs.item[keyPath: rhs.constraintValue]?.yAnchor ~ rhs))
-    Layout.push(Constraint(lhs.xAnchor, .lessThanOrEqual, lhs.item[keyPath: rhs.constraintValue]?.xAnchor ~ rhs))
+    Layout.push(Constraint(lhs.y, .lessThanOrEqual, lhs.item[keyPath: rhs.constraintValue]?.y ~ rhs))
+    Layout.push(Constraint(lhs.x, .lessThanOrEqual, lhs.item[keyPath: rhs.constraintValue]?.x ~ rhs))
 }
 
 /// label.anchors.bottom.left >= \.image.anchors.top.right
@@ -68,8 +68,8 @@ public func >= <
     lhs: PointAnchor<LHSBase, LHSXAttribute, LHSYAttribute>,
     rhs: KeyPath<LHSBase, PointAnchor<RHSBase, RHSXAttribute, RHSYAttribute>?>
 ) {
-    Layout.push(Constraint(lhs.yAnchor, .greaterThanOrEqual, lhs.item[keyPath: rhs.constraintValue]?.yAnchor ~ rhs))
-    Layout.push(Constraint(lhs.xAnchor, .greaterThanOrEqual, lhs.item[keyPath: rhs.constraintValue]?.xAnchor ~ rhs))
+    Layout.push(Constraint(lhs.y, .greaterThanOrEqual, lhs.item[keyPath: rhs.constraintValue]?.y ~ rhs))
+    Layout.push(Constraint(lhs.x, .greaterThanOrEqual, lhs.item[keyPath: rhs.constraintValue]?.x ~ rhs))
 }
 
 /// label.anchors.bottom.left >= \.image.anchors.top.right
@@ -82,6 +82,6 @@ public func >= <
 ) where
     RHS.Value == KeyPath<LHSBase, PointAnchor<RHSBase, RHSXAttribute, RHSYAttribute>?>
 {
-    Layout.push(Constraint(lhs.yAnchor, .greaterThanOrEqual, lhs.item[keyPath: rhs.constraintValue]?.yAnchor ~ rhs))
-    Layout.push(Constraint(lhs.xAnchor, .greaterThanOrEqual, lhs.item[keyPath: rhs.constraintValue]?.xAnchor ~ rhs))
+    Layout.push(Constraint(lhs.y, .greaterThanOrEqual, lhs.item[keyPath: rhs.constraintValue]?.y ~ rhs))
+    Layout.push(Constraint(lhs.x, .greaterThanOrEqual, lhs.item[keyPath: rhs.constraintValue]?.x ~ rhs))
 }

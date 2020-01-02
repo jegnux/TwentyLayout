@@ -7,14 +7,16 @@ import Foundation
 import UIKit
 
 public struct WithinMargins<T>: Attribute where T: Attribute, T.Kind == Coordinate {
-    public typealias Kind = T.Kind
+    
     public typealias Axis = T.Axis
-    public init() {}
-    public var rawValue: NSLayoutConstraint.Attribute {
-        switch T.init().rawValue {
-        case .centerX, .centerXWithinMargins: return .centerXWithinMargins
-        case .centerY, .centerYWithinMargins: return .centerYWithinMargins
-        default: fatalError("WithinMargins shouldn't be applied on any other attribute")
+    
+    public static var kind: CoordinateWithinMargins {
+        switch T.kind {
+        case .centerX:
+            return .centerXWithinMargins
+        case .centerY:
+            return .centerYWithinMargins
         }
     }
+    
 }
