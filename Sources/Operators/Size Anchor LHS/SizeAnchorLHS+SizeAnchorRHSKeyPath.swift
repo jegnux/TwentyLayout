@@ -14,8 +14,8 @@ public func == <
     lhs: SizeAnchor<LHSBase>,
     rhs: KeyPath<LHSBase, SizeAnchor<RHSBase>>
 ) {
-    Layout.push(Constraint(lhs.width, .equal, lhs.item[keyPath: rhs.constraintValue].width ~ rhs))
-    Layout.push(Constraint(lhs.height, .equal, lhs.item[keyPath: rhs.constraintValue].height ~ rhs))
+    lhs.width == lhs.item[keyPath: rhs.constraintValue].width ~ rhs
+    lhs.height == lhs.item[keyPath: rhs.constraintValue].height ~ rhs
 }
 
 /// label.anchors.size == \.image.anchors.size
@@ -28,8 +28,8 @@ public func == <
 ) where
     RHS.Value == KeyPath<LHSBase, SizeAnchor<RHSBase>>
 {
-    Layout.push(Constraint(lhs.width, .equal, lhs.item[keyPath: rhs.constraintValue].width ~ rhs))
-    Layout.push(Constraint(lhs.height, .equal, lhs.item[keyPath: rhs.constraintValue].height ~ rhs))
+    lhs.width == lhs.item[keyPath: rhs.constraintValue].width ~ rhs
+    lhs.height == lhs.item[keyPath: rhs.constraintValue].height ~ rhs
 }
 
 
@@ -41,8 +41,8 @@ public func <= <
     lhs: SizeAnchor<LHSBase>,
     rhs: KeyPath<LHSBase, SizeAnchor<RHSBase>>
 ) {
-    Layout.push(Constraint(lhs.width, .lessThanOrEqual, lhs.item[keyPath: rhs.constraintValue].width ~ rhs))
-    Layout.push(Constraint(lhs.height, .lessThanOrEqual, lhs.item[keyPath: rhs.constraintValue].height ~ rhs))
+    lhs.width <= lhs.item[keyPath: rhs.constraintValue].width ~ rhs
+    lhs.height <= lhs.item[keyPath: rhs.constraintValue].height ~ rhs
 }
 
 
@@ -56,8 +56,8 @@ public func <= <
 ) where
     RHS.Value == KeyPath<LHSBase, SizeAnchor<RHSBase>>
 {
-    Layout.push(Constraint(lhs.width, .lessThanOrEqual, lhs.item[keyPath: rhs.constraintValue].width ~ rhs))
-    Layout.push(Constraint(lhs.height, .lessThanOrEqual, lhs.item[keyPath: rhs.constraintValue].height ~ rhs))
+    lhs.width <= lhs.item[keyPath: rhs.constraintValue].width ~ rhs
+    lhs.height <= lhs.item[keyPath: rhs.constraintValue].height ~ rhs
 }
 
 /// label.anchors.size >= \.image.anchors.size
@@ -68,8 +68,8 @@ public func >= <
     lhs: SizeAnchor<LHSBase>,
     rhs: KeyPath<LHSBase, SizeAnchor<RHSBase>>
 ) {
-    Layout.push(Constraint(lhs.width, .greaterThanOrEqual, lhs.item[keyPath: rhs.constraintValue].width ~ rhs))
-    Layout.push(Constraint(lhs.height, .greaterThanOrEqual, lhs.item[keyPath: rhs.constraintValue].height ~ rhs))
+    lhs.width >= lhs.item[keyPath: rhs.constraintValue].width ~ rhs
+    lhs.height >= lhs.item[keyPath: rhs.constraintValue].height ~ rhs
 }
 
 /// label.anchors.size >= \.image.anchors.size
@@ -82,6 +82,6 @@ public func >= <
 ) where
     RHS.Value == KeyPath<LHSBase, SizeAnchor<RHSBase>>
 {
-    Layout.push(Constraint(lhs.width, .greaterThanOrEqual, lhs.item[keyPath: rhs.constraintValue].width ~ rhs))
-    Layout.push(Constraint(lhs.height, .greaterThanOrEqual, lhs.item[keyPath: rhs.constraintValue].height ~ rhs))
+    lhs.width >= lhs.item[keyPath: rhs.constraintValue].width ~ rhs
+    lhs.height >= lhs.item[keyPath: rhs.constraintValue].height ~ rhs
 }

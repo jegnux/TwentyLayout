@@ -8,9 +8,13 @@ import Foundation
 // MARK: Single Anchor
 
 extension Anchors where Base: FrameConstrainable {
-    public var    edges: AnchorSet<Base> { top.leading.trailing.bottom }
-    public var  margins: AnchorSet<Base> { topMargin.leadingMargin.trailingMargin.bottomMargin }
-    public var  center: PointAnchor<Base, CenterX, CenterY> { centerX.centerY }
+    public var    edges: EdgesAnchor<Base, Top, Bottom, Left, Right> { EdgesAnchor(base) }
+    public var  margins: EdgesAnchor<Base, TopMargin, BottomMargin, LeftMargin, RightMargin> { EdgesAnchor(base) }
+    
+    public var    directionalEdges: EdgesAnchor<Base, Top, Bottom, Leading, Trailing> { EdgesAnchor(base) }
+    public var  directionalMargins: EdgesAnchor<Base, TopMargin, BottomMargin, LeadingMargin, TrailingMargin> { EdgesAnchor(base) }
+
+    public var  center: PointAnchor<Base, CenterX, CenterY> { PointAnchor(base) }
 
     public var    size: SizeAnchor<Base> { SizeAnchor(base) }
 

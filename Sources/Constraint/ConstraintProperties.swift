@@ -101,6 +101,11 @@ extension SizeAnchor: ModifiableConstraintOperand {}
 extension SizeAnchor: Offsetable {}
 extension SizeAnchor: Multiplicable {}
 
+extension EdgesAnchor: ConstraintOperand {}
+extension EdgesAnchor: ModifiableConstraintOperand {}
+extension EdgesAnchor: Offsetable {}
+extension EdgesAnchor: Multiplicable {}
+
 extension KeyPath: ConstraintOperand where Value: ConstraintOperand {
     public var constraintValue: KeyPath {
         return self
