@@ -20,6 +20,8 @@ public protocol ConstraintOperand {
 
 public protocol ModifiableConstraintOperand: ConstraintOperand { }
 
+public protocol SingleAnchorPrimitive { }
+
 extension ConstraintOperand {
     public var constraintValue: Self {
         return self
@@ -35,10 +37,10 @@ extension ConstraintOperand {
     }
 }
 
-extension Int: ModifiableConstraintOperand {}
-extension Float: ModifiableConstraintOperand {}
-extension Double: ModifiableConstraintOperand {}
-extension CGFloat: ModifiableConstraintOperand {}
+extension Int: ModifiableConstraintOperand, SingleAnchorPrimitive {}
+extension Float: ModifiableConstraintOperand, SingleAnchorPrimitive {}
+extension Double: ModifiableConstraintOperand, SingleAnchorPrimitive {}
+extension CGFloat: ModifiableConstraintOperand, SingleAnchorPrimitive {}
 
 extension Top:  ModifiableConstraintOperand, Offsetable, Insetable, Multiplicable {}
 extension Left: ModifiableConstraintOperand, Offsetable, Insetable, Multiplicable {}

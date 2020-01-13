@@ -7,6 +7,7 @@ import Foundation
 import UIKit
 
 public struct Constraint: Hashable, CustomStringConvertible {
+
     internal enum Operand: Hashable, CustomStringConvertible {
         case expression(ConstraintExpression)
         case dimension(CGFloat)
@@ -85,10 +86,9 @@ public struct Constraint: Hashable, CustomStringConvertible {
     ) where
         RHS.Value : Constrainable
     {
-        guard let lhs = lhs, let relation = relation, let rhs = rhs else {
+        guard let lhs = lhs, let relation = relation, let rhs = rhs, let rhsAnchor = lhs.on(rhs.constraintValue) else {
             return nil
         }
-        let rhsAnchor = lhs.on(rhs.constraintValue)
         self.lhs = ConstraintExpression(lhs)
         self.relation = relation
         self.rhs = .expression(ConstraintExpression(rhsAnchor))
@@ -122,10 +122,9 @@ public struct Constraint: Hashable, CustomStringConvertible {
     ) where
         RHS.Value : KeyPath<LHSBase, RHSBase>
     {
-        guard let lhs = lhs, let relation = relation, let rhs = rhs else {
+        guard let lhs = lhs, let relation = relation, let rhs = rhs, let rhsAnchor = lhs.on(rhs.constraintValue) else {
             return nil
         }
-        let rhsAnchor = lhs.on(rhs.constraintValue)
         self.lhs = ConstraintExpression(lhs)
         self.relation = relation
         self.rhs = .expression(ConstraintExpression(rhsAnchor))
@@ -210,6 +209,15 @@ public struct Constraint: Hashable, CustomStringConvertible {
         self.priority = rhs.priority
     }
 
+    internal init(lhs: ConstraintExpression, relation: NSLayoutConstraint.Relation, rhs: Constraint.Operand, constant: CGFloat?, multiplier: CGFloat?, priority: UILayoutPriority?) {
+        self.lhs = lhs
+        self.relation = relation
+        self.rhs = rhs
+        self.constant = constant
+        self.multiplier = multiplier
+        self.priority = priority
+    }
+    
     public var description: String {
         let components = [
             lhs.item.description + lhs.constraintAttribute.alp_description,
