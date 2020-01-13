@@ -6,7 +6,7 @@
 import Foundation
 import UIKit
 
-public struct AnchorSet<Base: Constrainable> {
+public struct SetAnchor<Base: Constrainable> {
     public let item: Base
     public var constraintAttributes: [NSLayoutConstraint.Attribute]
 
@@ -15,7 +15,7 @@ public struct AnchorSet<Base: Constrainable> {
         self.constraintAttributes = constraintAttributes
     }
 
-    internal func appending(_ constraintAttribute: NSLayoutConstraint.Attribute) -> AnchorSet<Base> {
+    internal func appending(_ constraintAttribute: NSLayoutConstraint.Attribute) -> SetAnchor<Base> {
         var new = self
         new.constraintAttributes.append(constraintAttribute)
         return new

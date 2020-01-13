@@ -15,6 +15,7 @@ extension Anchors where Base: FrameConstrainable {
     public var  directionalMargins: EdgesAnchor<Base, TopMargin, BottomMargin, LeadingMargin, TrailingMargin> { EdgesAnchor(base) }
 
     public var  center: PointAnchor<Base, CenterX, CenterY> { PointAnchor(base) }
+    public var  centerWithinMargins: PointAnchor<Base, CenterXWithinMargins, CenterYWithinMargins> { PointAnchor(base) }
 
     public var    size: SizeAnchor<Base> { SizeAnchor(base) }
 
@@ -50,13 +51,24 @@ extension Anchors where Base: BaselineConstrainable {
 // MARK: - Coordinate Anchor from XAxis
 
 extension SingleAnchor where Base: FrameConstrainable, Attribute.Kind.ValueKind == PositionValueKind, Attribute.Axis == XAxis {
-    public var           top: PointAnchor<Base, Attribute, Top> { PointAnchor(item) }
-    public var       centerY: PointAnchor<Base, Attribute, CenterY> { PointAnchor(item) }
-    public var        bottom: PointAnchor<Base, Attribute, Bottom> { PointAnchor(item) }
+    public var      top: PointAnchor<Base, Attribute, Top> { PointAnchor(item) }
+    public var     left: SetAnchor<Base> { appending(.left) }
+    public var    right: SetAnchor<Base> { appending(.right) }
+    public var  leading: SetAnchor<Base> { appending(.leading) }
+    public var trailing: SetAnchor<Base> { appending(.trailing) }
+    public var   bottom: PointAnchor<Base, Attribute, Bottom> { PointAnchor(item) }
 
-    public var     topMargin: PointAnchor<Base, Attribute, TopMargin> { PointAnchor(item) }
-    public var  bottomMargin: PointAnchor<Base, Attribute, BottomMargin> { PointAnchor(item) }
+    public var      topMargin: PointAnchor<Base, Attribute, TopMargin> { PointAnchor(item) }
+    public var     leftMargin: SetAnchor<Base> { appending(.leftMargin) }
+    public var    rightMargin: SetAnchor<Base> { appending(.rightMargin) }
+    public var  leadingMargin: SetAnchor<Base> { appending(.leadingMargin) }
+    public var trailingMargin: SetAnchor<Base> { appending(.trailingMargin) }
+    public var   bottomMargin: PointAnchor<Base, Attribute, BottomMargin> { PointAnchor(item) }
 
+    public var centerX: SetAnchor<Base> { appending(.centerX) }
+    public var centerY: PointAnchor<Base, Attribute, CenterY> { PointAnchor(item) }
+    
+    public var centerXWithinMargins: SetAnchor<Base> { appending(.centerXWithinMargins) }
     public var centerYWithinMargins: PointAnchor<Base, Attribute, CenterYWithinMargins> { PointAnchor(item) }
 }
 
@@ -68,31 +80,101 @@ extension SingleAnchor where Base: BaselineConstrainable, Attribute.Kind.ValueKi
 // MARK: - Coordinate Anchor from YAxis
 
 extension SingleAnchor where Attribute.Kind.ValueKind == PositionValueKind, Attribute.Axis == YAxis {
+
+    public var      top: SetAnchor<Base> { appending(.top) }
     public var     left: PointAnchor<Base, Left, Attribute> { PointAnchor(item) }
     public var    right: PointAnchor<Base, Right, Attribute> { PointAnchor(item) }
     public var  leading: PointAnchor<Base, Leading, Attribute> { PointAnchor(item) }
     public var trailing: PointAnchor<Base, Trailing, Attribute> { PointAnchor(item) }
-    public var  centerX: PointAnchor<Base, CenterX, Attribute> { PointAnchor(item) }
+    public var   bottom: SetAnchor<Base> { appending(.bottom) }
 
+    public var      topMargin: SetAnchor<Base> { appending(.topMargin) }
     public var     leftMargin: PointAnchor<Base, LeftMargin, Attribute> { PointAnchor(item) }
     public var    rightMargin: PointAnchor<Base, RightMargin, Attribute> { PointAnchor(item) }
     public var  leadingMargin: PointAnchor<Base, LeadingMargin, Attribute> { PointAnchor(item) }
     public var trailingMargin: PointAnchor<Base, TrailingMargin, Attribute> { PointAnchor(item) }
-    
+    public var   bottomMargin: SetAnchor<Base> { appending(.bottomMargin) }
+
+    public var centerY: SetAnchor<Base> { appending(.centerY) }
+    public var centerX: PointAnchor<Base, CenterX, Attribute> { PointAnchor(item) }
+
     public var centerXWithinMargins: PointAnchor<Base, CenterXWithinMargins, Attribute> { PointAnchor(item) }
+    public var centerYWithinMargins: SetAnchor<Base> { appending(.centerYWithinMargins) }
 }
 
+extension SingleAnchor where Attribute.Kind.ValueKind == PositionValueKind, Base: FrameConstrainable {
+
+    public var  width: SetAnchor<Base> { appending(.width) }
+    public var height: SetAnchor<Base> { appending(.height) }
+}
+
+extension SingleAnchor where Base: BaselineConstrainable, Attribute.Kind.ValueKind == PositionValueKind, Attribute.Axis == YAxis {
+    public var  lastBaseline: SetAnchor<Base> { appending(.lastBaseline)  }
+    public var firstBaseline: SetAnchor<Base> { appending(.firstBaseline) }
+}
 
 // MARK: - Coordinate Anchor from X Dimension
 
 extension SingleAnchor where Base: FrameConstrainable, Attribute.Kind.ValueKind == DimensionValueKind, Attribute.Axis == XAxis {
+    public var      top: SetAnchor<Base> { appending(.top) }
+    public var     left: SetAnchor<Base> { appending(.left) }
+    public var    right: SetAnchor<Base> { appending(.right) }
+    public var   bottom: SetAnchor<Base> { appending(.bottom) }
+    public var  leading: SetAnchor<Base> { appending(.leading) }
+    public var trailing: SetAnchor<Base> { appending(.trailing) }
+    
+    public var      topMargin: SetAnchor<Base> { appending(.topMargin) }
+    public var     leftMargin: SetAnchor<Base> { appending(.leftMargin) }
+    public var    rightMargin: SetAnchor<Base> { appending(.rightMargin) }
+    public var   bottomMargin: SetAnchor<Base> { appending(.bottomMargin) }
+    public var  leadingMargin: SetAnchor<Base> { appending(.leadingMargin) }
+    public var trailingMargin: SetAnchor<Base> { appending(.trailingMargin) }
+    
+    public var centerX: SetAnchor<Base> { appending(.centerX) }
+    public var centerY: SetAnchor<Base> { appending(.centerY) }
+    
+    public var centerXWithinMargins: SetAnchor<Base> { appending(.centerXWithinMargins) }
+    public var centerYWithinMargins: SetAnchor<Base> { appending(.centerYWithinMargins) }
+    
+    public var  width: SetAnchor<Base> { appending(.width) }
     public var height: SizeAnchor<Base> { SizeAnchor(item) }
+}
+
+extension SingleAnchor where Base: BaselineConstrainable, Attribute.Kind.ValueKind == DimensionValueKind, Attribute.Axis == XAxis {
+    public var  lastBaseline: SetAnchor<Base> { appending(.lastBaseline)  }
+    public var firstBaseline: SetAnchor<Base> { appending(.firstBaseline) }
 }
 
 // MARK: - Coordinate Anchor from Y Dimension
 
 extension SingleAnchor where Base: FrameConstrainable, Attribute.Kind.ValueKind == DimensionValueKind, Attribute.Axis == YAxis {
-    public var width: SizeAnchor<Base> { SizeAnchor(item) }
+    public var      top: SetAnchor<Base> { appending(.top) }
+    public var     left: SetAnchor<Base> { appending(.left) }
+    public var    right: SetAnchor<Base> { appending(.right) }
+    public var   bottom: SetAnchor<Base> { appending(.bottom) }
+    public var  leading: SetAnchor<Base> { appending(.leading) }
+    public var trailing: SetAnchor<Base> { appending(.trailing) }
+    
+    public var      topMargin: SetAnchor<Base> { appending(.topMargin) }
+    public var     leftMargin: SetAnchor<Base> { appending(.leftMargin) }
+    public var    rightMargin: SetAnchor<Base> { appending(.rightMargin) }
+    public var   bottomMargin: SetAnchor<Base> { appending(.bottomMargin) }
+    public var  leadingMargin: SetAnchor<Base> { appending(.leadingMargin) }
+    public var trailingMargin: SetAnchor<Base> { appending(.trailingMargin) }
+    
+    public var centerX: SetAnchor<Base> { appending(.centerX) }
+    public var centerY: SetAnchor<Base> { appending(.centerY) }
+    
+    public var centerXWithinMargins: SetAnchor<Base> { appending(.centerXWithinMargins) }
+    public var centerYWithinMargins: SetAnchor<Base> { appending(.centerYWithinMargins) }
+    
+    public var  width: SizeAnchor<Base> { SizeAnchor(item) }
+    public var height: SetAnchor<Base> { appending(.height) }
+}
+
+extension SingleAnchor where Base: BaselineConstrainable, Attribute.Kind.ValueKind == DimensionValueKind, Attribute.Axis == YAxis {
+    public var  lastBaseline: SetAnchor<Base> { appending(.lastBaseline)  }
+    public var firstBaseline: SetAnchor<Base> { appending(.firstBaseline) }
 }
 
 // MARK: - Disabling Redundant Top Attribute
@@ -285,61 +367,61 @@ extension SingleAnchor where Attribute == Height {
 }
 
 extension PointAnchor where Base: FrameConstrainable {
-    public var      top: AnchorSet<Base> { appending(.top) }
-    public var     left: AnchorSet<Base> { appending(.left) }
-    public var    right: AnchorSet<Base> { appending(.right) }
-    public var   bottom: AnchorSet<Base> { appending(.bottom) }
-    public var  leading: AnchorSet<Base> { appending(.leading) }
-    public var trailing: AnchorSet<Base> { appending(.trailing) }
+    public var      top: SetAnchor<Base> { appending(.top) }
+    public var     left: SetAnchor<Base> { appending(.left) }
+    public var    right: SetAnchor<Base> { appending(.right) }
+    public var   bottom: SetAnchor<Base> { appending(.bottom) }
+    public var  leading: SetAnchor<Base> { appending(.leading) }
+    public var trailing: SetAnchor<Base> { appending(.trailing) }
 
-    public var      topMargin: AnchorSet<Base> { appending(.topMargin) }
-    public var     leftMargin: AnchorSet<Base> { appending(.leftMargin) }
-    public var    rightMargin: AnchorSet<Base> { appending(.rightMargin) }
-    public var   bottomMargin: AnchorSet<Base> { appending(.bottomMargin) }
-    public var  leadingMargin: AnchorSet<Base> { appending(.leadingMargin) }
-    public var trailingMargin: AnchorSet<Base> { appending(.trailingMargin) }
+    public var      topMargin: SetAnchor<Base> { appending(.topMargin) }
+    public var     leftMargin: SetAnchor<Base> { appending(.leftMargin) }
+    public var    rightMargin: SetAnchor<Base> { appending(.rightMargin) }
+    public var   bottomMargin: SetAnchor<Base> { appending(.bottomMargin) }
+    public var  leadingMargin: SetAnchor<Base> { appending(.leadingMargin) }
+    public var trailingMargin: SetAnchor<Base> { appending(.trailingMargin) }
 
-    public var centerX: AnchorSet<Base> { appending(.centerX) }
-    public var centerY: AnchorSet<Base> { appending(.centerY) }
+    public var centerX: SetAnchor<Base> { appending(.centerX) }
+    public var centerY: SetAnchor<Base> { appending(.centerY) }
 
-    public var centerXWithinMargins: AnchorSet<Base> { appending(.centerXWithinMargins) }
-    public var centerYWithinMargins: AnchorSet<Base> { appending(.centerYWithinMargins) }
+    public var centerXWithinMargins: SetAnchor<Base> { appending(.centerXWithinMargins) }
+    public var centerYWithinMargins: SetAnchor<Base> { appending(.centerYWithinMargins) }
 
-    public var  width: AnchorSet<Base> { appending(.width) }
-    public var height: AnchorSet<Base> { appending(.height) }
+    public var  width: SetAnchor<Base> { appending(.width) }
+    public var height: SetAnchor<Base> { appending(.height) }
 }
 
 extension PointAnchor where Base: BaselineConstrainable {
-    public var  lastBaseline: AnchorSet<Base> { appending(.lastBaseline)  }
-    public var firstBaseline: AnchorSet<Base> { appending(.firstBaseline) }
+    public var  lastBaseline: SetAnchor<Base> { appending(.lastBaseline)  }
+    public var firstBaseline: SetAnchor<Base> { appending(.firstBaseline) }
 }
 
-extension AnchorSet where Base: FrameConstrainable {
-    public var      top: AnchorSet<Base> { appending(.top) }
-    public var     left: AnchorSet<Base> { appending(.left) }
-    public var    right: AnchorSet<Base> { appending(.right) }
-    public var   bottom: AnchorSet<Base> { appending(.bottom) }
-    public var  leading: AnchorSet<Base> { appending(.leading) }
-    public var trailing: AnchorSet<Base> { appending(.trailing) }
+extension SetAnchor where Base: FrameConstrainable {
+    public var      top: SetAnchor<Base> { appending(.top) }
+    public var     left: SetAnchor<Base> { appending(.left) }
+    public var    right: SetAnchor<Base> { appending(.right) }
+    public var   bottom: SetAnchor<Base> { appending(.bottom) }
+    public var  leading: SetAnchor<Base> { appending(.leading) }
+    public var trailing: SetAnchor<Base> { appending(.trailing) }
 
-    public var      topMargin: AnchorSet<Base> { appending(.topMargin) }
-    public var     leftMargin: AnchorSet<Base> { appending(.leftMargin) }
-    public var    rightMargin: AnchorSet<Base> { appending(.rightMargin) }
-    public var   bottomMargin: AnchorSet<Base> { appending(.bottomMargin) }
-    public var  leadingMargin: AnchorSet<Base> { appending(.leadingMargin) }
-    public var trailingMargin: AnchorSet<Base> { appending(.trailingMargin) }
+    public var      topMargin: SetAnchor<Base> { appending(.topMargin) }
+    public var     leftMargin: SetAnchor<Base> { appending(.leftMargin) }
+    public var    rightMargin: SetAnchor<Base> { appending(.rightMargin) }
+    public var   bottomMargin: SetAnchor<Base> { appending(.bottomMargin) }
+    public var  leadingMargin: SetAnchor<Base> { appending(.leadingMargin) }
+    public var trailingMargin: SetAnchor<Base> { appending(.trailingMargin) }
 
-    public var centerX: AnchorSet<Base> { appending(.centerX) }
-    public var centerY: AnchorSet<Base> { appending(.centerY) }
+    public var centerX: SetAnchor<Base> { appending(.centerX) }
+    public var centerY: SetAnchor<Base> { appending(.centerY) }
 
-    public var centerXWithinMargins: AnchorSet<Base> { appending(.centerXWithinMargins) }
-    public var centerYWithinMargins: AnchorSet<Base> { appending(.centerYWithinMargins) }
+    public var centerXWithinMargins: SetAnchor<Base> { appending(.centerXWithinMargins) }
+    public var centerYWithinMargins: SetAnchor<Base> { appending(.centerYWithinMargins) }
 
-    public var  width: AnchorSet<Base> { appending(.width) }
-    public var height: AnchorSet<Base> { appending(.height) }
+    public var  width: SetAnchor<Base> { appending(.width) }
+    public var height: SetAnchor<Base> { appending(.height) }
 }
 
-extension AnchorSet where Base: BaselineConstrainable {
-    public var  lastBaseline: AnchorSet<Base> { appending(.lastBaseline)  }
-    public var firstBaseline: AnchorSet<Base> { appending(.firstBaseline) }
+extension SetAnchor where Base: BaselineConstrainable {
+    public var  lastBaseline: SetAnchor<Base> { appending(.lastBaseline)  }
+    public var firstBaseline: SetAnchor<Base> { appending(.firstBaseline) }
 }

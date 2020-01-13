@@ -32,4 +32,8 @@ public struct SingleAnchor<Base: Constrainable, Attribute: TwentyLayout.Attribut
         return on(base)
     }
 
+    internal func appending(_ constraintAttribute: NSLayoutConstraint.Attribute) -> SetAnchor<Base> {
+        return SetAnchor(item, [self.constraintAttribute, constraintAttribute])
+    }
+
 }

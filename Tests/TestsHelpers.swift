@@ -58,3 +58,7 @@ func XCTAssertEqual(_ lhs: AnyObject?, _ rhs: AnyObject, file: StaticString = #f
         XCTAssertTrue(lhs === rhs, #"("\#(lhs.map(String.init(describing:)) ?? "nil")") is not equal to ("\#(rhs)")"#, file: file, line: line)
     }
 }
+
+func XCTAssertType<T>(_ lhs: Any, _ rhs: T.Type, file: StaticString = #file, line: UInt = #line) {
+    XCTAssert(lhs is T, file: file, line: line)
+}

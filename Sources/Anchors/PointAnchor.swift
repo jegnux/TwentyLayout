@@ -20,8 +20,8 @@ public struct PointAnchor<Base: Constrainable, XAttribute: Attribute & Modifiabl
         self.item = item
     }
 
-    internal func appending(_ constraintAttribute: NSLayoutConstraint.Attribute) -> AnchorSet<Base> {
-        return AnchorSet(item, constraintAttributes + [constraintAttribute])
+    internal func appending(_ constraintAttribute: NSLayoutConstraint.Attribute) -> SetAnchor<Base> {
+        return SetAnchor(item, constraintAttributes + [constraintAttribute])
     }
     
     internal var anchors: Anchors<PointAnchor<Base, XAttribute, YAttribute>> {
