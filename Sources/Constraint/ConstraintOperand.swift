@@ -125,6 +125,25 @@ extension Optional: Offsetable where Wrapped: Offsetable {}
 extension Optional: Insetable where Wrapped: Insetable {}
 extension Optional: Multiplicable where Wrapped: Multiplicable {}
 
+extension CGPoint: ModifiableConstraintOperand {
+    public func constant(for attribute: NSLayoutConstraint.Attribute) -> CGFloat? {
+        switch attribute {
+        case .top, .topMargin,
+             .centerY, .centerYWithinMargins,
+             .bottom, .bottomMargin,
+             .firstBaseline, .lastBaseline:
+            return y
+        case .left, .leftMargin,
+             .leading, .leadingMargin,
+             .centerX, .centerXWithinMargins,
+             .trailing, .trailingMargin,
+             .right, .rightMargin:
+            return x
+        default: return nil
+        }
+    }
+}
+
 extension CGSize: ModifiableConstraintOperand {
     public func constant(for attribute: NSLayoutConstraint.Attribute) -> CGFloat? {
         switch attribute {

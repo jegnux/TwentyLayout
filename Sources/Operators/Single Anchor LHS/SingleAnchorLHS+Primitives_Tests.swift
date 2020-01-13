@@ -126,7 +126,7 @@ class SingleAnchorLHS_Primitives_Tests: XCTestCase {
     
      // MARK: - Dimension
      
-     func test_Dimension_equal() throws {
+     func test_dimension_equal() throws {
          let layout = makeConstraints { views in
              views.image.anchors.width == 200
          }
@@ -145,7 +145,7 @@ class SingleAnchorLHS_Primitives_Tests: XCTestCase {
          XCTAssertEqual(constraint.constant, 200)
      }
      
-     func test_Dimension_equal_modified() throws {
+     func test_dimension_equal_modified() throws {
          let layout = makeConstraints { views in
              views.image.anchors.height == 200
                  ~ .priority(.defaultLow)
@@ -165,7 +165,7 @@ class SingleAnchorLHS_Primitives_Tests: XCTestCase {
          XCTAssertEqual(constraint.constant, 200)
      }
      
-     func test_Dimension_lessThanOrEqual() throws {
+     func test_dimension_lessThanOrEqual() throws {
          let layout = makeConstraints { views in
              views.image.anchors.width <= 200
          }
@@ -184,7 +184,7 @@ class SingleAnchorLHS_Primitives_Tests: XCTestCase {
          XCTAssertEqual(constraint.constant, 200)
      }
      
-     func test_Dimension_lessThanOrEqual_modified() throws {
+     func test_dimension_lessThanOrEqual_modified() throws {
          let layout = makeConstraints { views in
              views.image.anchors.height <= 200
                  ~ .priority(.defaultLow)
@@ -204,7 +204,7 @@ class SingleAnchorLHS_Primitives_Tests: XCTestCase {
          XCTAssertEqual(constraint.constant, 200)
      }
      
-     func test_Dimension_greaterThanOrEqual() throws {
+     func test_dimension_greaterThanOrEqual() throws {
          let layout = makeConstraints { views in
              views.image.anchors.width >= 200
          }
@@ -223,7 +223,7 @@ class SingleAnchorLHS_Primitives_Tests: XCTestCase {
          XCTAssertEqual(constraint.constant, 200)
      }
      
-     func test_Dimension_greaterThanOrEqual_modified() throws {
+     func test_dimension_greaterThanOrEqual_modified() throws {
          let layout = makeConstraints { views in
              views.image.anchors.height >= 200
                  ~ .priority(.defaultLow)

@@ -23,6 +23,8 @@
 		7532372523CCB51800898C8D /* SetAnchorLHS+OptionalRHSBaseKeyPath_Tests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7532372323CCB50700898C8D /* SetAnchorLHS+OptionalRHSBaseKeyPath_Tests.swift */; };
 		7532372623CCB53100898C8D /* SetAnchorLHS+OptionalRHSBaseKeyPath.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7532372423CCB50700898C8D /* SetAnchorLHS+OptionalRHSBaseKeyPath.swift */; };
 		7532372823CCBEAA00898C8D /* SingleAnchorLHS+Primitives_Tests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7532372723CCBEAA00898C8D /* SingleAnchorLHS+Primitives_Tests.swift */; };
+		7532372B23CD0C8700898C8D /* PointAnchorLHS+Primitives_Tests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7532372A23CD0C3F00898C8D /* PointAnchorLHS+Primitives_Tests.swift */; };
+		7532372C23CD0D2200898C8D /* PointAnchorLHS+Primitives.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7532372923CD0C3F00898C8D /* PointAnchorLHS+Primitives.swift */; };
 		7538EA6D23AD7B8F00E8922F /* TestsHelpers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7538EA6C23AD7B8F00E8922F /* TestsHelpers.swift */; };
 		7538EA6F23AD7CF600E8922F /* SingleAnchorLHS+RHSBase_Tests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7538EA6E23AD7CF600E8922F /* SingleAnchorLHS+RHSBase_Tests.swift */; };
 		7538EA7223AD856F00E8922F /* SingleAnchorLHS+RHSBaseKeyPath_Tests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7538EA7023AD836000E8922F /* SingleAnchorLHS+RHSBaseKeyPath_Tests.swift */; };
@@ -123,6 +125,8 @@
 		7532372323CCB50700898C8D /* SetAnchorLHS+OptionalRHSBaseKeyPath_Tests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "SetAnchorLHS+OptionalRHSBaseKeyPath_Tests.swift"; sourceTree = "<group>"; };
 		7532372423CCB50700898C8D /* SetAnchorLHS+OptionalRHSBaseKeyPath.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "SetAnchorLHS+OptionalRHSBaseKeyPath.swift"; sourceTree = "<group>"; };
 		7532372723CCBEAA00898C8D /* SingleAnchorLHS+Primitives_Tests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "SingleAnchorLHS+Primitives_Tests.swift"; sourceTree = "<group>"; };
+		7532372923CD0C3F00898C8D /* PointAnchorLHS+Primitives.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "PointAnchorLHS+Primitives.swift"; sourceTree = "<group>"; };
+		7532372A23CD0C3F00898C8D /* PointAnchorLHS+Primitives_Tests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "PointAnchorLHS+Primitives_Tests.swift"; sourceTree = "<group>"; };
 		7538EA6C23AD7B8F00E8922F /* TestsHelpers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestsHelpers.swift; sourceTree = "<group>"; };
 		7538EA6E23AD7CF600E8922F /* SingleAnchorLHS+RHSBase_Tests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "SingleAnchorLHS+RHSBase_Tests.swift"; sourceTree = "<group>"; };
 		7538EA7023AD836000E8922F /* SingleAnchorLHS+RHSBaseKeyPath_Tests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "SingleAnchorLHS+RHSBaseKeyPath_Tests.swift"; sourceTree = "<group>"; };
@@ -285,6 +289,8 @@
 		7538EA8623B1FCDF00E8922F /* Point Anchor LHS */ = {
 			isa = PBXGroup;
 			children = (
+				7532372923CD0C3F00898C8D /* PointAnchorLHS+Primitives.swift */,
+				7532372A23CD0C3F00898C8D /* PointAnchorLHS+Primitives_Tests.swift */,
 				75A7BA1123A18EB600BD8664 /* PointAnchorLHS+PointAnchorRHS.swift */,
 				7538EA8323AFBFF900E8922F /* PointAnchorLHS+PointAnchorRHS_Tests.swift */,
 				7538EA8923B1FF7000E8922F /* PointAnchorLHS+RHSBase.swift */,
@@ -579,6 +585,7 @@
 				75A7BA0B23A18A9100BD8664 /* WithinMarginsAttribute.swift in Sources */,
 				75A7BA1E23A1909300BD8664 /* SingleAnchorLHS+RHSBase.swift in Sources */,
 				75A7BA0923A18A8700BD8664 /* MarginAttribute.swift in Sources */,
+				7532372C23CD0D2200898C8D /* PointAnchorLHS+Primitives.swift in Sources */,
 				8481FC3A239C52DD00D9B1CC /* Anchors+DSL.swift in Sources */,
 				7538EA9323B20A1800E8922F /* PointAnchorLHS+OptionalRHSBaseKeyPath.swift in Sources */,
 				7532372223CCAFC000898C8D /* SetAnchorLHS+RHSBaseKeyPath.swift in Sources */,
@@ -637,6 +644,7 @@
 				7538EA6D23AD7B8F00E8922F /* TestsHelpers.swift in Sources */,
 				7583FA5123BB34360026E89B /* SizeAnchorLHS+OptionalSizeAnchorRHSKeyPath_Tests.swift in Sources */,
 				75CB81CB23AD64D40032708B /* SingleAnchorLHS+SingleAnchorRHS_Tests.swift in Sources */,
+				7532372B23CD0C8700898C8D /* PointAnchorLHS+Primitives_Tests.swift in Sources */,
 				7538EA8423AFC01B00E8922F /* PointAnchorLHS+PointAnchorRHS_Tests.swift in Sources */,
 				7538EA7E23AEB46500E8922F /* SingleAnchorLHS+SingleAnchorRHSKeyPath_Tests.swift in Sources */,
 				7532372123CCAFB800898C8D /* SetAnchorLHS+RHSBaseKeyPath_Tests.swift in Sources */,
