@@ -190,32 +190,25 @@ public struct Constraint: Hashable, CustomStringConvertible {
         self.priority = rhs.priority
     }
 
-    /*
-    internal init<LHSBase: Constrainable, RHSBase: Constrainable>(
+    internal init?<LHSBase: Constrainable, RHS: ConstraintOperand>(
         _ lhs: LHSBase,
         _ lhsAttribute: NSLayoutConstraint.Attribute,
         _ relation: NSLayoutConstraint.Relation,
-        _ rhs: RHSBase,
+        _ rhs: RHS?,
         _ rhsAttribute: NSLayoutConstraint.Attribute
-    ) {
+    ) where
+        RHS.Value : Constrainable
+    {
+        guard let rhs = rhs else {
+            return nil
+        }
         self.lhs = ConstraintExpression(lhs, lhsAttribute)
         self.relation = relation
-        self.rhs = .expression(ConstraintExpression(rhs, rhsAttribute))
+        self.rhs = .expression(ConstraintExpression(rhs.constraintValue, rhsAttribute))
+        self.constant = rhs.constant(for: rhsAttribute)
+        self.multiplier = rhs.multiplier
+        self.priority = rhs.priority
     }
-
-    internal init<LHSBase, RHSBase, LHSAttribute, RHSAttribute>(
-        _ lhs: SingleAnchor<LHSBase, LHSAttribute>,
-        _ relation: NSLayoutConstraint.Relation,
-        _ rhs: SingleAnchor<RHSBase, RHSAttribute>
-    ) where
-        LHSAttribute.Kind: DimensionAttributeKind,
-        RHSAttribute.Kind: DimensionAttributeKind
-    {
-        self.lhs = ConstraintExpression(lhs)
-        self.relation = relation
-        self.rhs = .expression(ConstraintExpression(rhs))
-    }
- */
 
     public var description: String {
         let components = [
