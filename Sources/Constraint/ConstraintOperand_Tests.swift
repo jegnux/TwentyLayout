@@ -9,7 +9,7 @@
 import XCTest
 import TwentyLayout
 
-class ConstraintProperties_Tests: XCTestCase {
+class ConstraintOperand_Tests: XCTestCase {
 
     func test_int_default() {
         let x = 80

@@ -39,9 +39,6 @@ extension Int: ModifiableConstraintOperand {}
 extension Float: ModifiableConstraintOperand {}
 extension Double: ModifiableConstraintOperand {}
 extension CGFloat: ModifiableConstraintOperand {}
-//
-//extension UIView: ModifiableConstraintOperand, Offsetable, Insetable, Multiplicable {}
-//extension UILayoutGuide: ModifiableConstraintOperand, Offsetable, Insetable, Multiplicable {}
 
 extension Top:  ModifiableConstraintOperand, Offsetable, Insetable, Multiplicable {}
 extension Left: ModifiableConstraintOperand, Offsetable, Insetable, Multiplicable {}
