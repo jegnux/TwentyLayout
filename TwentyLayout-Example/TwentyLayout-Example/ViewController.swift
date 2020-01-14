@@ -22,43 +22,22 @@ class ColorView : UIView {
 class ViewController : UIViewController {
     let stackLayoutGuide = UILayoutGuide()
     
-    let red = ColorView(.red)
-    let blue = ColorView(.blue)
-    let magenta = ColorView(.magenta)
-    let green = ColorView(.green)
-    let yellow = ColorView(.yellow)
-    let purple = ColorView(.purple)
+    let colorViews = (1...10).map { _ in
+        ColorView(.random)
+    }
+       
     let button = UIButton(type: .custom)
     
     @LayoutController
     var currentLayout: Layout?
-
-    var selectableViews: [UIView] { [blue, green, yellow, purple] }
-
-    var selectedIndex: Int = 0 {
-        didSet {
-            UIView.animate(withDuration: 0.3, delay: 0, options: .beginFromCurrentState, animations: {
-                self.currentLayout = self.makeLayout()
-            }, completion: nil)
-        }
-    }
     
     func makeLayout() -> Layout {
         Layout {
-            Layout.HStack(
-                bounds: stackLayoutGuide,
-                spacing: 8,
-                content: selectableViews
-            )
-            Layout.VStack(
-                alignment: .centerX,
-                spacing: 8,
-                content: [
-                    red,
-                    selectableViews[selectedIndex],
-                    magenta,
-                ]
-            )
+            for view in colorViews {
+                view.anchors.width == 80
+                view.anchors.height == \.width
+                view.anchors.center == CGPoint(x: .random(in: -150...150), y: .random(in: -150...150))
+            }
         }
     }
     
@@ -67,43 +46,44 @@ class ViewController : UIViewController {
         view.backgroundColor = .white
         
         view.addLayoutGuide(stackLayoutGuide) {
-            $0.centerX == view
-            $0.centerY == view
+            $0.center == view
         }
         
-        view.addSubviews(red, blue, magenta, green, yellow, purple) { views in
-            for view in views {
-                //view.anchors.size == 80
-                view.anchors.height == \.width
-            }
-        }
+        view.addSubviews(colorViews)
 
         button.setTitleColor(.red, for: .normal)
-        button.setTitle("Select Random", for: .normal)
+        button.setTitle("Randomize!", for: .normal)
         
         let buttonBackground = UIView()
         buttonBackground.backgroundColor = UIColor(white: 0.95, alpha: 1)
         
         buttonBackground.addSubview(button) { make in
-            //make.edges == its(\.superview)
+            button.anchors.edges == \.superview
+                ~ .inset(top: 4, left: 8, bottom: 4, right: 8)
         }
         
         view.addSubview(buttonBackground) { make in
             make.centerX == \.superview
-//            make.bottom == its(\.superview?.safeAreaLayoutGuide)
-//                .offset(by: -10)
+            make.bottom == \.superview?.safeAreaLayoutGuide
+                ~ .inset(by: 10)
         }
         
-        button.addTarget(self, action: #selector(toggleLayout), for: .touchUpInside)
+        button.addTarget(self, action: #selector(randomize), for: .touchUpInside)
         
         currentLayout = makeLayout()
     }
     
     @objc
-    private func toggleLayout(_ sender: UIButton) {
-        let current = selectedIndex
-        repeat {
-            selectedIndex = selectableViews.indices.randomElement()!
-        } while selectedIndex == current
+    private func randomize(_ sender: UIButton) {
+        UIView.animate(withDuration: 1, delay: 0, usingSpringWithDamping: 0.5, initialSpringVelocity: 10, options: [], animations: {
+            self.currentLayout = self.makeLayout()
+        }, completion: nil)
+    }
+}
+
+extension UIColor {
+    
+    static var random: UIColor {
+        UIColor(hue: .random(in: 0...1), saturation: 1, brightness: .random(in: 0...1), alpha: 1)
     }
 }

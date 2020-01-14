@@ -36,10 +36,10 @@ public func <= <
     RHS.Value: Constrainable
 {
     guard let rhs = rhs else { return }
-    lhs.top <= rhs.constraintValue ~ rhs
-    lhs.bottom >= rhs.constraintValue ~ rhs
-    lhs.left <= rhs.constraintValue ~ rhs
-    lhs.right >= rhs.constraintValue ~ rhs
+    lhs.top >= rhs.constraintValue ~ rhs
+    lhs.bottom <= rhs.constraintValue ~ rhs
+    lhs.left >= rhs.constraintValue ~ rhs
+    lhs.right <= rhs.constraintValue ~ rhs
 }
 
 /// label.anchors.edges >= otherLabel.anchors.margin ~ .xxx
@@ -54,9 +54,9 @@ public func >= <
     RHS.Value: Constrainable
 {
     guard let rhs = rhs else { return }
-    lhs.top >= rhs.constraintValue ~ rhs
-    lhs.bottom <= rhs.constraintValue ~ rhs
-    lhs.left >= rhs.constraintValue ~ rhs
-    lhs.right <= rhs.constraintValue ~ rhs
+    lhs.top <= rhs.constraintValue ~ rhs
+    lhs.bottom >= rhs.constraintValue ~ rhs
+    lhs.left <= rhs.constraintValue ~ rhs
+    lhs.right >= rhs.constraintValue ~ rhs
 }
 

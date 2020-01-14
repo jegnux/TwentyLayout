@@ -47,10 +47,10 @@ public func <= <
     lhs: EdgesAnchor<LHSBase, LHSTop, LHSBottom, LHSLeft, LHSRight>,
     rhs: KeyPath<LHSBase, RHSBase?>
 ) {
-    lhs.top <= rhs
-    lhs.bottom >= rhs
-    lhs.left <= rhs
-    lhs.right >= rhs
+    lhs.top >= rhs
+    lhs.bottom <= rhs
+    lhs.left >= rhs
+    lhs.right <= rhs
 }
 
 /// label.anchors.edges <= \.otherLabel ~ .xxx
@@ -64,10 +64,10 @@ public func <= <
 ) where
     RHS.Value == KeyPath<LHSBase, RHSBase?>
 {
-    lhs.top <= rhs
-    lhs.bottom >= rhs
-    lhs.left <= rhs
-    lhs.right >= rhs
+    lhs.top >= rhs
+    lhs.bottom <= rhs
+    lhs.left >= rhs
+    lhs.right <= rhs
 }
 
 /// label.anchors.edges >= \.otherLabel
@@ -79,10 +79,10 @@ public func >= <
     lhs: EdgesAnchor<LHSBase, LHSTop, LHSBottom, LHSLeft, LHSRight>,
     rhs: KeyPath<LHSBase, RHSBase?>
 ) {
-    lhs.top >= rhs
-    lhs.bottom <= rhs
-    lhs.left >= rhs
-    lhs.right <= rhs
+    lhs.top <= rhs
+    lhs.bottom >= rhs
+    lhs.left <= rhs
+    lhs.right >= rhs
 }
 
 /// label.anchors.edges >= \.otherLabel ~ .xxx
@@ -96,8 +96,8 @@ public func >= <
 ) where
     RHS.Value == KeyPath<LHSBase, RHSBase?>
 {
-    lhs.top >= rhs
-    lhs.bottom <= rhs
-    lhs.left >= rhs
-    lhs.right <= rhs
+    lhs.top <= rhs
+    lhs.bottom >= rhs
+    lhs.left <= rhs
+    lhs.right >= rhs
 }
