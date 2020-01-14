@@ -15,28 +15,58 @@ public final class LayoutController {
         
     public var wrappedValue: Layout? {
         didSet {
-            switch (oldValue, wrappedValue) {
-            case (let old?, nil):
-                old.deactivate()
-            case (let old?, let new?):
-                old.deactivate()
-                new.activate()
-            case (nil, let new?):
-                new.activate()
-            case (nil, nil):
-                break
-            }
-            let firstCommonAncestor = UIView.firstCommonAncestor(
-                between: oldValue?.firstCommonAncestor,
-                and: wrappedValue?.firstCommonAncestor
-            )
-            if UIView.inheritedAnimationDuration > 0, let animatableView = firstCommonAncestor {
-                print("Animatable View:", animatableView)
-                animatableView.layoutIfNeeded()
-            }
-            if let new = wrappedValue {
-                print(new)
-            }
+            Layout.update(from: oldValue, to: wrappedValue)
         }
     }
+}
+
+extension Layout {
+    
+    public static func update(from oldLayout: Layout?, to newLayout: Layout?) {
+        switch (oldLayout, newLayout) {
+        case (let old?, nil):
+            old.deactivate()
+        case (let old?, let new?):
+            old.deactivate()
+            new.activate()
+        case (nil, let new?):
+            new.activate()
+        case (nil, nil):
+            break
+        }
+        let firstCommonAncestor = UIView.firstCommonAncestor(
+            between: oldLayout?.firstCommonAncestor,
+            and: newLayout?.firstCommonAncestor
+        )
+        if UIView.inheritedAnimationDuration > 0, let animatableView = firstCommonAncestor {
+            animatableView.layoutIfNeeded()
+        }
+    }
+    
+    @discardableResult
+    public static func update(from oldLayout: Layout?, to makeNewLayout: () -> Void) -> Layout {
+        let newLayout = Layout(makeNewLayout)
+        Layout.update(from: oldLayout, to: newLayout)
+        return newLayout
+    }
+
+    @discardableResult
+    public func update(to newLayout: Layout) -> Layout {
+        Layout.update(from: self, to: newLayout)
+        return newLayout
+    }
+
+    @discardableResult
+    public func update(to newLayout: Layout?) -> Layout? {
+        Layout.update(from: self, to: newLayout)
+        return newLayout
+    }
+    
+    @discardableResult
+    public func update(to makeNewLayout: () -> Void) -> Layout {
+        let newLayout = Layout(makeNewLayout)
+        Layout.update(from: self, to: newLayout)
+        return newLayout
+    }
+
 }
