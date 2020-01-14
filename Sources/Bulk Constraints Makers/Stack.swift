@@ -29,7 +29,6 @@ extension RelationMaker {
     fileprivate var bottomRelation: NSLayoutConstraint.Relation? { return nil }
 }
 
-
 public enum HStackAlignment: StackAlignment, CaseIterable {
     case fill, top, centerY, bottom
     public static var random: HStackAlignment {

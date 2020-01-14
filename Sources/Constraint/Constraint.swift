@@ -52,6 +52,13 @@ public struct Constraint: Hashable, CustomStringConvertible {
             }
         }
 
+        internal func canUpdate(to otherOperand: Operand) -> Bool {
+            switch (self, otherOperand) {
+            case (.dimension, .dimension): return true
+            case (.expression(let lhs), .expression(let rhs)): return lhs == rhs
+            default: return false
+            }
+        }
     }
     internal let lhs: ConstraintExpression
     internal let relation: NSLayoutConstraint.Relation
@@ -229,10 +236,12 @@ public struct Constraint: Hashable, CustomStringConvertible {
             .joined(separator: " ")
     }
     
-    internal func canUpdate(_ otherConstraint: Constraint) -> Bool {
+    internal func canUpdate(to otherConstraint: Constraint) -> Bool {
         return lhs == otherConstraint.lhs
-            && rhs == otherConstraint.rhs
+            && rhs.canUpdate(to: otherConstraint.rhs)
             && relation == otherConstraint.relation
+            && multiplier == otherConstraint.multiplier
+            && ((priority == otherConstraint.priority) || (priority != .required && otherConstraint.priority != .required))
     }
 
 }

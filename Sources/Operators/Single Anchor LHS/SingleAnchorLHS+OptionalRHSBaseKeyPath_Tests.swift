@@ -71,7 +71,7 @@ class SingleAnchorLHS_OptionalRHSBaseKeyPath_Tests: XCTestCase {
          let layout = makeConstraints { views in
             views.image.anchors.bottomMargin <= \.superview
                  ~ .priority(.defaultLow)
-                 ~ .offset(by: 80)
+                ~ .inset(by: 80.0)
                  ~ .multiplied(by: 1.5)
          }
          
@@ -86,7 +86,7 @@ class SingleAnchorLHS_OptionalRHSBaseKeyPath_Tests: XCTestCase {
          XCTAssertEqual(constraint.secondAttribute, .bottomMargin)
          XCTAssertEqual(constraint.priority, .defaultLow)
          XCTAssertEqual(constraint.multiplier, 1.5)
-         XCTAssertEqual(constraint.constant, 80)
+         XCTAssertEqual(constraint.constant, -80)
      }
      
      func test_positionable_greaterThanOrEqual() throws {

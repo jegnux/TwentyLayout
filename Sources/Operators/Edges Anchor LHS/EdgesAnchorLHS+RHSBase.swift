@@ -24,7 +24,6 @@ public func == <
     lhs.right == rhs.constraintValue ~ rhs
 }
 
-
 /// label.anchors.edges <= otherLabel.anchors.margins ~ .xxx
 public func <= <
     LHSBase,

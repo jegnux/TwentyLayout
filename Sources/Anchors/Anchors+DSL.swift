@@ -284,7 +284,6 @@ extension SingleAnchor where Attribute == Right {
     public var rightMargin: SingleAnchor<Base, Attribute> { fatalError() }
 }
 
-
 // MARK: - Disabling Redundant LeftMargin Attribute
 
 extension SingleAnchor where Attribute == LeftMargin {

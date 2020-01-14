@@ -12,8 +12,6 @@ class SizeAnchorLHS_SizeAnchorRHS_Tests: XCTestCase {
                 views.detail.titleLabel.anchors.size == views.detail.subtitleLabel.anchors.size
             }
             
-            XCTAssertEqual(layout.constraints.count, 2)
-            
             guard layout.constraints.count == 2 else {
                 return XCTFail()
             }
@@ -45,8 +43,6 @@ class SizeAnchorLHS_SizeAnchorRHS_Tests: XCTestCase {
                     ~ .multiplied(by: 1.5)
             }
             
-            XCTAssertEqual(layout.constraints.count, 2)
-            
             guard layout.constraints.count == 2 else {
                 return XCTFail()
             }
@@ -76,8 +72,6 @@ class SizeAnchorLHS_SizeAnchorRHS_Tests: XCTestCase {
             let layout = makeConstraints { views in
                 views.detail.titleLabel.anchors.size <= views.detail.subtitleLabel.anchors.size
             }
-            
-            XCTAssertEqual(layout.constraints.count, 2)
             
             guard layout.constraints.count == 2 else {
                 return XCTFail()
@@ -110,8 +104,6 @@ class SizeAnchorLHS_SizeAnchorRHS_Tests: XCTestCase {
                     ~ .multiplied(by: 1.5)
             }
             
-            XCTAssertEqual(layout.constraints.count, 2)
-            
             guard layout.constraints.count == 2 else {
                 return XCTFail()
             }
@@ -134,7 +126,6 @@ class SizeAnchorLHS_SizeAnchorRHS_Tests: XCTestCase {
             XCTAssertEqual(layout.constraints[1].multiplier, 1.5)
             XCTAssertEqual(layout.constraints[1].constant, 80)
         }
-
 
     // MARK: - Greater Than Or Equal
      

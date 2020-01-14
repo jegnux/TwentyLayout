@@ -30,7 +30,7 @@ class SingleAnchorLHS_RHSBase_Tests: XCTestCase {
          let layout = makeConstraints { views in
              views.image.anchors.leading == views.container
                  ~ .priority(.defaultLow)
-                 ~ .offset(by: 80)
+                ~ .offset(by: 80.0)
                  ~ .multiplied(by: 1.5)
          }
          
@@ -155,7 +155,7 @@ class SingleAnchorLHS_RHSBase_Tests: XCTestCase {
          let layout = makeConstraints { views in
              views.image.anchors.height == views.container
                  ~ .priority(.defaultLow)
-                 ~ .offset(by: 80)
+                ~ .offset(by: 80.0)
                  ~ .multiplied(by: 1.5)
          }
          

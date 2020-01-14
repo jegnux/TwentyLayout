@@ -32,7 +32,6 @@ public func == <
     lhs.height == lhs.item[keyPath: rhs.constraintValue].height ~ rhs
 }
 
-
 /// label.anchors.size <= \.image.anchors.size
 public func <= <
     LHSBase,
@@ -44,7 +43,6 @@ public func <= <
     lhs.width <= lhs.item[keyPath: rhs.constraintValue].width ~ rhs
     lhs.height <= lhs.item[keyPath: rhs.constraintValue].height ~ rhs
 }
-
 
 /// label.anchors.size <= \.image.anchors.size
 public func <= <

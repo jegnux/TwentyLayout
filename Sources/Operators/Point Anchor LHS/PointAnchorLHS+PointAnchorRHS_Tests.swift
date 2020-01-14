@@ -12,8 +12,6 @@ class PointAnchorLHS_PointAnchorRHS_Tests: XCTestCase {
                 views.image.anchors.bottom.left == views.detail.subtitleLabel.anchors.top.right
             }
             
-            XCTAssertEqual(layout.constraints.count, 2)
-            
             guard layout.constraints.count == 2 else {
                 return XCTFail()
             }
@@ -45,8 +43,6 @@ class PointAnchorLHS_PointAnchorRHS_Tests: XCTestCase {
                     ~ .multiplied(by: 1.5)
             }
             
-            XCTAssertEqual(layout.constraints.count, 2)
-            
             guard layout.constraints.count == 2 else {
                 return XCTFail()
             }
@@ -76,8 +72,6 @@ class PointAnchorLHS_PointAnchorRHS_Tests: XCTestCase {
             let layout = makeConstraints { views in
                 views.image.anchors.bottom.left <= views.detail.subtitleLabel.anchors.top.right
             }
-            
-            XCTAssertEqual(layout.constraints.count, 2)
             
             guard layout.constraints.count == 2 else {
                 return XCTFail()
@@ -110,8 +104,6 @@ class PointAnchorLHS_PointAnchorRHS_Tests: XCTestCase {
                     ~ .multiplied(by: 1.5)
             }
             
-            XCTAssertEqual(layout.constraints.count, 2)
-            
             guard layout.constraints.count == 2 else {
                 return XCTFail()
             }
@@ -134,7 +126,6 @@ class PointAnchorLHS_PointAnchorRHS_Tests: XCTestCase {
             XCTAssertEqual(layout.constraints[1].multiplier, 1.5)
             XCTAssertEqual(layout.constraints[1].constant, -80)
         }
-
 
     // MARK: - Greater Than Or Equal
      

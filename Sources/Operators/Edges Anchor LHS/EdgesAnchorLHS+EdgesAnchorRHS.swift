@@ -40,10 +40,10 @@ public func <= <
     RHS.Value == EdgesAnchor<RHSBase, RHSTop, RHSBottom, RHSLeft, RHSRight>
 {
     guard let rhs = rhs else { return }
-    lhs.top <= rhs.constraintValue.top ~ rhs
-    lhs.bottom >= rhs.constraintValue.bottom ~ rhs
-    lhs.left <= rhs.constraintValue.left ~ rhs
-    lhs.right >= rhs.constraintValue.right ~ rhs
+    lhs.top >= rhs.constraintValue.top ~ rhs
+    lhs.bottom <= rhs.constraintValue.bottom ~ rhs
+    lhs.left >= rhs.constraintValue.left ~ rhs
+    lhs.right <= rhs.constraintValue.right ~ rhs
 }
 
 /// label.anchors.edges >= otherLabel.anchors.margin ~ .xxx
@@ -60,8 +60,8 @@ public func >= <
     RHS.Value == EdgesAnchor<RHSBase, RHSTop, RHSBottom, RHSLeft, RHSRight>
 {
     guard let rhs = rhs else { return }
-    lhs.top >= rhs.constraintValue.top ~ rhs
-    lhs.bottom <= rhs.constraintValue.bottom ~ rhs
-    lhs.left >= rhs.constraintValue.left ~ rhs
-    lhs.right <= rhs.constraintValue.right ~ rhs
+    lhs.top <= rhs.constraintValue.top ~ rhs
+    lhs.bottom >= rhs.constraintValue.bottom ~ rhs
+    lhs.left <= rhs.constraintValue.left ~ rhs
+    lhs.right >= rhs.constraintValue.right ~ rhs
 }

@@ -12,8 +12,6 @@ class SetAnchorLHS_RHSBase_Tests: XCTestCase {
                 views.detail.titleLabel.anchors.top.width.centerY == views.detail.subtitleLabel
             }
             
-            XCTAssertEqual(layout.constraints.count, 3)
-            
             guard layout.constraints.count == 3 else {
                 return XCTFail()
             }
@@ -55,8 +53,6 @@ class SetAnchorLHS_RHSBase_Tests: XCTestCase {
             }
             
             
-            XCTAssertEqual(layout.constraints.count, 3)
-            
             guard layout.constraints.count == 3 else {
                 return XCTFail()
             }
@@ -95,8 +91,6 @@ class SetAnchorLHS_RHSBase_Tests: XCTestCase {
             let layout = makeConstraints { views in
                 views.detail.titleLabel.anchors.top.width.centerY <= views.detail.subtitleLabel
             }
-            
-            XCTAssertEqual(layout.constraints.count, 3)
             
             guard layout.constraints.count == 3 else {
                 return XCTFail()
@@ -139,8 +133,6 @@ class SetAnchorLHS_RHSBase_Tests: XCTestCase {
             }
             
             
-            XCTAssertEqual(layout.constraints.count, 3)
-            
             guard layout.constraints.count == 3 else {
                 return XCTFail()
             }
@@ -172,7 +164,6 @@ class SetAnchorLHS_RHSBase_Tests: XCTestCase {
             XCTAssertEqual(layout.constraints[2].multiplier, 1.5)
             XCTAssertEqual(layout.constraints[2].constant, 80)
         }
-
 
     // MARK: - Greater Than Or Equal
      

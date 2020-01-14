@@ -5,7 +5,6 @@
 
 import Foundation
 
-
 /// label.anchors.leading == button
 public func == <
     LHSBase, LHSAttribute,

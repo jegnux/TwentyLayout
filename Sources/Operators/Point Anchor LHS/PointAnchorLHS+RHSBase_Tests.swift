@@ -12,8 +12,6 @@ class PointAnchorLHS_RHSBase_Tests: XCTestCase {
                 views.image.anchors.bottom.leading == views.detail.subtitleLabel
             }
             
-            XCTAssertEqual(layout.constraints.count, 2)
-            
             guard layout.constraints.count == 2 else {
                 return XCTFail()
             }
@@ -45,8 +43,6 @@ class PointAnchorLHS_RHSBase_Tests: XCTestCase {
                     ~ .multiplied(by: 1.5)
             }
             
-            XCTAssertEqual(layout.constraints.count, 2)
-            
             guard layout.constraints.count == 2 else {
                 return XCTFail()
             }
@@ -76,8 +72,6 @@ class PointAnchorLHS_RHSBase_Tests: XCTestCase {
             let layout = makeConstraints { views in
                 views.image.anchors.lastBaseline.centerX <= views.detail.subtitleLabel
             }
-            
-            XCTAssertEqual(layout.constraints.count, 2)
             
             guard layout.constraints.count == 2 else {
                 return XCTFail()
@@ -110,8 +104,6 @@ class PointAnchorLHS_RHSBase_Tests: XCTestCase {
                     ~ .multiplied(by: 1.5)
             }
             
-            XCTAssertEqual(layout.constraints.count, 2)
-            
             guard layout.constraints.count == 2 else {
                 return XCTFail()
             }
@@ -134,7 +126,6 @@ class PointAnchorLHS_RHSBase_Tests: XCTestCase {
             XCTAssertEqual(layout.constraints[1].multiplier, 1.5)
             XCTAssertEqual(layout.constraints[1].constant, 0)
         }
-
 
     // MARK: - Greater Than Or Equal
      
@@ -172,7 +163,7 @@ class PointAnchorLHS_RHSBase_Tests: XCTestCase {
         let layout = makeConstraints { views in
             views.image.anchors.bottomMargin.rightMargin >= views.detail.subtitleLabel
                 ~ .priority(.defaultLow)
-                ~ .inset(by: 80)
+                ~ .inset(top: 80, bottom: 20)
                 ~ .multiplied(by: 1.5)
         }
         
@@ -189,7 +180,7 @@ class PointAnchorLHS_RHSBase_Tests: XCTestCase {
         XCTAssertEqual(layout.constraints[0].secondAttribute, .bottomMargin)
         XCTAssertEqual(layout.constraints[0].priority, .defaultLow)
         XCTAssertEqual(layout.constraints[0].multiplier, 1.5)
-        XCTAssertEqual(layout.constraints[0].constant, -80)
+        XCTAssertEqual(layout.constraints[0].constant, -20)
 
         XCTAssertEqual(layout.constraints[1].firstItem, layout.views.image)
         XCTAssertEqual(layout.constraints[1].firstAttribute, .rightMargin)
@@ -198,7 +189,7 @@ class PointAnchorLHS_RHSBase_Tests: XCTestCase {
         XCTAssertEqual(layout.constraints[1].secondAttribute, .rightMargin)
         XCTAssertEqual(layout.constraints[1].priority, .defaultLow)
         XCTAssertEqual(layout.constraints[1].multiplier, 1.5)
-        XCTAssertEqual(layout.constraints[1].constant, -80)
+        XCTAssertEqual(layout.constraints[1].constant, 0)
     }
 }
 

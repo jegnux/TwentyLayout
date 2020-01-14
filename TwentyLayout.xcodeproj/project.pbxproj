@@ -27,6 +27,17 @@
 		7532372C23CD0D2200898C8D /* PointAnchorLHS+Primitives.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7532372923CD0C3F00898C8D /* PointAnchorLHS+Primitives.swift */; };
 		7532372F23CD1F3600898C8D /* SizeAnchorLHS+Primitives_Tests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7532372E23CD1F1300898C8D /* SizeAnchorLHS+Primitives_Tests.swift */; };
 		7532373023CD1FAD00898C8D /* SizeAnchorLHS+Primitives.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7532372D23CD1F1300898C8D /* SizeAnchorLHS+Primitives.swift */; };
+		7532373323CDAD5500898C8D /* EdgesAnchorLHS+Primitives_Tests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7532373223CDAD3000898C8D /* EdgesAnchorLHS+Primitives_Tests.swift */; };
+		7532373423CDB6CC00898C8D /* EdgesAnchorLHS+Primitives.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7532373123CDAD3000898C8D /* EdgesAnchorLHS+Primitives.swift */; };
+		7532373623CDC86100898C8D /* EdgesConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7532373523CDC86100898C8D /* EdgesConstants.swift */; };
+		7532373823CDC89F00898C8D /* ConstraintOperandMutation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7532373723CDC89F00898C8D /* ConstraintOperandMutation.swift */; };
+		7532373A23CDC8C000898C8D /* ConstraintOperandOperator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7532373923CDC8C000898C8D /* ConstraintOperandOperator.swift */; };
+		7532373C23CDC8F900898C8D /* ModifiedConstraintOperand.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7532373B23CDC8F900898C8D /* ModifiedConstraintOperand.swift */; };
+		7532373E23CDC93400898C8D /* ConstraintOperand+Geometry.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7532373D23CDC93400898C8D /* ConstraintOperand+Geometry.swift */; };
+		7532374023CDC94000898C8D /* ConstraintOperand+Attributes.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7532373F23CDC94000898C8D /* ConstraintOperand+Attributes.swift */; };
+		7532374223CDC94D00898C8D /* ConstraintOperand+Anchors.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7532374123CDC94D00898C8D /* ConstraintOperand+Anchors.swift */; };
+		7532374423CDC99800898C8D /* ConstraintOperand+KeyPath.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7532374323CDC99800898C8D /* ConstraintOperand+KeyPath.swift */; };
+		7532374623CDC9A600898C8D /* ConstraintOperand+Optional.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7532374523CDC9A600898C8D /* ConstraintOperand+Optional.swift */; };
 		7538EA6D23AD7B8F00E8922F /* TestsHelpers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7538EA6C23AD7B8F00E8922F /* TestsHelpers.swift */; };
 		7538EA6F23AD7CF600E8922F /* SingleAnchorLHS+RHSBase_Tests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7538EA6E23AD7CF600E8922F /* SingleAnchorLHS+RHSBase_Tests.swift */; };
 		7538EA7223AD856F00E8922F /* SingleAnchorLHS+RHSBaseKeyPath_Tests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7538EA7023AD836000E8922F /* SingleAnchorLHS+RHSBaseKeyPath_Tests.swift */; };
@@ -131,6 +142,17 @@
 		7532372A23CD0C3F00898C8D /* PointAnchorLHS+Primitives_Tests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "PointAnchorLHS+Primitives_Tests.swift"; sourceTree = "<group>"; };
 		7532372D23CD1F1300898C8D /* SizeAnchorLHS+Primitives.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "SizeAnchorLHS+Primitives.swift"; sourceTree = "<group>"; };
 		7532372E23CD1F1300898C8D /* SizeAnchorLHS+Primitives_Tests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "SizeAnchorLHS+Primitives_Tests.swift"; sourceTree = "<group>"; };
+		7532373123CDAD3000898C8D /* EdgesAnchorLHS+Primitives.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "EdgesAnchorLHS+Primitives.swift"; sourceTree = "<group>"; };
+		7532373223CDAD3000898C8D /* EdgesAnchorLHS+Primitives_Tests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "EdgesAnchorLHS+Primitives_Tests.swift"; sourceTree = "<group>"; };
+		7532373523CDC86100898C8D /* EdgesConstants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EdgesConstants.swift; sourceTree = "<group>"; };
+		7532373723CDC89F00898C8D /* ConstraintOperandMutation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConstraintOperandMutation.swift; sourceTree = "<group>"; };
+		7532373923CDC8C000898C8D /* ConstraintOperandOperator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConstraintOperandOperator.swift; sourceTree = "<group>"; };
+		7532373B23CDC8F900898C8D /* ModifiedConstraintOperand.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModifiedConstraintOperand.swift; sourceTree = "<group>"; };
+		7532373D23CDC93400898C8D /* ConstraintOperand+Geometry.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ConstraintOperand+Geometry.swift"; sourceTree = "<group>"; };
+		7532373F23CDC94000898C8D /* ConstraintOperand+Attributes.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ConstraintOperand+Attributes.swift"; sourceTree = "<group>"; };
+		7532374123CDC94D00898C8D /* ConstraintOperand+Anchors.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ConstraintOperand+Anchors.swift"; sourceTree = "<group>"; };
+		7532374323CDC99800898C8D /* ConstraintOperand+KeyPath.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ConstraintOperand+KeyPath.swift"; sourceTree = "<group>"; };
+		7532374523CDC9A600898C8D /* ConstraintOperand+Optional.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ConstraintOperand+Optional.swift"; sourceTree = "<group>"; };
 		7538EA6C23AD7B8F00E8922F /* TestsHelpers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestsHelpers.swift; sourceTree = "<group>"; };
 		7538EA6E23AD7CF600E8922F /* SingleAnchorLHS+RHSBase_Tests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "SingleAnchorLHS+RHSBase_Tests.swift"; sourceTree = "<group>"; };
 		7538EA7023AD836000E8922F /* SingleAnchorLHS+RHSBaseKeyPath_Tests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "SingleAnchorLHS+RHSBaseKeyPath_Tests.swift"; sourceTree = "<group>"; };
@@ -250,6 +272,9 @@
 		753235FC23CC631000898C8D /* Edges Anchor LHS */ = {
 			isa = PBXGroup;
 			children = (
+				7532373523CDC86100898C8D /* EdgesConstants.swift */,
+				7532373123CDAD3000898C8D /* EdgesAnchorLHS+Primitives.swift */,
+				7532373223CDAD3000898C8D /* EdgesAnchorLHS+Primitives_Tests.swift */,
 				753235FD23CC632400898C8D /* EdgesAnchorLHS+EdgesAnchorRHS.swift */,
 				753235FE23CC633000898C8D /* EdgesAnchorLHS+EdgesAnchorRHS_Tests.swift */,
 				7532371723CCAD2300898C8D /* EdgesAnchorLHS+RHSBase.swift */,
@@ -392,6 +417,14 @@
 				84544056239A5FCD00722C99 /* ConstraintExpression.swift */,
 				84544050239A58E200722C99 /* Constrainable.swift */,
 				84544052239A591600722C99 /* ConstraintOperand.swift */,
+				7532373D23CDC93400898C8D /* ConstraintOperand+Geometry.swift */,
+				7532373F23CDC94000898C8D /* ConstraintOperand+Attributes.swift */,
+				7532374123CDC94D00898C8D /* ConstraintOperand+Anchors.swift */,
+				7532374323CDC99800898C8D /* ConstraintOperand+KeyPath.swift */,
+				7532374523CDC9A600898C8D /* ConstraintOperand+Optional.swift */,
+				7532373B23CDC8F900898C8D /* ModifiedConstraintOperand.swift */,
+				7532373923CDC8C000898C8D /* ConstraintOperandOperator.swift */,
+				7532373723CDC89F00898C8D /* ConstraintOperandMutation.swift */,
 				754A213123A4056D0042E6DF /* ConstraintOperand_Tests.swift */,
 			);
 			path = Constraint;
@@ -574,15 +607,19 @@
 			buildActionMask = 2147483647;
 			files = (
 				7532361123CC7B0600898C8D /* EdgesAnchorLHS+EdgesAnchorRHSKeyPath.swift in Sources */,
+				7532374023CDC94000898C8D /* ConstraintOperand+Attributes.swift in Sources */,
 				7532372623CCB53100898C8D /* SetAnchorLHS+OptionalRHSBaseKeyPath.swift in Sources */,
 				756517D423A0FFA7008D8115 /* UIView+Layout.swift in Sources */,
 				7538EAC123BA966D00E8922F /* SizeAnchorLHS+OptionalRHSBaseKeyPath.swift in Sources */,
 				7532361623CC7C5D00898C8D /* EdgesAnchorLHS+OptionalEdgesAnchorRHSKeyPath.swift in Sources */,
+				7532373823CDC89F00898C8D /* ConstraintOperandMutation.swift in Sources */,
 				7538EABF23B9EBE600E8922F /* SizeAnchorLHS+RHSBaseKeyPath.swift in Sources */,
 				7532360023CC656100898C8D /* EdgesAnchorLHS+EdgesAnchorRHS.swift in Sources */,
 				753235FB23CC60EB00898C8D /* EdgesAnchor.swift in Sources */,
+				7532373623CDC86100898C8D /* EdgesConstants.swift in Sources */,
 				8454405B239A600500722C99 /* Constraint.swift in Sources */,
 				7538EA9C23B2151D00E8922F /* PointAnchorLHS+OptionalPointAnchorRHSKeyPath.swift in Sources */,
+				7532374423CDC99800898C8D /* ConstraintOperand+KeyPath.swift in Sources */,
 				7538EAC323BA976700E8922F /* SizeAnchorLHS+SizeAnchorRHSKeyPath.swift in Sources */,
 				7538EA7B23AEAE7E00E8922F /* SingleAnchorLHS+OptionalSingleAnchorRHSKeyPath.swift in Sources */,
 				84544061239A629200722C99 /* Utilities.swift in Sources */,
@@ -593,10 +630,13 @@
 				75A7BA0923A18A8700BD8664 /* MarginAttribute.swift in Sources */,
 				7532372C23CD0D2200898C8D /* PointAnchorLHS+Primitives.swift in Sources */,
 				8481FC3A239C52DD00D9B1CC /* Anchors+DSL.swift in Sources */,
+				7532374623CDC9A600898C8D /* ConstraintOperand+Optional.swift in Sources */,
 				7538EA9323B20A1800E8922F /* PointAnchorLHS+OptionalRHSBaseKeyPath.swift in Sources */,
 				7532372223CCAFC000898C8D /* SetAnchorLHS+RHSBaseKeyPath.swift in Sources */,
 				84544055239A5FB200722C99 /* SingleAnchor.swift in Sources */,
 				8481FC38239B9DEC00D9B1CC /* LayoutController.swift in Sources */,
+				7532373E23CDC93400898C8D /* ConstraintOperand+Geometry.swift in Sources */,
+				7532373C23CDC8F900898C8D /* ModifiedConstraintOperand.swift in Sources */,
 				84544051239A58E200722C99 /* Constrainable.swift in Sources */,
 				7538EA7623AD900300E8922F /* SingleAnchorLHS+OptionalRHSBaseKeyPath.swift in Sources */,
 				7583FA5323BB39BA0026E89B /* SizeAnchorLHS+OptionalSizeAnchorRHSKeyPath.swift in Sources */,
@@ -609,6 +649,7 @@
 				7532373023CD1FAD00898C8D /* SizeAnchorLHS+Primitives.swift in Sources */,
 				75A7BA1223A18EB600BD8664 /* PointAnchorLHS+PointAnchorRHS.swift in Sources */,
 				75A7BA0323A1864F00BD8664 /* SizeAnchor.swift in Sources */,
+				7532374223CDC94D00898C8D /* ConstraintOperand+Anchors.swift in Sources */,
 				7532360323CC683300898C8D /* SetAnchorLHS+RHSBase.swift in Sources */,
 				7538EA8023AEBF3800E8922F /* SingleAnchorLHS+SingleAnchorRHSKeyPath.swift in Sources */,
 				75A7BA2823A1918300BD8664 /* SingleAnchorLHS+SingleAnchorLHSKeyPath.swift in Sources */,
@@ -621,7 +662,9 @@
 				84544053239A591600722C99 /* ConstraintOperand.swift in Sources */,
 				75A7BA0723A18A4800BD8664 /* Attribute.swift in Sources */,
 				75A7BA0523A1865A00BD8664 /* SetAnchor.swift in Sources */,
+				7532373423CDB6CC00898C8D /* EdgesAnchorLHS+Primitives.swift in Sources */,
 				7538EA8B23B1FF8700E8922F /* PointAnchorLHS+RHSBase.swift in Sources */,
+				7532373A23CDC8C000898C8D /* ConstraintOperandOperator.swift in Sources */,
 				75A7BA1C23A1906B00BD8664 /* SingleAnchorLHS+SingleAnchorRHS.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -663,6 +706,7 @@
 				7538EA9F23B9E72200E8922F /* SizeAnchorLHS+SizeAnchorRHS_Tests.swift in Sources */,
 				7532361523CC7C3D00898C8D /* EdgesAnchorLHS+OptionalEdgesAnchorRHSKeyPath_Tests.swift in Sources */,
 				7538EABE23B9EBDE00E8922F /* SizeAnchorLHS+RHSBaseKeyPath_Tests.swift in Sources */,
+				7532373323CDAD5500898C8D /* EdgesAnchorLHS+Primitives_Tests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

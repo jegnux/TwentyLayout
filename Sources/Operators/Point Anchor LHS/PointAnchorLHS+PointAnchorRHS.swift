@@ -20,7 +20,6 @@ public func == <
     Layout.push(Constraint(lhs.x, .equal, rhs.constraintValue.x ~ rhs))
 }
 
-
 /// label.anchors.bottom.left <= image.anchors.top.right
 public func <= <
     LHSBase, LHSXAttribute, LHSYAttribute,
@@ -34,7 +33,6 @@ public func <= <
     Layout.push(Constraint(lhs.y, .lessThanOrEqual, rhs.constraintValue.y ~ rhs))
     Layout.push(Constraint(lhs.x, .lessThanOrEqual, rhs.constraintValue.x ~ rhs))
 }
-
 
 /// label.anchors.bottom.left >= image.anchors.top.right
 public func >= <

@@ -32,7 +32,6 @@ public func == <
     Layout.push(Constraint(lhs.height, .equal, lhs.item[keyPath: rhs.constraintValue]?.height ~ rhs))
 }
 
-
 /// label.anchors.bottom.left <= \.image.anchors.top.right
 public func <= <
     LHSBase,
@@ -44,7 +43,6 @@ public func <= <
     Layout.push(Constraint(lhs.width, .lessThanOrEqual, lhs.item[keyPath: rhs.constraintValue]?.width ~ rhs))
     Layout.push(Constraint(lhs.height, .lessThanOrEqual, lhs.item[keyPath: rhs.constraintValue]?.height ~ rhs))
 }
-
 
 /// label.anchors.bottom.left <= \.image.anchors.top.right
 public func <= <
