@@ -15,5 +15,6 @@ Pod::Spec.new do |s|
   s.tvos.deployment_target = "9.0"
   s.source       = { :git => "https://github.com/jegnux/TwentyLayout.git", :tag => s.version.to_s }
   s.source_files  = "Sources/**/*"
+  s.exclude_files = 'Sources/**/*_Tests*'
   s.frameworks  = "Foundation"
 end
