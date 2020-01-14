@@ -2,6 +2,18 @@
 <Workspace
    version = "1.0">
    <FileRef
+      location = "group:../LICENSE">
+   </FileRef>
+   <FileRef
+      location = "group:../Package.swift">
+   </FileRef>
+   <FileRef
+      location = "group:../README.md">
+   </FileRef>
+   <FileRef
+      location = "group:../TwentyLayout.podspec">
+   </FileRef>
+   <FileRef
       location = "container:TwentyLayout-Example.xcodeproj">
    </FileRef>
 </Workspace>

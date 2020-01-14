@@ -1,9 +1,9 @@
 Pod::Spec.new do |s|
   s.name         = "TwentyLayout"
   s.version      = "0.1"
-  s.summary      = ""
+  s.summary      = "The safest, yet most powerful, Auto Layout DSL you deserve in 2020"
   s.description  = <<-DESC
-    Your description here.
+    The safest, yet most powerful, Auto Layout DSL you deserve in 2020
   DESC
   s.homepage     = "https://github.com/jegnux/TwentyLayout"
   s.license      = { :type => "MIT", :file => "LICENSE" }
