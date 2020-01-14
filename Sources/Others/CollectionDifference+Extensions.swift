@@ -5,7 +5,7 @@
 
 import Foundation
 
-@available(iOSApplicationExtension 13, *)
+@available(iOS 13, *)
 extension CollectionDifference.Change {
     internal var offset: Int {
         switch self {
@@ -27,7 +27,7 @@ extension CollectionDifference.Change {
     }
 }
 
-@available(iOSApplicationExtension 13, *)
+@available(iOS 13, *)
 extension CollectionDifference where ChangeElement : Hashable {
     internal func filteringMoves() -> CollectionDifference<ChangeElement> {
         return CollectionDifference(inferringMoves().filter {
