@@ -30,7 +30,7 @@ public final class Layout: CustomStringConvertible {
         return buffer.removeValue(forKey: buffer.count - 1) ?? []
     }
 
-    public let constraints: [Constraint]
+    internal let constraints: [Constraint]
     
     public init(_ make: () -> Void) {
         Layout.beginUpdates()
@@ -61,7 +61,6 @@ public final class Layout: CustomStringConvertible {
                 map[constraint] = layoutConstraint
             }
         }
-        print(map)
     }
     
     public func deactivate() {

@@ -25,9 +25,12 @@ final class ContainerView: UIView {
     var container: UIView { return self }
     let image = UIImageView()
     let detail = DetailView()
+    let loading = UIActivityIndicatorView()
+    let guide = UILayoutGuide()
     init() {
         super.init(frame: .zero)
-        addSubviews(image, detail)
+        addSubviews(image, detail, loading)
+        addLayoutGuide(guide)
     }
     
     required init?(coder: NSCoder) {

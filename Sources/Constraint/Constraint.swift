@@ -6,7 +6,7 @@
 import Foundation
 import UIKit
 
-public struct Constraint: Hashable, CustomStringConvertible {
+internal struct Constraint: Hashable, CustomStringConvertible {
 
     internal enum Operand: Hashable, CustomStringConvertible {
         case expression(ConstraintExpression)
@@ -216,7 +216,35 @@ public struct Constraint: Hashable, CustomStringConvertible {
         self.priority = rhs.priority
     }
 
-    internal init(lhs: ConstraintExpression, relation: NSLayoutConstraint.Relation, rhs: Constraint.Operand, constant: CGFloat?, multiplier: CGFloat?, priority: UILayoutPriority?) {
+    internal init?(
+        _ lhs: AnyObject?,
+        _ lhsAttribute: NSLayoutConstraint.Attribute,
+        _ relation: NSLayoutConstraint.Relation,
+        _ rhs: AnyObject?,
+        _ rhsAttribute: NSLayoutConstraint.Attribute,
+        constant: CGFloat? = nil,
+        multiplier: CGFloat? = nil,
+        priority: UILayoutPriority? = nil
+    ) {
+        guard let lhs = lhs, let rhs = rhs else {
+            return nil
+        }
+        self.lhs = ConstraintExpression(lhs, lhsAttribute)
+        self.relation = relation
+        self.rhs = .expression(ConstraintExpression(rhs, rhsAttribute))
+        self.constant = constant
+        self.multiplier = multiplier
+        self.priority = priority
+    }
+
+    internal init(
+        lhs: ConstraintExpression,
+        relation: NSLayoutConstraint.Relation,
+        rhs: Constraint.Operand,
+        constant: CGFloat?,
+        multiplier: CGFloat?,
+        priority: UILayoutPriority?
+    ) {
         self.lhs = lhs
         self.relation = relation
         self.rhs = rhs
@@ -225,7 +253,7 @@ public struct Constraint: Hashable, CustomStringConvertible {
         self.priority = priority
     }
     
-    public var description: String {
+    internal var description: String {
         let components = [
             lhs.item.description + lhs.constraintAttribute.alp_description,
             relation.alp_description,

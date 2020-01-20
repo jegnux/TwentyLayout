@@ -12,9 +12,9 @@ internal struct ConstraintItem: Hashable, CustomStringConvertible {
     }
     internal let object: AnyObject
     internal let objectHashValue: Int
-    fileprivate init<T: Constrainable>(_ item: T) {
+    fileprivate init(_ item: AnyObject) {
         self.object = item
-        self.objectHashValue = item.hashValue
+        self.objectHashValue = withUnsafePointer(to: item, { $0.hashValue })
     }
     internal func hash(into hasher: inout Hasher) {
         hasher.combine(objectHashValue)
@@ -34,7 +34,7 @@ internal struct ConstraintExpression: Hashable {
         self.constraintAttribute = attribute.constraintAttribute
     }
 
-    internal init<T: Constrainable>(_ item: T, _ constraintAttribute: NSLayoutConstraint.Attribute) {
+    internal init(_ item: AnyObject, _ constraintAttribute: NSLayoutConstraint.Attribute) {
         self.item = ConstraintItem(item)
         self.constraintAttribute = constraintAttribute
     }
