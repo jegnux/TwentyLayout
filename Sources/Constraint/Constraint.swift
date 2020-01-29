@@ -219,14 +219,14 @@ internal struct Constraint: Hashable, CustomStringConvertible {
     internal init?(
         _ lhs: AnyObject?,
         _ lhsAttribute: NSLayoutConstraint.Attribute,
-        _ relation: NSLayoutConstraint.Relation,
+        _ relation: NSLayoutConstraint.Relation?,
         _ rhs: AnyObject?,
         _ rhsAttribute: NSLayoutConstraint.Attribute,
         constant: CGFloat? = nil,
         multiplier: CGFloat? = nil,
         priority: UILayoutPriority? = nil
     ) {
-        guard let lhs = lhs, let rhs = rhs else {
+        guard let lhs = lhs, let relation = relation, let rhs = rhs else {
             return nil
         }
         self.lhs = ConstraintExpression(lhs, lhsAttribute)
