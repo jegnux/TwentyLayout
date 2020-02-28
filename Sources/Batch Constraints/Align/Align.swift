@@ -50,7 +50,7 @@ public struct Alignment: OptionSet {
 
 extension Layout {
     
-    static func align(_ items: [AlignableItem], on alignment: Alignment, priority: UILayoutPriority? = nil) {
+    public static func align(_ items: [AlignableItem], on alignment: Alignment, priority: UILayoutPriority? = nil) {
         let items = items.filter { $0 is ReallyAlignableItem }
         guard items.count > 1 else {
             return
