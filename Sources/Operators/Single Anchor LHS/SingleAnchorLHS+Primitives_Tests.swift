@@ -128,14 +128,14 @@ class SingleAnchorLHS_Primitives_Tests: XCTestCase {
      
      func test_dimension_equal() throws {
          let layout = makeConstraints { views in
-             views.image.anchors.width == 200
+             views.guide.anchors.width == 200
          }
          
          XCTAssertEqual(layout.constraints.count, 1)
          
          let constraint = try XCTUnwrap(layout.constraints.first)
          
-         XCTAssertEqual(constraint.firstItem, layout.views.image)
+         XCTAssertEqual(constraint.firstItem, layout.views.guide)
          XCTAssertEqual(constraint.firstAttribute, .width)
          XCTAssertEqual(constraint.relation, .equal)
          XCTAssertNil(constraint.secondItem)

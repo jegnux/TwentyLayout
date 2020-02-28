@@ -17,7 +17,7 @@ public func == <
     RHS.Value: SingleAnchorPrimitive,
     LHSAttribute.Kind.ValueKind == PositionValueKind
 {
-    Layout.push(Constraint(lhs, .equal, lhs.on(lhs.item.superview) ~ rhs))
+    Layout.push(Constraint.init(lhs, .equal, lhs.on(lhs.item.superview) ~ rhs))
 }
 
 /// label.anchors.leading <= 20
@@ -50,7 +50,7 @@ public func >= <
 
 /// label.anchors.width == 200
 public func == <
-    LHSBase: UIView, LHSAttribute,
+    LHSBase, LHSAttribute,
     RHS: ConstraintOperand
     >(
     lhs: SingleAnchor<LHSBase, LHSAttribute>,
@@ -71,7 +71,7 @@ public func == <
 
 /// label.anchors.width <= 200
 public func <= <
-    LHSBase: UIView, LHSAttribute,
+    LHSBase, LHSAttribute,
     RHS: ConstraintOperand
     >(
     lhs: SingleAnchor<LHSBase, LHSAttribute>,
@@ -92,7 +92,7 @@ public func <= <
 
 /// label.anchors.width >= 200
 public func >= <
-    LHSBase: UIView, LHSAttribute,
+    LHSBase, LHSAttribute,
     RHS: ConstraintOperand
     >(
     lhs: SingleAnchor<LHSBase, LHSAttribute>,
