@@ -237,6 +237,26 @@ internal struct Constraint: Hashable, CustomStringConvertible {
         self.priority = priority
     }
 
+    internal init?(
+        _ lhs: AnyObject?,
+        _ lhsAttribute: NSLayoutConstraint.Attribute,
+        _ relation: NSLayoutConstraint.Relation?,
+        _ rhs: CGFloat,
+        constant: CGFloat? = nil,
+        multiplier: CGFloat? = nil,
+        priority: UILayoutPriority? = nil
+    ) {
+        guard let lhs = lhs, let relation = relation else {
+            return nil
+        }
+        self.lhs = ConstraintExpression(lhs, lhsAttribute)
+        self.relation = relation
+        self.rhs = .dimension(rhs)
+        self.constant = constant
+        self.multiplier = multiplier
+        self.priority = priority
+    }
+
     internal init(
         lhs: ConstraintExpression,
         relation: NSLayoutConstraint.Relation,
@@ -272,4 +292,49 @@ internal struct Constraint: Hashable, CustomStringConvertible {
             && ((priority == otherConstraint.priority) || (priority != .required && otherConstraint.priority != .required))
     }
 
+}
+
+extension Layout {
+    public static func constrain(
+        _ lhs: AnyObject,
+        _ lhsAttribute: NSLayoutConstraint.Attribute,
+        _ relation: NSLayoutConstraint.Relation,
+        _ rhs: AnyObject,
+        _ rhsAttribute: NSLayoutConstraint.Attribute,
+        constant: CGFloat? = nil,
+        multiplier: CGFloat? = nil,
+        priority: UILayoutPriority? = nil
+    ) {
+        Layout.push(
+            Constraint(
+                lhs, lhsAttribute,
+                relation,
+                rhs, rhsAttribute,
+                constant: constant,
+                multiplier: multiplier,
+                priority: priority
+            )
+        )
+    }
+
+    public static func constrain(
+        _ lhs: AnyObject,
+        _ lhsAttribute: NSLayoutConstraint.Attribute,
+        _ relation: NSLayoutConstraint.Relation,
+        _ rhs: CGFloat,
+        constant: CGFloat? = nil,
+        multiplier: CGFloat? = nil,
+        priority: UILayoutPriority? = nil
+    ) {
+        Layout.push(
+            Constraint(
+                lhs, lhsAttribute,
+                relation,
+                rhs,
+                constant: constant,
+                multiplier: multiplier,
+                priority: priority
+            )
+        )
+    }
 }

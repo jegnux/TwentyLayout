@@ -6,36 +6,27 @@
 import Foundation
 import UIKit
 
-private var buffer: [Int: [Constraint]] = [:]
-
 public final class Layout: CustomStringConvertible {
     
-    private static func beginUpdates() {
-        buffer[buffer.count] = []
-    }
-        
+    private static var layoutStack: [Layout] = []
+
     internal static func push(_ constraint: Constraint?) {
         guard let constraint = constraint else {
             return
         }
-        let index = buffer.count - 1
-        guard index >= 0 else {
+        guard let layout = layoutStack.last else {
             assertionFailure("Constraints MUST be created as part of a Layout { ... }")
             return
         }
-        buffer[index, default: []].append(constraint)
+        layout.constraints.append(constraint)
     }
 
-    private static func endUpdates() -> [Constraint] {
-        return buffer.removeValue(forKey: buffer.count - 1) ?? []
-    }
-
-    internal let constraints: [Constraint]
+    internal var constraints: [Constraint] = []
     
     public init(_ make: () -> Void) {
-        Layout.beginUpdates()
+        Layout.layoutStack.append(self)
         make()
-        constraints = Layout.endUpdates()
+        Layout.layoutStack.removeLast()
     }
     
     @discardableResult

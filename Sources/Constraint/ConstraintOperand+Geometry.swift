@@ -9,24 +9,43 @@
 import Foundation
 import UIKit
 
-extension Int: ModifiableConstraintOperand, SingleAnchorPrimitive {}
-extension Float: ModifiableConstraintOperand, SingleAnchorPrimitive {}
-extension Double: ModifiableConstraintOperand, SingleAnchorPrimitive {}
-extension CGFloat: ModifiableConstraintOperand, SingleAnchorPrimitive {}
-
-extension ConstraintOperand where Self : BinaryInteger {
+extension Int: ModifiableConstraintOperand, SingleAnchorPrimitive {
+    public var constraintValue: Int {
+        return self
+    }
     public func constant(for attribute: NSLayoutConstraint.Attribute) -> CGFloat? {
         return CGFloat(self)
     }
 }
-
-extension ConstraintOperand where Self : BinaryFloatingPoint {
+extension Float: ModifiableConstraintOperand, SingleAnchorPrimitive {
+    public var constraintValue: Float {
+        return self
+    }
     public func constant(for attribute: NSLayoutConstraint.Attribute) -> CGFloat? {
         return CGFloat(self)
+    }
+}
+extension Double: ModifiableConstraintOperand, SingleAnchorPrimitive {
+    public var constraintValue: Double {
+        return self
+    }
+    public func constant(for attribute: NSLayoutConstraint.Attribute) -> CGFloat? {
+        return CGFloat(self)
+    }
+}
+extension CGFloat: ModifiableConstraintOperand, SingleAnchorPrimitive {
+    public var constraintValue: CGFloat {
+        return self
+    }
+    public func constant(for attribute: NSLayoutConstraint.Attribute) -> CGFloat? {
+        return self
     }
 }
 
 extension CGPoint: ModifiableConstraintOperand {
+    public var constraintValue: CGPoint {
+        return self
+    }
     public func constant(for attribute: NSLayoutConstraint.Attribute) -> CGFloat? {
         switch attribute {
         case .top, .topMargin,
@@ -46,6 +65,9 @@ extension CGPoint: ModifiableConstraintOperand {
 }
 
 extension CGSize: ModifiableConstraintOperand {
+    public var constraintValue: CGSize {
+        return self
+    }
     public func constant(for attribute: NSLayoutConstraint.Attribute) -> CGFloat? {
         switch attribute {
         case .width: return width

@@ -10,5 +10,14 @@ public protocol Constrainable: AnyObject, Hashable, ModifiableConstraintOperand,
 public protocol FrameConstrainable: Constrainable {}
 public protocol BaselineConstrainable: Constrainable {}
 
-extension UIView: FrameConstrainable, BaselineConstrainable {}
-extension UILayoutGuide: FrameConstrainable {}
+extension UIView: FrameConstrainable, BaselineConstrainable {
+    public var constraintValue: UIView {
+        return self
+    }
+}
+
+extension UILayoutGuide: FrameConstrainable {
+    public var constraintValue: UILayoutGuide {
+        return self
+    }
+}

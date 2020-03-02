@@ -10,6 +10,9 @@ import Foundation
 import UIKit
 
 public struct EdgesConstants: ModifiableConstraintOperand {
+    public var constraintValue: EdgesConstants {
+        return self
+    }
     internal enum Kind {
         case inset, offset
     }

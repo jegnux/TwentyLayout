@@ -18,12 +18,10 @@ extension PointAnchor: Offsetable where XAttribute: Offsetable, YAttribute: Offs
 extension PointAnchor: Insetable where XAttribute: Insetable, YAttribute: Insetable {}
 extension PointAnchor: Multiplicable where XAttribute: Multiplicable, YAttribute: Multiplicable {}
 
-extension SizeAnchor: ConstraintOperand {}
 extension SizeAnchor: ModifiableConstraintOperand {}
 extension SizeAnchor: Offsetable {}
 extension SizeAnchor: Multiplicable {}
 
-extension EdgesAnchor: ConstraintOperand {}
 extension EdgesAnchor: ModifiableConstraintOperand {}
 extension EdgesAnchor: Offsetable {}
 extension EdgesAnchor: Insetable {}
@@ -38,6 +36,18 @@ extension SingleAnchor: ConstraintOperand where Attribute: ConstraintOperand {
 
 extension PointAnchor: ConstraintOperand where XAttribute: ConstraintOperand, YAttribute: ConstraintOperand {
     public var constraintValue: Self {
+        return self
+    }
+}
+
+extension SizeAnchor: ConstraintOperand {
+    public var constraintValue: SizeAnchor {
+        return self
+    }
+}
+
+extension EdgesAnchor: ConstraintOperand {
+    public var constraintValue: EdgesAnchor {
         return self
     }
 }

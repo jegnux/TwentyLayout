@@ -15,9 +15,6 @@ public protocol ConstraintOperand {
 }
 
 extension ConstraintOperand {
-    public var constraintValue: Self {
-        return self
-    }
     public var priority: UILayoutPriority? {
         return nil
     }
