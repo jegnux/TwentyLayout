@@ -59,12 +59,7 @@ public final class Layout: CustomStringConvertible {
     }
     
     public var firstCommonAncestor: UIView? {
-        var view: UIView?
-        for constraint in constraints {
-            view = UIView.firstCommonAncestor(between: view, and: constraint.lhs.item.object)
-            view = UIView.firstCommonAncestor(between: view, and: constraint.rhs.object)
-        }
-        return view
+        UIView.firstCommonAncestor(of: constraints.flatMap { [$0.lhs.item.object, $0.rhs.object] })
     }
 }
 

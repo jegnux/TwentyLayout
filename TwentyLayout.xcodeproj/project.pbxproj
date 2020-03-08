@@ -75,6 +75,8 @@
 		7583FA5323BB39BA0026E89B /* SizeAnchorLHS+OptionalSizeAnchorRHSKeyPath.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7538EAA023B9E99F00E8922F /* SizeAnchorLHS+OptionalSizeAnchorRHSKeyPath.swift */; };
 		7583FA5523BB3CDD0026E89B /* WithinMarginsAttribute_Tests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7583FA5423BB3CDD0026E89B /* WithinMarginsAttribute_Tests.swift */; };
 		7583FA5723BB41B20026E89B /* MarginAttribute_Tests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7583FA5623BB41B20026E89B /* MarginAttribute_Tests.swift */; };
+		758D00252414EED1002C86E8 /* FirstCommonAncestor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 758D00242414EED1002C86E8 /* FirstCommonAncestor.swift */; };
+		758D00272414EEF0002C86E8 /* FirstCommonAncestor_Tests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 758D00262414EEF0002C86E8 /* FirstCommonAncestor_Tests.swift */; };
 		75A70CD823CDF9EE00AB51D8 /* EdgesAnchorLHS+OptionalRHSBaseKeyPath_Tests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7532371823CCAD2300898C8D /* EdgesAnchorLHS+OptionalRHSBaseKeyPath_Tests.swift */; };
 		75A70CD923CDF9F300AB51D8 /* EdgesAnchorLHS+OptionalRHSBaseKeyPath.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7532371A23CCAD2300898C8D /* EdgesAnchorLHS+OptionalRHSBaseKeyPath.swift */; };
 		75A70CDA23CDFA4A00AB51D8 /* EdgesAnchorLHS+RHSBaseKeyPath_Tests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7532371923CCAD2300898C8D /* EdgesAnchorLHS+RHSBaseKeyPath_Tests.swift */; };
@@ -198,6 +200,8 @@
 		756517D323A0FFA7008D8115 /* UIView+Layout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+Layout.swift"; sourceTree = "<group>"; };
 		7583FA5423BB3CDD0026E89B /* WithinMarginsAttribute_Tests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WithinMarginsAttribute_Tests.swift; sourceTree = "<group>"; };
 		7583FA5623BB41B20026E89B /* MarginAttribute_Tests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MarginAttribute_Tests.swift; sourceTree = "<group>"; };
+		758D00242414EED1002C86E8 /* FirstCommonAncestor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirstCommonAncestor.swift; sourceTree = "<group>"; };
+		758D00262414EEF0002C86E8 /* FirstCommonAncestor_Tests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirstCommonAncestor_Tests.swift; sourceTree = "<group>"; };
 		75A7BA0023A1864600BD8664 /* PointAnchor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PointAnchor.swift; sourceTree = "<group>"; };
 		75A7BA0223A1864F00BD8664 /* SizeAnchor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SizeAnchor.swift; sourceTree = "<group>"; };
 		75A7BA0423A1865A00BD8664 /* SetAnchor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SetAnchor.swift; sourceTree = "<group>"; };
@@ -459,6 +463,8 @@
 				8454404E239A589B00722C99 /* MissingDescriptions.swift */,
 				84544064239A8C7700722C99 /* CollectionDifference+Extensions.swift */,
 				84544060239A629200722C99 /* Utilities.swift */,
+				758D00242414EED1002C86E8 /* FirstCommonAncestor.swift */,
+				758D00262414EEF0002C86E8 /* FirstCommonAncestor_Tests.swift */,
 			);
 			path = Others;
 			sourceTree = "<group>";
@@ -666,6 +672,7 @@
 				75A7BA0923A18A8700BD8664 /* MarginAttribute.swift in Sources */,
 				7532372C23CD0D2200898C8D /* PointAnchorLHS+Primitives.swift in Sources */,
 				8481FC3A239C52DD00D9B1CC /* Anchors+DSL.swift in Sources */,
+				758D00252414EED1002C86E8 /* FirstCommonAncestor.swift in Sources */,
 				7532374623CDC9A600898C8D /* ConstraintOperand+Optional.swift in Sources */,
 				7538EA9323B20A1800E8922F /* PointAnchorLHS+OptionalRHSBaseKeyPath.swift in Sources */,
 				7532372223CCAFC000898C8D /* SetAnchorLHS+RHSBaseKeyPath.swift in Sources */,
@@ -714,6 +721,7 @@
 				7538EA9723B2134A00E8922F /* PointAnchorLHS+PointAnchorRHSKeyPath_Tests.swift in Sources */,
 				7538EA7A23AEACD900E8922F /* SingleAnchorLHS+OptionalSingleAnchorRHSKeyPath_Tests.swift in Sources */,
 				7583FA5523BB3CDD0026E89B /* WithinMarginsAttribute_Tests.swift in Sources */,
+				758D00272414EEF0002C86E8 /* FirstCommonAncestor_Tests.swift in Sources */,
 				7538EA8223AFB9A300E8922F /* SingleAnchorLHS+SingleAnchorLHSKeyPath_Tests.swift in Sources */,
 				75A70CDA23CDFA4A00AB51D8 /* EdgesAnchorLHS+RHSBaseKeyPath_Tests.swift in Sources */,
 				7532372523CCB51800898C8D /* SetAnchorLHS+OptionalRHSBaseKeyPath_Tests.swift in Sources */,
