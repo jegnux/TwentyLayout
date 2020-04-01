@@ -40,22 +40,21 @@ public final class Layout: CustomStringConvertible {
         constraints.map { $0.description }.joined(separator: "\n")
     }
     
-    private var map: [Constraint: NSLayoutConstraint] = [:]
+    private var map: [Constraint: Weak<NSLayoutConstraint>] = [:]
     
     public func activate() {
         for constraint in constraints {
-            if let layoutConstraint = map[constraint] {
+            if let layoutConstraint = map[constraint]?.object {
                 layoutConstraint.isActive = true
-            } else {
-                let layoutConstraint = constraint.makeNSLayoutConstraint()
+            } else if let layoutConstraint = constraint.makeNSLayoutConstraint() {
                 layoutConstraint.isActive = true
-                map[constraint] = layoutConstraint
+                map[constraint] = Weak(layoutConstraint)
             }
         }
     }
     
     public func deactivate() {
-        map.values.forEach { $0.isActive = false }
+        map.values.forEach { $0.object?.isActive = false }
     }
     
     public var firstCommonAncestor: UIView? {
@@ -63,10 +62,20 @@ public final class Layout: CustomStringConvertible {
     }
 }
 
+internal class Weak<T: AnyObject> {
+    weak var object: T?
+    init(_ object: T) {
+        self.object = object
+    }
+}
+
 extension Constraint {
-    internal func makeNSLayoutConstraint() -> NSLayoutConstraint {
+    internal func makeNSLayoutConstraint() -> NSLayoutConstraint? {
+        guard let lhsObject = lhs.item.object else {
+            return nil
+        }
         
-        let lhsView = lhs.item.object as? UIView
+        let lhsView = lhsObject as? UIView
         let rhsView = rhs.object as? UIView
         switch (lhsView, rhsView) {
         case (nil, nil):
@@ -85,7 +94,7 @@ extension Constraint {
         }
 
         let layoutConstraint = NSLayoutConstraint(
-            item: lhs.item.object,
+            item: lhsObject,
             attribute: lhs.constraintAttribute,
             relatedBy: relation,
             toItem: rhs.object,

@@ -10,10 +10,13 @@ internal struct ConstraintItem: Hashable, CustomStringConvertible {
     static func == (lhs: ConstraintItem, rhs: ConstraintItem) -> Bool {
         return lhs.object === rhs.object
     }
-    internal let object: AnyObject
+    private let weakObject: Weak<AnyObject>
+    internal var object: AnyObject? {
+        weakObject.object
+    }
     internal let objectHashValue: Int
     fileprivate init(_ item: AnyObject) {
-        self.object = item
+        self.weakObject = Weak(item)
         self.objectHashValue = withUnsafePointer(to: item, { $0.hashValue })
     }
     internal func hash(into hasher: inout Hasher) {
@@ -21,7 +24,7 @@ internal struct ConstraintItem: Hashable, CustomStringConvertible {
     }
     
     internal var description: String {
-        rawDescription(of: object)
+        weakObject.object.map(rawDescription) ?? "null"
     }
 }
 
