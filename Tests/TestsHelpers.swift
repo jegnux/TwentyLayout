@@ -38,20 +38,25 @@ final class ContainerView: UIView {
     }
 }
 
-struct Result {
+final class Result {
     let views: ContainerView
-    let constraints: [NSLayoutConstraint]
+    let layout: Layout
+    private(set) lazy var constraints: [NSLayoutConstraint] = {
+        layout.constraints.forEach { layout.updateOrCreateLayoutConstraint(for: $0) }
+        return layout.layoutConstraints.compactMap({ $0 })
+    }()
+    
+    internal init(views: ContainerView, layout: Layout) {
+        self.views = views
+        self.layout = layout
+    }
 }
 
-func makeConstraints(_ make: (ContainerView) -> Void) -> Result {
-    let views = ContainerView()
+func makeConstraints(views: ContainerView = ContainerView(), _ make: (ContainerView) -> Void) -> Result {
     let layout = Layout {
         make(views)
     }
-    return Result(
-        views: views,
-        constraints: layout.constraints.map { $0.makeNSLayoutConstraint() }
-    )
+    return Result(views: views, layout: layout)
 }
 
 func XCTAssertEqual(_ lhs: AnyObject?, _ rhs: AnyObject, file: StaticString = #file, line: UInt = #line) {

@@ -8,6 +8,8 @@
 
 /* Begin PBXBuildFile section */
 		52D6D9871BEFF229002C0205 /* TwentyLayout.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 52D6D97C1BEFF229002C0205 /* TwentyLayout.framework */; };
+		752A5C882439BDE5007CCEDE /* LayoutController_Tests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 752A5C872439BDE5007CCEDE /* LayoutController_Tests.swift */; };
+		752A5C8A2439C058007CCEDE /* CascadeOperator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 752A5C892439C058007CCEDE /* CascadeOperator.swift */; };
 		753235FB23CC60EB00898C8D /* EdgesAnchor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 753235FA23CC60EB00898C8D /* EdgesAnchor.swift */; };
 		7532360023CC656100898C8D /* EdgesAnchorLHS+EdgesAnchorRHS.swift in Sources */ = {isa = PBXBuildFile; fileRef = 753235FD23CC632400898C8D /* EdgesAnchorLHS+EdgesAnchorRHS.swift */; };
 		7532360323CC683300898C8D /* SetAnchorLHS+RHSBase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7532360123CC681A00898C8D /* SetAnchorLHS+RHSBase.swift */; };
@@ -129,6 +131,8 @@
 /* Begin PBXFileReference section */
 		52D6D97C1BEFF229002C0205 /* TwentyLayout.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = TwentyLayout.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		52D6D9861BEFF229002C0205 /* TwentyLayout-iOS Tests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "TwentyLayout-iOS Tests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
+		752A5C872439BDE5007CCEDE /* LayoutController_Tests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LayoutController_Tests.swift; sourceTree = "<group>"; };
+		752A5C892439C058007CCEDE /* CascadeOperator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CascadeOperator.swift; sourceTree = "<group>"; };
 		753235FA23CC60EB00898C8D /* EdgesAnchor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EdgesAnchor.swift; sourceTree = "<group>"; };
 		753235FD23CC632400898C8D /* EdgesAnchorLHS+EdgesAnchorRHS.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "EdgesAnchorLHS+EdgesAnchorRHS.swift"; sourceTree = "<group>"; };
 		753235FE23CC633000898C8D /* EdgesAnchorLHS+EdgesAnchorRHS_Tests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "EdgesAnchorLHS+EdgesAnchorRHS_Tests.swift"; sourceTree = "<group>"; };
@@ -452,6 +456,7 @@
 			children = (
 				8454405C239A602F00722C99 /* Layout.swift */,
 				8481FC37239B9DEC00D9B1CC /* LayoutController.swift */,
+				752A5C872439BDE5007CCEDE /* LayoutController_Tests.swift */,
 				756517D323A0FFA7008D8115 /* UIView+Layout.swift */,
 			);
 			path = Layout;
@@ -460,6 +465,7 @@
 		75A7BA1A23A18FF400BD8664 /* Others */ = {
 			isa = PBXGroup;
 			children = (
+				752A5C892439C058007CCEDE /* CascadeOperator.swift */,
 				8454404E239A589B00722C99 /* MissingDescriptions.swift */,
 				84544064239A8C7700722C99 /* CollectionDifference+Extensions.swift */,
 				84544060239A629200722C99 /* Utilities.swift */,
@@ -649,6 +655,7 @@
 				7532372623CCB53100898C8D /* SetAnchorLHS+OptionalRHSBaseKeyPath.swift in Sources */,
 				756517D423A0FFA7008D8115 /* UIView+Layout.swift in Sources */,
 				7538EAC123BA966D00E8922F /* SizeAnchorLHS+OptionalRHSBaseKeyPath.swift in Sources */,
+				752A5C8A2439C058007CCEDE /* CascadeOperator.swift in Sources */,
 				7532361623CC7C5D00898C8D /* EdgesAnchorLHS+OptionalEdgesAnchorRHSKeyPath.swift in Sources */,
 				7532373823CDC89F00898C8D /* ConstraintOperandMutation.swift in Sources */,
 				7538EABF23B9EBE600E8922F /* SizeAnchorLHS+RHSBaseKeyPath.swift in Sources */,
@@ -720,6 +727,7 @@
 				7538EAC223BA96FE00E8922F /* SizeAnchorLHS+SizeAnchorRHSKeyPath_Tests.swift in Sources */,
 				7538EA9723B2134A00E8922F /* PointAnchorLHS+PointAnchorRHSKeyPath_Tests.swift in Sources */,
 				7538EA7A23AEACD900E8922F /* SingleAnchorLHS+OptionalSingleAnchorRHSKeyPath_Tests.swift in Sources */,
+				752A5C882439BDE5007CCEDE /* LayoutController_Tests.swift in Sources */,
 				7583FA5523BB3CDD0026E89B /* WithinMarginsAttribute_Tests.swift in Sources */,
 				758D00272414EEF0002C86E8 /* FirstCommonAncestor_Tests.swift in Sources */,
 				7538EA8223AFB9A300E8922F /* SingleAnchorLHS+SingleAnchorLHSKeyPath_Tests.swift in Sources */,

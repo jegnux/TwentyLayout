@@ -66,6 +66,17 @@ internal struct Constraint: Hashable, CustomStringConvertible {
     internal let constant: CGFloat?
     internal let multiplier: CGFloat?
     internal let priority: UILayoutPriority?
+    
+    internal var reuseIdentifier: Int {
+        var hasher = Hasher()
+        hasher.combine(lhs.item.object.map { ObjectIdentifier($0).hashValue })
+        hasher.combine(lhs.constraintAttribute)
+        hasher.combine(relation)
+        hasher.combine(rhs.object.map { ObjectIdentifier($0).hashValue })
+        hasher.combine(rhs.constraintAttribute)
+        hasher.combine(multiplier ?? 1)
+        return hasher.finalize()
+    }
         
     internal init?<LHSBase, LHSAttribute, RHS: ConstraintOperand, RHSBase, RHSAttribute>(
         _ lhs: SingleAnchor<LHSBase, LHSAttribute>?,
@@ -289,7 +300,14 @@ internal struct Constraint: Hashable, CustomStringConvertible {
             && rhs.canUpdate(to: otherConstraint.rhs)
             && relation == otherConstraint.relation
             && multiplier == otherConstraint.multiplier
-            && ((priority == otherConstraint.priority) || (priority != .required && otherConstraint.priority != .required))
+            && {
+                switch (priority ?? .required, otherConstraint.priority ?? .required) {
+                case (.required, .required): return true
+                case (.required, _): return false
+                case (_, .required): return false
+                default: return true
+                }
+            }()
     }
 
 }

@@ -14,13 +14,14 @@ internal struct ConstraintItem: Hashable, CustomStringConvertible {
     internal var object: AnyObject? {
         weakObject.object
     }
-    internal let objectHashValue: Int
+    internal let objectIdentifier: ObjectIdentifier
+    
     fileprivate init(_ item: AnyObject) {
         self.weakObject = Weak(item)
-        self.objectHashValue = withUnsafePointer(to: item, { $0.hashValue })
+        self.objectIdentifier = ObjectIdentifier(item)
     }
     internal func hash(into hasher: inout Hasher) {
-        hasher.combine(objectHashValue)
+        hasher.combine(objectIdentifier)
     }
     
     internal var description: String {
@@ -29,6 +30,7 @@ internal struct ConstraintItem: Hashable, CustomStringConvertible {
 }
 
 internal struct ConstraintExpression: Hashable {
+    
     internal let item: ConstraintItem
     internal let constraintAttribute: NSLayoutConstraint.Attribute
 
