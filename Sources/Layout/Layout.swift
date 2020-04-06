@@ -202,12 +202,26 @@ extension Constraint {
             break
         case (let lhsView?, nil):
             lhsView.translatesAutoresizingMaskIntoConstraints = false
+            
         case (nil, let rhsView?):
             rhsView.translatesAutoresizingMaskIntoConstraints = false
+            
         case (let lhsView?, let rhsView?):
+            
+            // view.anchors.width == \.height
+            // => view.translatesAutoresizingMaskIntoConstraints = false
+            if lhsView == rhsView {
+                rhsView.translatesAutoresizingMaskIntoConstraints = false
+            }
+            
+            // view.anchors.width == otherView (where view is not descendant of otherView)
+            // => otherView.translatesAutoresizingMaskIntoConstraints = false
             if lhsView.isDescendant(of: rhsView) == false {
                 rhsView.translatesAutoresizingMaskIntoConstraints = false
             }
+            
+            // view.anchors.width == \.superview
+            // => view.translatesAutoresizingMaskIntoConstraints = false
             if rhsView.isDescendant(of: lhsView) == false {
                 lhsView.translatesAutoresizingMaskIntoConstraints = false
             }
@@ -222,7 +236,9 @@ extension Constraint {
             multiplier: multiplier ?? 1,
             constant: rhs.dimension ?? constant ?? 0
         )
+        
         layoutConstraint.priority = priority ?? .required
+        
         return layoutConstraint
     }
     
