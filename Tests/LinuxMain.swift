@@ -1,6 +1,5 @@
-import XCTest
-@testable import AutoLayoutProTests
-
-XCTMain([
-    testCase(AutoLayoutProTests.allTests),
-])
+#error("""
+  -----------------------------------------------------
+  Please test with `swift test --enable-test-discovery`
+  -----------------------------------------------------
+  """)
